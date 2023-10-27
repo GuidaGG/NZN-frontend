@@ -4,44 +4,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	--font-body: Roboto, -apple-system, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-mono: 'Fira Mono', monospace;
+@font-face {
+	font-family: 'CabinetGrotesk-Medium';
+	src: url("../lib/fonts/CabinetGrotesk-Medium.woff2");
 }
 
-html, body {
-	padding: 0;
+@font-face {
+	font-family: 'CabinetGrotesk-Bold';
+	src: url("../lib/fonts/CabinetGrotesk-Vold.woff2");
+}
+
+
+@layer base {
+	:root {
+		--nzn-text-2xl: 95px;
+		--nzn-text-xl: 53px;
+		--nzn-text-base: 35px;
+		--nzn-text-sm: 20px;
+		--nzn-text-xs: 18px;
+		--nzn-line-2xl: 119px;
+		--nzn-line-xl: 58px;
+		--nzn-line-base: 45px;
+		--nzn-line-sm: 24px;
+		--nzn-line-xs: 22px;
+	}
+
+	@screen md {
+		:root {
+			--nzn-text-2xl: 65px;
+			--nzn-text-xl: 43px;
+			--nzn-text-base: 28px;
+			--nzn-text-sm: 18px;
+			--nzn-text-xs: 16px;
+			--nzn-line-2xl: 89px;
+			--nzn-line-xl: 48px;
+			--nzn-line-base: 38px;
+			--nzn-line-sm: 22px;
+			--nzn-line-xs: 20px;
+		}
+	}
+
+	html, body {
+		padding: 0;
+		margin: 0;
+		@apply font-medium
+	}
+	* {
+	box-sizing: border-box;
 	margin: 0;
-	font-family: var(--font-body);
-	@apply text-lg
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
+	}
 
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
-}
+	input,
+	button {
+		font-size: inherit;
+		font-family: inherit;
+	}
 
-button:focus:not(:focus-visible) {
-	outline: none;
-}
+	button:focus:not(:focus-visible) {
+		outline: none;
+	}
 
-.scrollbar-hide::-webkit-scrollbar {
-	display: none;
-}
-.scrollbar-hide {
-	-ms-overflow-style: none;  /* IE and Edge */
-	scrollbar-width: none;  /* Firefox */
-}
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+	.scrollbar-hide {
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+	}
 
-[aria-current='page'] {
-	display: none;
-}
+	[aria-current='page'] {
+		display: none;
+	}
 
-h1 {
-	@apply text-6xl pb-4
+	h1 {
+		@apply text-2xl pb-4 font-bold
+	}
+
 }
