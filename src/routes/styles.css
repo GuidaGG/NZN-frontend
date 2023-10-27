@@ -13,6 +13,7 @@ html, body {
 	padding: 0;
 	margin: 0;
 	font-family: var(--font-body);
+	@apply text-lg
 }
 * {
   box-sizing: border-box;
@@ -39,4 +40,8 @@ button:focus:not(:focus-visible) {
 
 [aria-current='page'] {
 	display: none;
+}
+
+h1 {
+	@apply text-6xl pb-4
 }

@@ -4,9 +4,15 @@
 	import Page from '$lib/components/Page.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Sidetray from '$lib/components/Sidetray.svelte';
+	import Project from '$lib/components/Project.svelte';
+	import type { ProjectPreview, Netzwerk } from '$lib/types.js';
+
+	export let data;
+
+  let projects: ProjectPreview[] = data.projects
+  let netzwerk: Netzwerk = data.netzwerk
 	
-	// import type { PageData } from './$types';
-	// export let data: PageData;
+
 </script>
 
 <svelte:head>
@@ -15,8 +21,18 @@
 </svelte:head>
 
 <Maintray>
+	<div class="bg-black text-white h-80">Here is Map</div>
 	<Page>
-		<h1> NETZWERK </h1>
+		<div class="px-2" >
+      <h1>{netzwerk.title}</h1>
+      <div> { @html netzwerk.content.body}</div>
+    </div>
+		<div class="flex gap-2 pt-8 flex-col md:flex-row">
+			{#each projects as project}
+				<Project {project} />
+			{/each}
+   
+		</div> 
 
 	</Page>
 	<Footer />
@@ -24,12 +40,12 @@
 
 <Sidetray>
 	<div class="p-5">
-		<h1> Hello </h1>
+		<h2> Hello </h2>
 		<p> Some information comes here and more </p>
 	</div>
 	
 	<div class="p-5">
-		<h1> Why do we use it? </h1>
+		<h2> Why do we use it? </h2>
 		<p>
 			The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
 		</p>
