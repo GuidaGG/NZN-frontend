@@ -11,38 +11,41 @@
 
 @font-face {
 	font-family: 'CabinetGrotesk-Bold';
-	src: url("../lib/fonts/CabinetGrotesk-Vold.woff2");
+	src: url("../lib/fonts/CabinetGrotesk-bold.woff2");
 }
 
 
 @layer base {
+	
 	:root {
-		--nzn-text-2xl: 95px;
-		--nzn-text-xl: 53px;
-		--nzn-text-base: 35px;
-		--nzn-text-sm: 20px;
-		--nzn-text-xs: 18px;
-		--nzn-line-2xl: 119px;
-		--nzn-line-xl: 58px;
-		--nzn-line-base: 45px;
-		--nzn-line-sm: 24px;
-		--nzn-line-xs: 22px;
+		
+		--nzn-text-2xl: 65px;
+		--nzn-text-xl: 43px;
+		--nzn-text-base: 28px;
+		--nzn-text-sm: 18px;
+		--nzn-text-xs: 16px;
+		--nzn-line-2xl: 89px;
+		--nzn-line-xl: 48px;
+		--nzn-line-base: 38px;
+		--nzn-line-sm: 22px;
+		--nzn-line-xs: 20px;
+		
 	}
-
 	@screen md {
 		:root {
-			--nzn-text-2xl: 65px;
-			--nzn-text-xl: 43px;
-			--nzn-text-base: 28px;
-			--nzn-text-sm: 18px;
-			--nzn-text-xs: 16px;
-			--nzn-line-2xl: 89px;
-			--nzn-line-xl: 48px;
-			--nzn-line-base: 38px;
-			--nzn-line-sm: 22px;
-			--nzn-line-xs: 20px;
+			--nzn-text-2xl: 95px;
+			--nzn-text-xl: 53px;
+			--nzn-text-base: 35px;
+			--nzn-text-sm: 20px;
+			--nzn-text-xs: 18px;
+			--nzn-line-2xl: 119px;
+			--nzn-line-xl: 58px;
+			--nzn-line-base: 45px;
+			--nzn-line-sm: 24px;
+			--nzn-line-xs: 22px;
 		}
 	}
+	
 
 	html, body {
 		padding: 0;
