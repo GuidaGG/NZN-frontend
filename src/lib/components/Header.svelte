@@ -27,21 +27,21 @@
 </script>
 
 
-<header class="flex justify-between h-56 border-b border-gray-900 bg-oliv-lt">
+<header class="flex justify-between border-b border-gray-900 bg-oliv-lt">
 
 	<div class="w-full border-r border-gray-900">
 
-		<div class="flex items-center h-44 px-5">
+		<div class="flex items-center h-40 px-5">
 			<div class="h-3/4">
-				<a href="https://kit.svelte.dev">
+				<a href="/">
 					<img class="h-full object-contain" src={nzn} alt="NZN-logo" />
 				</a>
 			</div>
 		</div>
 
-		<nav class="h-12 flex w-full border-t border-gray-900 justify-center">
-			<ul class="flex w-full justify-between px-9 text-3xl">
-				<li class="flex items-center" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+		<nav class="h-16 flex w-full border-t border-gray-900 justify-center">
+			<ul class="flex w-full justify-between px-5 text-base">
+				<li class="flex  items-center" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a href="/"> News </a>
 				</li>
 		
@@ -68,10 +68,10 @@
 
 	<div class="w-1/3 flex-col">
 
-		<div class="h-44"> </div>
+		<div class="h-40"> </div>
 
-		<div class="flex h-12 border-t border-gray-900 items-center px-5">
-			<p class="text-3xl"> {activeName} </p>
+		<div class="flex h-16 border-t border-gray-900 items-center px-5">
+			<p class="text-base"> {activeName} </p>
 		</div>
 
 	</div>

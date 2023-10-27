@@ -24,8 +24,8 @@
 	<div class="bg-black text-white h-80">Here is Map</div>
 	<Page>
 		<div class="px-2" >
-      <h1>{netzwerk.title}</h1>
-      <div> { @html netzwerk.content.body}</div>
+      <h1>{netzwerk.content.title}</h1>
+      <div class="text-xl"> { @html netzwerk.content.body}</div>
     </div>
 		<div class="flex gap-2 pt-8 flex-col md:flex-row">
 			{#each projects as project}
