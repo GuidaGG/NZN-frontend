@@ -4,6 +4,17 @@ export type Image = {
     name: string;
     alternativeText: string
     url: string;
+    formats: {
+        small: {
+            url: string;
+        },
+        medium: {
+            url: string;
+        },
+        large: {
+            url: string;
+        }
+    }
 }
   
 export type TextContent = { 
@@ -25,6 +36,14 @@ export type Netzwerk = {
     slug: string;
     content: TextContent;
 }
+
+export type Homepage = {
+    id: number;
+    title: string;
+    slug: string;
+    slideshow: Image[];
+    content: TextContent;
+}
   
 // CONTENT TYPES
 
@@ -38,5 +57,4 @@ export type ProjectPreview = {
     state: Select;
     work_areas: Select[];
   }
-  
   

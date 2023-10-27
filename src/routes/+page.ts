@@ -1,6 +1,7 @@
 import type { PageLoad } from './$types';
 import { gql } from 'graphql-request';
 import { client } from '$lib/api';
+import { flattenJson } from '$lib/utils';
 
 const query = gql`
   {
@@ -17,6 +18,7 @@ const query = gql`
                 name
                 alternativeText
                 url
+                formats
               }
             }
           }
@@ -33,7 +35,10 @@ const query = gql`
 export const load = (async () => {
   try {
     const data = await client.request(query);
-    return data;
+    // return data;
+    return {
+      homepage: flattenJson(data.homepage)
+    }
   } catch (error) {
     console.error('Error fetching data:', error);
     // return [];
