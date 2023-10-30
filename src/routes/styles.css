@@ -6,12 +6,12 @@
 
 @font-face {
 	font-family: 'CabinetGrotesk-Medium';
-	src: url("../lib/fonts/CabinetGrotesk-Medium.woff2");
+	src: url("../lib/fonts/CabinetGrotesk-regular.woff2");
 }
 
 @font-face {
 	font-family: 'CabinetGrotesk-Bold';
-	src: url("../lib/fonts/CabinetGrotesk-bold.woff2");
+	src: url("../lib/fonts/CabinetGrotesk-medium.woff2");
 }
 
 
@@ -32,6 +32,21 @@
 		
 	}
 	@screen md {
+		:root {
+			--nzn-text-2xl: 85px;
+			--nzn-text-xl: 43px;
+			--nzn-text-base: 25px;
+			--nzn-text-sm: 20px;
+			--nzn-text-xs: 18px;
+			--nzn-line-2xl: 109px;
+			--nzn-line-xl: 48px;
+			--nzn-line-base: 35px;
+			--nzn-line-sm: 24px;
+			--nzn-line-xs: 22px;
+		}
+	}
+	
+	@screen 2xl {
 		:root {
 			--nzn-text-2xl: 95px;
 			--nzn-text-xl: 53px;
@@ -81,6 +96,10 @@
 
 	h1 {
 		@apply text-2xl pb-4 font-bold
+	}
+
+	ul {
+		margin: 0;
 	}
 
 }
