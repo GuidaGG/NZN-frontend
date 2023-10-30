@@ -39,7 +39,7 @@
 			</div>
 		</div>
 
-		<nav class="h-16 flex w-full border-t border-gray-900 justify-center">
+		<nav class="h-16 flex w-full border-t border-gray-900 justify-center font-bold">
 			<ul class="flex w-full justify-between px-5 text-base">
 				<li class="flex  items-center" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a href="/"> News </a>
@@ -71,7 +71,7 @@
 		<div class="h-40"> </div>
 
 		<div class="flex h-16 border-t border-gray-900 items-center px-5">
-			<p class="text-base"> {activeName} </p>
+			<p class="text-base font-bold"> {activeName} </p>
 		</div>
 
 	</div>
