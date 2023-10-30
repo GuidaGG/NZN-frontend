@@ -47,14 +47,14 @@ export type Homepage = {
   
 // CONTENT TYPES
 
-export type ProjectPreview = {
+export type MemberPreview = {
     id: number
     title: string;
     slug: string;
     image: Image;
     agreement: boolean;
     content: TextContent;
-    state: Select;
+    states: Select[];
     work_areas: Select[];
   }
   
