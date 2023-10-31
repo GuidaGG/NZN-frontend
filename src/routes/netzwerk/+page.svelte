@@ -39,7 +39,7 @@
 		</div>
 		<div class="flex gap-2 pt-8 flex-col lg:flex-row">
 			{#each members as member}
-				<a href="/netwerk/{member?.slug}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl font-semibold" >
+				<a href="/netzwerk/{member?.slug}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl font-semibold" >
 					<Member {member} image location/>
 				</a>
 			{/each}
@@ -62,7 +62,7 @@
 	
 	<div class="flex flex-col">
 		{#each members as member}
-			<a href="/netwerk/{member.slug}" class="p-5 hover:bg-grun-dk" >
+			<a href="/netzwerk/{member.slug}" class="p-5 hover:bg-grun-dk" >
 				<Member {member}  />
 			</a>
 		{/each}

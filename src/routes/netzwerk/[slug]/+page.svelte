@@ -6,22 +6,20 @@
 	import Sidetray from '$lib/components/Sidetray.svelte';
 	import UnderConstruction from '$lib/components/UnderConstruction.svelte';
 	
-	// import type { PageData } from './$types';
-	// export let data: PageData;
+	export let data;
 </script>
 
 <svelte:head>
-	<title> Arbeitsmaterialen </title>
+	<title> {data.slug}</title>
 </svelte:head>
 
 <Maintray>
 	<Page>
-		<UnderConstruction />
+		<UnderConstruction url="/netzwerk" />
 	</Page>
 	<Footer />
 </Maintray>
 
 <Sidetray>
-	<div class="p-5">
-	</div>
+	
 </Sidetray>
