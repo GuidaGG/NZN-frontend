@@ -58,3 +58,11 @@ export type MemberPreview = {
     work_areas: Select[];
   }
   
+export type NewsItem = {
+    id: number;
+    title: string;
+    slug: string;
+    publishedAt: string;
+    content: TextContent;
+    image: Image;
+}
