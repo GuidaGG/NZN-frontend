@@ -31,6 +31,8 @@ const MembersPreviewQuery= gql`
                     title
                     slug
                     agreement 
+                    latitude
+                    longitude
                     states {
                         data {
                             attributes {
