@@ -94,7 +94,7 @@
 
 <Sidetray>
 	<div class="p-5">
-		<h4 class="pb-10">Sortieren nach</h4>
+		<h4 class="pb-6">Sortieren nach</h4>
 		<form on:change={sort} class="flex gap-4">
 			<RadioBox name="sort" value="description" label="Zufällig" bind:selected />
 			<RadioBox name="sort" value="title" label="A-Z" bind:selected  />

@@ -1,6 +1,7 @@
 <script lang="ts">
   import bmwsb from '$lib/images/BMWSB.png';
   import fbh_bms from '$lib/images/FHB_BMS.png';
+  import  Instagram from  'svelte-feathers/Instagram.svelte';
 </script>
 
 <footer class="flex flex-col-reverse lg:flex-row border-t border-gray-900 bg-oliv-lt p-4 gap-10">
@@ -15,12 +16,12 @@
   <div class="grow flex gap-3">
     <nav >
       <ul class="flex flex-col gap-3 text-base border-black">
-				<ul class="flex gap-2">
+				<ul class="flex gap-2 items-start">
           <li>
             <a class="border rounded-lg border-black px-2" href="/kontakt">Kontakt</a>
           </li>
           <li>
-            <a class="border rounded-lg border-black px-2"href="/impressum"> I </a>
+            <a class="border h-11 rounded-lg border-black px-2 inline-block flex" href="/impressum"> <Instagram class="self-center h-8 w-8" /> </a>
           </li>
 				</ul>
 	
