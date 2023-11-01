@@ -18,7 +18,7 @@
 
 	export let data;
 
-	let members = data.members
+	$: members = data.members
 	let netzwerk: Netzwerk = data.netzwerk
 
 	let selected = "description"
