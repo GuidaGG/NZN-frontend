@@ -1,7 +1,9 @@
-import type { PageLoad } from './$types';
+
 import { gql } from 'graphql-request';
 import { client } from '$lib/api';
 import { flattenJson} from '$lib/utils';
+import { randomArray } from '$lib/utils.js';
+
 const netzwerkQuery = gql`
 {
     netzwerk{
@@ -20,54 +22,72 @@ const netzwerkQuery = gql`
 }
 `
 
-const projectsPreviewQuery = gql`
-{
-    projects{
-    data {
-        id
-        attributes { 
-            title
-            slug
-            agreement 
-             state {
-                data {
-                    attributes {
-                    name
-                    value
+const MembersPreviewQuery= gql`
+    query getMembers($sort: String!) {
+        members(sort: [$sort]){
+            data {
+                id
+                attributes { 
+                    title
+                    slug
+                    agreement 
+                    latitude
+                    longitude
+                    states {
+                        data {
+                            attributes {
+                            name
+                            value
+                            }
+                        }
+                    }
+                    work_areas{
+                        data {
+                            attributes {
+                            name
+                            value
+                            }
+                        }
+                    }
+                    image {
+                        data {
+                            id
+                            attributes{
+                                name
+                                alternativeText
+                                url
+                                formats
+                            }
+                        }
                     }
                 }
             }
-            work_areas{
-                data {
-                    attributes {
-                    name
-                    value
-                    }
-                }
-            }
-            image {
-                data {
-                    id
-                    attributes{
-                        name
-                        alternativeText
-                        url
-                    }
+            meta { 
+                pagination {
+                    page
+                    pageSize
+                    pageCount
                 }
             }
         }
     }
-  }
-}
 `
 
-export const load = (async () => {
+export const load: import('./$types').PageLoad = (async ({ params, url }) => {
   try {
+    const filter = url.searchParams.get('sort') ? url.searchParams.get('sort')  : 'title'
+
+    const variables = {
+        sort : filter ,
+    }
     const dataPage = await client.request(netzwerkQuery);
-    const dataProjects = await client.request(projectsPreviewQuery);
+    const dataMembers = await client.request(MembersPreviewQuery, variables)
+
+    const organizedMembers = filter !== "description" ? flattenJson(dataMembers.members) : randomArray(flattenJson(dataMembers.members));
+   
     return {
         netzwerk: flattenJson(dataPage.netzwerk),
-        projects:  flattenJson(dataProjects.projects)
+        members:  organizedMembers,
     }
   } catch (error) {
     console.error('Error fetching data:', error);
