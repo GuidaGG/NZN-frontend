@@ -6,6 +6,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Sidetray from '$lib/components/Sidetray.svelte';
 	import Member from '$lib/components/Member.svelte';
+
 	import type { Netzwerk } from '$lib/types.js';
 
 	import RadioBox from '$lib/components/RadioBox.svelte';
@@ -27,6 +28,7 @@
 			query.set('sort', selected);	
 			goto(`?${query.toString()}`);
 	}
+
 
 	const accessToken = import.meta.env.VITE_MAPBOX_API_TOKEN;
 	const initialState = {
