@@ -6,8 +6,8 @@
     export let image = false;
     export let location = false;
 
-    function addCommas(value: string, index: number){
-        return (index < member.work_areas.length - 1) ? `${value}, ` : value;
+    function addCommas(value: string, index: number, array: Select[]){
+        return (index < array.length - 1) ? `${value}, ` : value;
     }
 </script>
 
@@ -17,13 +17,15 @@
     {/if}
     <h3 class="pt-2 text-base pb-2">{member.title}</h3>
     {#if location}
-        {#each member.states as state}
-            <div class="text-xs">{state.name}</div>
-        {/each}     
+    <div class="text-xs pt-2">
+        {#each member.states as state, index}
+        <span>{addCommas(state.name, index, member.states)}</span>
+        {/each}   
+    </div>   
     {/if}
     <div class="text-xs pt-2">
         {#each member.work_areas as area, index }
-            <span>{addCommas(area.name, index)}</span>
+            <span>{addCommas(area.name, index, member.work_areas)}</span>
         {/each}     
     </div>
 </div>
