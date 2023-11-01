@@ -104,7 +104,7 @@
 	
 	<div class="flex flex-col">
 		{#each members as member}
-			<a href="/neztwerk/{member.slug}" class="p-5 hover:bg-grun-dk" >
+			<a href="/netzwerk/{member.slug}" class="p-5 hover:bg-grun-dk" >
 				<Member {member}  />
 			</a>
 		{/each}
