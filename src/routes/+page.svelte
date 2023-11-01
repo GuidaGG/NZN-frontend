@@ -4,6 +4,7 @@
 	import Page from '$lib/components/Page.svelte';
 	import Sidetray from '$lib/components/Sidetray.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Sidenews from '$lib/components/Sidenews.svelte';
 	import { config } from '$lib/config';
 
 	import type { Homepage } from '$lib/types';
@@ -11,7 +12,8 @@
 	export let data;
 
 	let homepage: Homepage = data.homepage;
-	console.log(homepage);
+	let news = data.news;
+	console.log(news);
 
 	let currentSlide = 0;
   let autoPlay = true;
@@ -66,7 +68,7 @@
 
 		<div class="p-5 bg-oliv-dk">
 			<h1> {homepage.content.title} </h1>
-			<p> {@html homepage.content.body} </p>
+			<div class="text-xl"> {@html homepage.content.body} </div>
 		</div>
 	</Page>
 
@@ -74,15 +76,11 @@
 </Maintray>
 
 <Sidetray>
-	<div class="p-5">
-		<h1> Hello </h1>
-		<p> Some information comes here and more </p>
-	</div>
-	
-	<div class="p-5">
-		<h1> Why do we use it? </h1>
-		<p>
-			The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-		</p>
+	<div class="flex flex-col">
+		{#each news as newsItem}
+			<a href="/news/{newsItem.slug}" class="p-7 hover:bg-grun-dk" >
+				<Sidenews {newsItem} />
+			</a>
+		{/each}
 	</div>
 </Sidetray>

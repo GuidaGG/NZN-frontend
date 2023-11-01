@@ -6,12 +6,12 @@
 
 @font-face {
 	font-family: 'CabinetGrotesk-Medium';
-	src: url("../lib/fonts/CabinetGrotesk-regular.woff2");
+	src: url("../lib/fonts/CabinetGrotesk-medium.woff2");
 }
 
 @font-face {
 	font-family: 'CabinetGrotesk-Bold';
-	src: url("../lib/fonts/CabinetGrotesk-medium.woff2");
+	src: url("../lib/fonts/CabinetGrotesk-bold.woff2");
 }
 
 
