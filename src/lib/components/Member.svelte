@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { config } from "$lib/config";
+    import Image from "./Image.svelte";
 	import type { MemberPreview, Select } from "$lib/types";
 
     export let member: MemberPreview;
@@ -13,7 +13,7 @@
 
 <div class="font-nznBold">
     {#if image}
-        <img class="object-cover w-full h-72" src="{config.apiUrl + member.image?.formats?.small?.url}" alt="{member.image?.alternativeText}">
+        <Image class="h-72" image={member.image} />
     {/if}
     <h3 class="pt-2 text-base pb-2">{member.title}</h3>
     {#if location}

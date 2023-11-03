@@ -94,7 +94,16 @@
 	}
 
 	ul {
-		margin: 0;
+		@apply m-0
 	}
+
+	.text-content li {
+		@apply list-disc  list-inside 
+	}
+
+	p { 
+		@apply pb-5
+	}
+	
 
 }

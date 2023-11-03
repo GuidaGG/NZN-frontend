@@ -18,6 +18,7 @@ export type Image = {
 }
   
 export type TextContent = { 
+    __typename: string;
     title: string;
     body: HTMLElement;
 }
@@ -26,25 +27,32 @@ export type Select = {
     name: string;
     value: string;
 }
+
+export type ImageSection = { 
+    __typename: string;
+    image: Image;
+}
   
+export type Slideshow = {
+    __typename: string;
+    images: Image[];
+}
+
+export type PageSection =
+ | TextContent 
+ | ImageSection
+ | Slideshow
+
 
 // PAGE TYPES
 
-export type Netzwerk = {
+export type PageDetail =  {
     id: number;
     title: string;
     slug: string;
-    content: TextContent;
+    content: PageSection[]
 }
 
-export type Homepage = {
-    id: number;
-    title: string;
-    slug: string;
-    slideshow: Image[];
-    content: TextContent;
-}
-  
 // CONTENT TYPES
 
 export type MemberPreview = {
