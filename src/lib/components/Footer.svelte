@@ -2,9 +2,10 @@
   import bmwsb from '$lib/images/BMWSB.png';
   import fbh_bms from '$lib/images/FHB_BMS.png';
   import Instagram from 'svelte-feathers/Instagram.svelte';
+
 </script>
 
-<footer class="flex flex-col-reverse lg:flex-row border-t border-gray-900 bg-oliv-lt p-4 gap-10">
+<footer class="flex flex-col-reverse lg:flex-row border-t border-gray-900 bg-oliv-lt p-4 gap-10 {$$restProps.class}">
   <div class="flex flex-row align-top w-full lg:w-5/12">
     <div class="w-full">
       <img class="object-contain" src={bmwsb} alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen">
@@ -21,7 +22,7 @@
             <a class="border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/kontakt"> Kontakt </a>
           </li>
           <li>
-            <a class="border-2 h-11 rounded-lg border-black px-2 inline-block flex hover:shadow-inner-top" href="/impressum"> <Instagram class="self-center h-8 w-8" /> </a>
+            <a class="border-2 h-8 3xl:h-11 rounded-lg border-black px-1 3xl:px-2 inline-block flex hover:shadow-inner-top" href="/impressum"> <Instagram class="self-center h-6 w-6 3xl:h-3xl:8 w-8" /> </a>
           </li>
 				</ul>
 	

@@ -1,9 +1,9 @@
 <script lang="ts">
     export let url = "/"
 </script>
-
+<!-- temporary mobile-->
 <div class="bg-grun-dk p-10">
-    <div class="bg-oliv-lt w-5/6 mx-auto p-10 rounded-xl border border-black">
+    <div class="bg-oliv-lt w-full sm:w-5/6 mx-auto p-10 rounded-xl border border-black">
         <h1> Seite im Aufbau </h1>
         <div class="text-base">
             <p class="pb-8">Unsere Seite befindet sich noch im Aufbau. Wir bitten dich um noch etwas Geduld.</p> 

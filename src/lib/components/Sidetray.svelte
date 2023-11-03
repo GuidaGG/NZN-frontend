@@ -1,5 +1,7 @@
+<!-- temporary mobile-->
 <div class="
-	w-1/4
+	w-full
+	sm:w-1/4
 	overflow-y-scroll
 	scrollbar-hide
 	bg-oliv-lt">

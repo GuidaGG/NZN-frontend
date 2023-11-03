@@ -19,6 +19,9 @@ export default {
       boxShadow: {
         'inner-top': 'inset 0 10px 6px -4px rgba(0, 0, 0, 0.4)',
       },
+      screens: {
+        '3xl' : '1800px'
+      }
     },
     fontSize: {
 			'2xl': ['var(--nzn-text-2xl)', 'var(--nzn-line-2xl)'],

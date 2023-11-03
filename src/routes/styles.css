@@ -18,34 +18,34 @@
 @layer base {
 	
 	:root {
-		--nzn-text-2xl: 65px;
-		--nzn-text-xl: 43px;
-		--nzn-text-base: 28px;
+		--nzn-text-2xl: 40px;
+		--nzn-text-xl: 24px;
+		--nzn-text-base: 20px;
 		--nzn-text-sm: 18px;
 		--nzn-text-xs: 16px;
-		--nzn-line-2xl: 89px;
-		--nzn-line-xl: 48px;
-		--nzn-line-base: 38px;
+		--nzn-line-2xl: 47px;
+		--nzn-line-xl: 30px;
+		--nzn-line-base: 30px;
 		--nzn-line-sm: 22px;
 		--nzn-line-xs: 20px;
 	}
 
-	@screen md {
+	@screen lg {
 		:root {
-			--nzn-text-2xl: 85px;
-			--nzn-text-xl: 43px;
-			--nzn-text-base: 25px;
+			--nzn-text-2xl: 72px;
+			--nzn-text-xl: 40px;
+			--nzn-text-base: 26px;
 			--nzn-text-sm: 20px;
 			--nzn-text-xs: 18px;
-			--nzn-line-2xl: 109px;
-			--nzn-line-xl: 48px;
-			--nzn-line-base: 35px;
+			--nzn-line-2xl: 67px;
+			--nzn-line-xl: 50px;
+			--nzn-line-base: 30px;
 			--nzn-line-sm: 24px;
 			--nzn-line-xs: 22px;
 		}
 	}
 	
-	@screen 2xl {
+	@screen 3xl {
 		:root {
 			--nzn-text-2xl: 95px;
 			--nzn-text-xl: 53px;
@@ -64,7 +64,7 @@
 	html, body {
 		padding: 0;
 		margin: 0;
-		@apply font-nznMedium
+		@apply font-nznMedium bg-oliv-lt
 	}
 	* {
 	box-sizing: border-box;
@@ -101,7 +101,7 @@
 		@apply list-disc  list-inside 
 	}
 
-	p { 
+	.text-content p { 
 		@apply pb-5
 	}
 	

@@ -46,7 +46,7 @@ export type PageSection =
 
 // PAGE TYPES
 
-export type PageDetail =  {
+export type PageContents=  {
     id: number;
     title: string;
     slug: string;
