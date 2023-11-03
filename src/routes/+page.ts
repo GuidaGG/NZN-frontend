@@ -4,32 +4,50 @@ import { client } from '$lib/api';
 import { flattenJson } from '$lib/utils';
 
 const homeQuery = gql`
-  {
-    homepage {
-      data {
-        id
-        attributes {
-          title
-          slug
-          slideshow {
-            data {
-              id
-              attributes {
-                name
-                alternativeText
-                url
-                formats
+    query getPages{
+        pages(filters: {slug: { eq: "startseite" }}, pagination: { limit: 1}){
+          data{
+            id
+            attributes{ 
+              title
+              slug
+              content {
+                __typename
+                ... on ComponentTextTextContent {
+                  title
+                  body
+                }
+                ... on ComponentImageImage {
+                  image {
+                    data {
+                      id 
+                      attributes { 
+                        url
+                        formats
+                        alternativeText
+                        name
+                      }
+                    }
+                  }
+                }
+                  ... on ComponentImageSlideshow {
+                  images {
+                    data {
+                      id 
+                      attributes { 
+                        url
+                        formats
+                        alternativeText
+                        name
+                      }
+                    }
+                  }
+                }
               }
             }
           }
-          content {
-            title
-            body
-          }
         }
-      }
     }
-  }
 `
 
 const newsQuery = gql`
@@ -58,7 +76,7 @@ export const load = (async () => {
     const dataNews = await client.request(newsQuery);
     // return data;
     return {
-      homepage: flattenJson(dataPage.homepage),
+      homepage: flattenJson(dataPage),
       news: flattenJson(dataNews.posts)
     }
   } catch (error) {

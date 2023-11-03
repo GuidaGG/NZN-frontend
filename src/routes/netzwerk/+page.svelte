@@ -6,20 +6,18 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Sidetray from '$lib/components/Sidetray.svelte';
 	import Member from '$lib/components/Member.svelte';
-
-	import type { Netzwerk } from '$lib/types.js';
-
+	import type { PageContents } from '$lib/types.js';
 	import RadioBox from '$lib/components/RadioBox.svelte';
-
 	import { onMount } from 'svelte';
 	import mapboxgl from 'mapbox-gl';
 	import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 	import pinIcon from '$lib/images/map-pin.svg';
+	import DynamicContent from '$lib/components/DynamicContent.svelte';
 
 	export let data;
 
 	$: members = data.members
-	let netzwerk: Netzwerk = data.netzwerk
+	let netzwerk: PageContents = data.netzwerk.pages[0]
 
 	let selected = "description"
 	
@@ -76,11 +74,10 @@
 <Maintray>
 	<div id="map" class="h-[58vh]"></div>
 	<Page>
-		<div class="p-5" >
-			<h1>{netzwerk.content.title}</h1>
-			<p class="text-xl"> { @html netzwerk.content.body}</p>
+		<div class="pt-5" >
+			<DynamicContent page={netzwerk} />
 		</div>
-		<div class="flex gap-2 p-5 pt-8 flex-col lg:flex-row">
+		<div class="flex gap-2 p-4 pt-8 flex-col lg:flex-row">
 			{#each members as member}
 				<a href="/netzwerk/{member?.slug}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl font-semibold" >
 					<Member {member} image location/>

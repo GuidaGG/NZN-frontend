@@ -71,7 +71,7 @@
 		<div class="h-40"> </div>
 
 		<div class="flex h-16 border-t border-gray-900 items-center px-5">
-			<p class="text-base font-bold"> {activeName} </p>
+			<div class="text-base font-bold"> {activeName} </div>
 		</div>
 
 	</div>
