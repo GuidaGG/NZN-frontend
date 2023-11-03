@@ -40,14 +40,14 @@
 			</div>
 		</div>
 
-		<nav class="main-nav h-16 flex border-t border-gray-900 justify-center font-nznBold overflow-x-auto scrollbar-hide">
+		<nav class="main-nav h-16 flex border-t border-gray-900 justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
 			<ul class="flex w-full justify-between px-5 text-base">
 				{#each menuRoutes as menuItem}
 					<li class={menuItem.name === active.name ?
-						'flex items-center mr-6 underline underline-offset-4' :
-						'flex items-center mr-6'}>
+						'flex items-center mr-8 underline underline-offset-4' :
+						'flex items-center mr-8'}>
 						<a class="whitespace-nowrap" href={menuItem.pathname}> {menuItem.name} </a>
-						<div class='w-1 h-full'>
+						<div class="w-10 h-8">
 							<div class="hidden arrow h-full">
 								<ArrowRight class="self-center stroke-[3] h-10 w-10" />
 							</div>
@@ -75,7 +75,7 @@
 		</nav>
 
 		<div class="flex h-16 border-t border-gray-900 items-center px-5">
-			<p class="text-base font-nznBold"> {active.name} </p>
+			<div class="text-base font-nznBold"> {active.name} </div>
 		</div>
 
 	</div>
