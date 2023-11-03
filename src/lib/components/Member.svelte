@@ -9,6 +9,9 @@
     function addCommas(value: string, index: number, array: Select[]){
         return (index < array.length - 1) ? `${value}, ` : value;
     }
+
+    console.log(member);
+    
 </script>
 
 <div class="font-nznBold">
@@ -17,15 +20,11 @@
     {/if}
     <h3 class="pt-2 text-base pb-2">{member.title}</h3>
     {#if location}
-    <div class="text-xs pt-2">
+    <div class="text-xs pt-2 pb-4">
         {#each member.states as state, index}
         <span>{addCommas(state.name, index, member.states)}</span>
         {/each}   
     </div>   
     {/if}
-    <div class="text-xs pt-2">
-        {#each member.work_areas as area, index }
-            <span>{addCommas(area.name, index, member.work_areas)}</span>
-        {/each}     
-    </div>
+    <div class="text-xs pt-2 line-clamp-6"> {member.description} </div>
 </div>

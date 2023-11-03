@@ -44,7 +44,7 @@
 				</li>
 		
         <li>
-					<a class="inline-block border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/anmeldung-mail"> Anmeldung Mailvertailer </a>
+					<a class="inline-block border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/anmeldung-mail"> Anmeldung Mailverteiler </a>
 				</li>
 	
 			</ul>

@@ -62,6 +62,7 @@ const MembersPreviewQuery= gql`
                     agreement 
                     latitude
                     longitude
+                    description
                     states {
                         data {
                             attributes {
