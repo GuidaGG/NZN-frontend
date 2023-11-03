@@ -11,7 +11,7 @@
     }
 </script>
 
-<div class="font-bold">
+<div class="font-nznBold">
     {#if image}
         <Image class="h-72" image={member.image} />
     {/if}

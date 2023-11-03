@@ -72,7 +72,7 @@
 </svelte:head>
 
 <Maintray>
-	<div id="map" class="h-[58vh]"></div>
+	<div id="map" class="h-[55vh]"></div>
 	<Page>
 		<div class="pt-5" >
 			<DynamicContent page={netzwerk} />

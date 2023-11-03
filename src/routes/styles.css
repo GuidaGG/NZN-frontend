@@ -18,7 +18,6 @@
 @layer base {
 	
 	:root {
-		
 		--nzn-text-2xl: 65px;
 		--nzn-text-xl: 43px;
 		--nzn-text-base: 28px;
@@ -29,8 +28,8 @@
 		--nzn-line-base: 38px;
 		--nzn-line-sm: 22px;
 		--nzn-line-xs: 20px;
-		
 	}
+
 	@screen md {
 		:root {
 			--nzn-text-2xl: 85px;
@@ -65,7 +64,7 @@
 	html, body {
 		padding: 0;
 		margin: 0;
-		@apply font-medium
+		@apply font-nznMedium
 	}
 	* {
 	box-sizing: border-box;
@@ -90,12 +89,8 @@
 		scrollbar-width: none;  /* Firefox */
 	}
 
-	[aria-current='page'] {
-		display: none;
-	}
-
 	h1 {
-		@apply text-2xl pb-4 font-bold
+		@apply text-2xl pb-4 font-nznBold
 	}
 
 	ul {

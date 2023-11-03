@@ -11,7 +11,7 @@
 
 	let homepage: PageContents = data.homepage.pages[0];
 	let news = data.news;
-	console.log(news);
+	// console.log(news);
 
 </script>
 
@@ -33,9 +33,7 @@
 <Sidetray>
 	<div class="flex flex-col">
 		{#each news as newsItem}
-			<a href="/news/{newsItem.slug}" class="p-7 hover:bg-grun-dk" >
-				<Sidenews {newsItem} />
-			</a>
+			<Sidenews {newsItem} />
 		{/each}
 	</div>
 </Sidetray>
