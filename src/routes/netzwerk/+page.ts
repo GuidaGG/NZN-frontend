@@ -5,21 +5,50 @@ import { flattenJson} from '$lib/utils';
 import { randomArray } from '$lib/utils.js';
 
 const netzwerkQuery = gql`
-{
-    netzwerk{
-    data {
-        id
-        attributes { 
-            title
-            slug
-            content { 
-            title
-            body
-        }
-        }
+    query getPages{
+        pages(filters: {slug: { eq: "netzwerk" }}, pagination: { limit: 1}){
+            data{
+                id
+                attributes{ 
+                    title
+                    slug
+                    content {
+                        __typename
+                        ... on ComponentTextTextContent {
+                            title
+                            body
+                        }
+                        ... on ComponentImageImage {
+                            image {
+                                data {
+                                id 
+                                attributes { 
+                                    url
+                                    formats
+                                    alternativeText
+                                    name
+                                }
+                                }
+                            }
+                        }
+                        ... on ComponentImageSlideshow {
+                            images {
+                                data {
+                                id 
+                                attributes { 
+                                    url
+                                    formats
+                                    alternativeText
+                                    name
+                                }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-}
 `
 
 const MembersPreviewQuery= gql`
@@ -78,15 +107,16 @@ export const load: import('./$types').PageLoad = (async ({ params, url }) => {
     const filter = url.searchParams.get('sort') ? url.searchParams.get('sort')  : 'title'
 
     const variables = {
-        sort : filter ,
+        sort : filter,
     }
+
     const dataPage = await client.request(netzwerkQuery);
     const dataMembers = await client.request(MembersPreviewQuery, variables)
 
     const organizedMembers = filter !== "description" ? flattenJson(dataMembers.members) : randomArray(flattenJson(dataMembers.members));
    
     return {
-        netzwerk: flattenJson(dataPage.netzwerk),
+        netzwerk: flattenJson(dataPage),
         members:  organizedMembers,
     }
   } catch (error) {
@@ -95,4 +125,4 @@ export const load: import('./$types').PageLoad = (async ({ params, url }) => {
       data: []
     };
   }
-}) satisfies PageLoad;
+}) 
