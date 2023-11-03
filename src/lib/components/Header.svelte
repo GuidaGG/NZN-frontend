@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import nzn from '$lib/images/nzn_.png';
+	import Logo from './Logo.svelte';
+	import bmwsb from '$lib/images/BMWSB.png';
+  	import fbh_bms from '$lib/images/FHB_BMS.png';
 	import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
 
 	let defaultColor = 'bg-lime-dk';
@@ -27,17 +29,28 @@
 
 </script>
 
+<!-- temporary mobile-->
+<header class="w-screen sm:w-full fixed sm:relative z-10  sm:flex justify-between border-b border-gray-900 bg-oliv-lt">
+	
+	<div class="w-full md:w-3/4 border-r border-gray-900">
 
-<header class="flex justify-between border-b border-gray-900 bg-oliv-lt">
-
-	<div class="w-3/4 border-r border-gray-900">
-
-		<div class="flex items-center h-40 px-5">
-			<div class="h-3/4">
+		<div class="flex items-center justify-between h-20 sm:h-36 3xl:h-40 px-5">
+			<div class="">
 				<a href="/">
-					<img class="h-full object-contain" src={nzn} alt="NZN-logo" />
+					<div class="h-full object-contain">	
+						<Logo class="w-full"/>
+					</div>
 				</a>
 			</div>
+			<!-- temporary mobile-->
+			<div class="opacity-0 sm:opacity-100 sm:flex flex-row align-top w-full lg:w-5/12">
+				<div class="w-full">
+				  <img class="object-contain" src={bmwsb} alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen">
+				</div>
+				<div class="w-full">
+				  <img class="object-contain" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">
+				</div>
+			  </div>
 		</div>
 
 		<nav class="main-nav h-16 flex border-t border-gray-900 justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
@@ -49,7 +62,7 @@
 						<a class="whitespace-nowrap" href={menuItem.pathname}> {menuItem.name} </a>
 						<div class="w-10 h-8">
 							<div class="hidden arrow h-full">
-								<ArrowRight class="self-center stroke-[3] h-10 w-10" />
+								<ArrowRight class="hidden xl:block self-center stroke-[3] h-10 w-10" />
 							</div>
 						</div>
 					</li>
@@ -60,22 +73,23 @@
 	</div>
 
 
-	<div class="w-1/4 flex-col">
+	<div class="w-1/4 flex-col hidden md:block">
 
-		<nav class="h-40 p-2 font-nznBold">
-			<h2 class="pl-6 whitespace-nowrap"> Anmeldung zum Netzwerk </h2>
-			<ul class="flex flex-col gap-2 w-full text-base">
-				<li>
-					<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-netzwerk"> Mitglieschaft </a>
-				</li>
-				<li>
-					<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-mail"> Mailverteiler </a>
-				</li>
-			</ul>
+		<nav class="h-36 3xl:h-40 p-2 font-nznBold flex flex-col place-content-center">
+				<!-- tempory fix for mobile -->
+				<h2 class="pl-6 whitespace-nowrap"> Anmeldung <span class="hidden xl:inline">zum Netzwerk</span> </h2>
+				<ul class="flex flex-col gap-2 w-full text-base">
+					<li>
+						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-netzwerk"> Mitglieschaft </a>
+					</li>
+					<li>
+						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-mail"> Mailverteiler </a>
+					</li>
+				</ul>
 		</nav>
 
-		<div class="flex h-16 border-t border-gray-900 items-center px-5">
-			<div class="text-base font-nznBold"> {active.name} </div>
+		<div class="flex h-16 border-t border-gray-900 items-center px-5 overflow-scroll scrollbar-hide">
+			<div class="text-base font-nznBold scrollbar-hide overflow-scroll"> {active.name} </div>
 		</div>
 
 	</div>

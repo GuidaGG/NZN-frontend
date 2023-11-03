@@ -1,4 +1,3 @@
-
 <script lang="ts">
 	import { afterNavigate } from "$app/navigation";
 	
@@ -6,7 +5,7 @@
 
 	afterNavigate(() => {
 	if (main) { 
-		main.scrollIntoView();
+		//main.scrollIntoView();
 	}
 	});
 </script>

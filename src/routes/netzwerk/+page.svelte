@@ -72,11 +72,10 @@
 </svelte:head>
 
 <Maintray>
-	<div id="map" class="h-[55vh]"></div>
+	
 	<Page>
-		<div class="pt-5" >
-			<DynamicContent page={netzwerk} />
-		</div>
+		<div id="map" class="h-[55vh]"></div>
+		<DynamicContent page={netzwerk} />
 		<div class="flex gap-2 p-4 pt-8 flex-col lg:flex-row">
 			{#each members as member}
 				<a href="/netzwerk/{member?.slug}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >

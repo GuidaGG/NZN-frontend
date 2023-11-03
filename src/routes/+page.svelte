@@ -11,7 +11,6 @@
 
 	let homepage: PageContents = data.homepage.pages[0];
 	let news = data.news;
-	// console.log(news);
 
 </script>
 
@@ -26,8 +25,8 @@
 	<Page>
 		<DynamicContent page={homepage}/>
 	</Page>
-
-	<Footer />
+	<!-- stupid temporary fix for mobile - remove later -->
+	<Footer class="hidden sm:flex"/>
 </Maintray>
 
 <Sidetray>
@@ -37,3 +36,5 @@
 		{/each}
 	</div>
 </Sidetray>
+<!-- stupid temporary fix for mobile - remove later -->
+<Footer class="block sm:hidden"/>
