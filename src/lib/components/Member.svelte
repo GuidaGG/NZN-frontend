@@ -11,7 +11,7 @@
     }
 </script>
 
-<div class="font-bold">
+<div class="font-nznBold">
     {#if image}
         <img class="object-cover w-full h-72" src="{config.apiUrl + member.image?.formats?.small?.url}" alt="{member.image?.alternativeText}">
     {/if}

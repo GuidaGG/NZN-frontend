@@ -10,11 +10,15 @@ export default {
         'grun-dk': '#6CBE99',
         'oliv-lt': '#E3E4D7',
         'oliv-dk': '#A2C748',
+        'lime-dk': '#64B445',
       },
       fontFamily: {
-				medium: ['CabinetGrotesk-Medium', 'sans-serif'],
-				bold: ['CabinetGrotesk-Bold', 'sans-serif']
+				nznMedium: ['CabinetGrotesk-Medium', 'sans-serif'],
+				nznBold: ['CabinetGrotesk-Bold', 'sans-serif']
 			},
+      boxShadow: {
+        'inner-top': 'inset 0 10px 6px -4px rgba(0, 0, 0, 0.4)',
+      },
     },
     fontSize: {
 			'2xl': ['var(--nzn-text-2xl)', 'var(--nzn-line-2xl)'],

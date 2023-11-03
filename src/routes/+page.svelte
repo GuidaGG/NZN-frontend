@@ -13,7 +13,7 @@
 
 	let homepage: Homepage = data.homepage;
 	let news = data.news;
-	console.log(news);
+	// console.log(news);
 
 	let currentSlide = 0;
   let autoPlay = true;
@@ -56,7 +56,7 @@
 <Maintray>
 	<Page>
 		<div class="relative overflow-hidden">
-			<div class="flex transition-transform duration-500 ease-in-out h-[58vh]" style="transform: translateX(-{currentSlide * 100}%)">
+			<div class="flex transition-transform duration-500 ease-in-out h-[55vh]" style="transform: translateX(-{currentSlide * 100}%)">
 				{#each homepage.slideshow as image}
 					<img
 						class="w-full min-w-full object-cover"
@@ -66,7 +66,7 @@
 			</div>
 		</div>
 
-		<div class="p-5 bg-oliv-dk">
+		<div class="p-5 bg-lime-dk">
 			<h1> {homepage.content.title} </h1>
 			<div class="text-xl"> {@html homepage.content.body} </div>
 		</div>
@@ -78,9 +78,7 @@
 <Sidetray>
 	<div class="flex flex-col">
 		{#each news as newsItem}
-			<a href="/news/{newsItem.slug}" class="p-7 hover:bg-grun-dk" >
-				<Sidenews {newsItem} />
-			</a>
+			<Sidenews {newsItem} />
 		{/each}
 	</div>
 </Sidetray>

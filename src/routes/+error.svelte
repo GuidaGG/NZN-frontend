@@ -6,6 +6,6 @@
         </div>
     </div>
     <div class="w-5/6 mt-5 mx-auto ">
-        <a class="bg-oliv-lt py-2 inline-block px-10 mx-auto rounded-xl border border-black text-base" href="/">← Gehe Zurück, ziehe nicht über Los, löse kein 100 DM ein.</a>
+        <a class="bg-oliv-lt py-2 inline-block px-10 mx-auto rounded-xl border border-black text-base hover:shadow-inner-top" href="/">← Gehe Zurück, ziehe nicht über Los, löse kein 100 DM ein.</a>
     </div>
 </div>

@@ -16,5 +16,5 @@
             <X class="absolute -top-6 -left-6 h-20 w-20 stroke-[0.5]"/>
         {/if}
     </div>
-    <label for="green-checkbox" class="font-bold">{label}</label>
+    <label for="green-checkbox" class="font-nznBold">{label}</label>
 </div>

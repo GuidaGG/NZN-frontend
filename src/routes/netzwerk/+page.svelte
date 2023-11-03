@@ -74,7 +74,7 @@
 </svelte:head>
 
 <Maintray>
-	<div id="map" class="h-[58vh]"></div>
+	<div id="map" class="h-[55vh]"></div>
 	<Page>
 		<div class="p-5" >
 			<h1>{netzwerk.content.title}</h1>
