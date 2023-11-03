@@ -61,7 +61,7 @@ export type MemberPreview = {
     slug: string;
     image: Image;
     agreement: boolean;
-    content: TextContent;
+    description: string;
     states: Select[];
     work_areas: Select[];
   }
