@@ -50,17 +50,19 @@
 		});
 
 		members.forEach((member: { longitude: string; latitude: string; slug: string; }) => {
-			const imgElement = document.createElement('img');
-			imgElement.src = pinIcon;
-			imgElement.style.cursor = 'pointer';
-			imgElement.className = 'h-20 w-20'; // tailwind class works here
-			
-			const location: [number, number] = [parseFloat(member.longitude), parseFloat(member.latitude)];
-			const marker = new mapboxgl.Marker(imgElement).setLngLat(location).addTo(nznMap);
+			if(member.longitude && member.latitude){
+				const imgElement = document.createElement('img');
+				imgElement.src = pinIcon;
+				imgElement.style.cursor = 'pointer';
+				imgElement.className = 'h-20 w-20'; // tailwind class works here
+				
+				const location: [number, number] = [parseFloat(member.longitude), parseFloat(member.latitude)];
+				const marker = new mapboxgl.Marker(imgElement).setLngLat(location).addTo(nznMap);
 
-			imgElement.addEventListener('click', () => {
-				goto(`${$page.url.pathname}/${member.slug}`);
-			});
+				imgElement.addEventListener('click', () => {
+					goto(`${$page.url.pathname}/${member.slug}`);
+				});
+			}
 		});
 		
 	});
