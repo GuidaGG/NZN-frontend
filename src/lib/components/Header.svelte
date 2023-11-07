@@ -2,8 +2,9 @@
 	import { page } from '$app/stores';
 	import Logo from './Logo.svelte';
 	import bmwsb from '$lib/images/BMWSB.png';
-  	import fbh_bms from '$lib/images/FHB_BMS.png';
 	import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
+	import Fhb from './FHB.svelte';
+	import Nsp from './NSP.svelte';
 
 	let defaultColor = 'bg-lime-dk';
 	let active = { name: '', color: defaultColor };
@@ -43,12 +44,21 @@
 				</a>
 			</div>
 			<!-- temporary mobile-->
-			<div class="opacity-0 sm:opacity-100 sm:flex flex-row align-top w-full lg:w-5/12">
-				<div class="w-full">
-				  <img class="object-contain" src={bmwsb} alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen">
-				</div>
-				<div class="w-full">
-				  <img class="object-contain" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">
+			<div class="opacity-0 sm:opacity-100  w-full lg:w-3/5 ">
+				<div class="text-[10px] px-6">Das Projekt wird durch das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen im Rahmen der Nationalen Stadtentwicklungspolitik gefördert</div>
+				<div class="sm:flex flex-row align-top h-20 gap-5 justify-between items-center pt-1">
+					<div class="w-full">
+						<img class="object-contain max-h-26" src={bmwsb} alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen">
+					</div>
+					<div class="w-full">
+						<Nsp class="max-h-16 w-full" />
+						<!--<Nsp class="max-h-20" alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen" /> -->
+					</div>
+				
+					<div class="w-full">
+						<Fhb class="max-h-20 w-full" />
+					<!--<img class="object-contain max-h-24" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">-->
+					</div>
 				</div>
 			  </div>
 		</div>
@@ -80,7 +90,7 @@
 				<h2 class="pl-6 whitespace-nowrap"> Anmeldung <span class="hidden xl:inline">zum Netzwerk</span> </h2>
 				<ul class="flex flex-col gap-2 w-full text-base">
 					<li>
-						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-netzwerk"> Mitglieschaft </a>
+						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-netzwerk"> Teilnehmen</a>
 					</li>
 					<li>
 						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-mail"> Mailverteiler </a>
@@ -96,7 +106,7 @@
 
 </header>
 
-<style>
+<style lang="postcss">
 	.main-nav li:hover .arrow {
 		display: inline-flex;
 	}
