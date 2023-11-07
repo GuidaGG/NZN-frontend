@@ -15,7 +15,7 @@
 </script>
 
 <div class="font-nznBold">
-    {#if image}
+    {#if image && member.image}
         <Image class="h-72" image={member.image} />
     {/if}
     <h3 class="pt-2 text-base pb-2">{member.title}</h3>

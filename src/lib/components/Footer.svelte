@@ -1,17 +1,23 @@
 <script lang="ts">
-  import bmwsb from '$lib/images/BMWSB.png';
-  import fbh_bms from '$lib/images/FHB_BMS.png';
+  import Bm from './BM.svelte';
+  import fbh_bms from '$lib/images/FHB_Senatorin.png';
   import Instagram from 'svelte-feathers/Instagram.svelte';
-
+  import Nsp from './NSP_rgb.svelte';
 </script>
 
 <footer class="flex flex-col-reverse lg:flex-row border-t border-gray-900 bg-oliv-lt p-4 gap-10 {$$restProps.class}">
-  <div class="flex flex-row align-top w-full lg:w-5/12">
-    <div class="w-full">
-      <img class="object-contain" src={bmwsb} alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen">
-    </div>
-    <div class="w-full">
-      <img class="object-contain" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">
+  <div class="align-top w-full lg:w-6/12">
+    <div class="text-[10px]">Das Projekt wird durch das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen im Rahmen der Nationalen Stadtentwicklungspolitik gefördert</div>
+    <div class="flex flex-row justify-between items-center">
+      <div class="w-full">
+        <Bm class="max-h-24 w-full" />
+      </div>
+      <div class="w-full">
+        <Nsp class="max-h-24 w-full" />
+      </div>
+      <div class="w-full">
+        <img class="object-contain" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">
+      </div>
     </div>
   </div>
   <div class="grow flex gap-3">
@@ -22,7 +28,7 @@
             <a class="border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/kontakt"> Kontakt </a>
           </li>
           <li>
-            <a class="border-2 h-8 3xl:h-11 rounded-lg border-black px-1 3xl:px-2 inline-block flex hover:shadow-inner-top" href="/impressum"> <Instagram class="self-center h-6 w-6 3xl:h-3xl:8 w-8" /> </a>
+            <a class="border-2 h-8 3xl:h-11 rounded-lg border-black px-1 3xl:px-2 inline-block flex hover:shadow-inner-top" target="_blank" href="https://www.instagram.com/netzwerk_zwischennutzung"> <Instagram class="self-center h-6 w-6 3xl:h-3xl:8 w-8" /> </a>
           </li>
 				</ul>
 	
