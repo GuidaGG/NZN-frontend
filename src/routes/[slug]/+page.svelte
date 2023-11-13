@@ -14,14 +14,16 @@
 
 
 <svelte:head>
-	<title> {page.title}</title>
+	<title> {page?.title}</title>
 	<meta name="NZN" content="website for netzwerkzwischennutzung" />
 </svelte:head>
 
 
 <Maintray>
-	<Page class="{page.slug}">
+	<Page class="{page?.slug}">
+		{#if page?.content}
 		<DynamicContent {page} size="text-base"/>
+		{/if}
 	</Page>
 
 	<Footer />
