@@ -4,10 +4,12 @@
 	import Sidetray from '$lib/components/Sidetray.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import TextContent from '$lib/components/TextContent.svelte';
+	import RegistrationForm from '$lib/components/RegistrationForm.svelte';
 	
 	export let data;
 
-	let page = data.page.pages[0]
+	const content = data.page
+	const page = content.pages[0]
 
 
 </script>
@@ -22,7 +24,7 @@
 
 <Maintray>
 	<Page class="{page.slug}">
-		registration form
+			<RegistrationForm {content} />
 	</Page>
 
 	<Footer />

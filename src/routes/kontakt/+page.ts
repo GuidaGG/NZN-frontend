@@ -3,7 +3,7 @@ import { client } from '$lib/api';
 import { flattenJson} from '$lib/utils';
 
 const kontaktQuery = gql`
-  query getPages{
+  query getContactPage{
         pages(filters: {slug: { eq: "kontakt" }}){
             data{
                 id
@@ -28,6 +28,78 @@ const kontaktQuery = gql`
                 }
             }
         }
+        states{
+          data{
+            id
+            attributes{
+              name
+              value
+            }
+          }
+        }
+        workAreas{ 
+          data{
+              id
+              attributes{
+                name
+                value
+              }
+          }		
+        }
+        expertises{
+          data{
+            id
+            attributes{
+              name
+              value
+            }
+        }		
+      }
+      workTypes{
+        data{
+            id
+            attributes{
+              name
+              value
+            }
+        }		
+      }
+      contexts {
+        data{
+            id
+            attributes{
+              name
+              value
+            }
+        }		
+      }
+      organizationalGoals{ 
+        data{
+            id
+            attributes{
+              name
+              value
+            }
+        }	
+      }
+      organizationalForms{ 
+        data{
+            id
+            attributes{
+              name
+              value
+            }
+        }	
+      }
+      supports {
+        data{
+            id
+            attributes{
+              name
+              value
+            }
+        }	
+      }
     }
   `
 
