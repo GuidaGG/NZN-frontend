@@ -7,7 +7,9 @@
 
 <footer class="flex flex-col-reverse lg:flex-row border-t border-gray-900 bg-oliv-lt p-4 gap-10 {$$restProps.class}">
   <div class="align-top w-full lg:w-6/12">
-    <div class="text-[10px]">Das Projekt wird durch das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen im Rahmen der Nationalen Stadtentwicklungspolitik gefördert</div>
+    <div class="text-[10px]">Das Projekt wird durch das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen im Rahmen der Nationalen Stadtentwicklungspolitik gefördert.</div>
+    <div class="text-[10px]">Realisiert wird das Projekt von der AAA GmbH, die seit 2009 das Projekt ZZZ – ZwischenZeitZentrale Bremen im Auftrag der Stadt Bremen umsetzt, das von 2009 bis 2012 ebenfalls im Rahmen der Nationalen Stadtentwicklungspolitik gefördert wurde.</div>
+    <div class="text-[10px]">Das Netzwerk Zwischennutzung wird von der Bremer Senatorin für Klimaschutz, Umwelt, Mobilität, Stadtentwicklung und Wohnungsbau unterstützt.</div>
     <div class="flex flex-row justify-between items-center">
       <div class="w-full">
         <Bm class="max-h-24 w-full" />
