@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import Logo from './Logo.svelte';
 	import bmwsb from '$lib/images/BMWSB.png';
+	import aaalogo from '$lib/images/aaa-logo-bw.svg';
 	import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
 	import Fhb from './FHB.svelte';
 	import Nsp from './NSP.svelte';
@@ -45,7 +46,6 @@
 			</div>
 			<!-- temporary mobile-->
 			<div class="opacity-0 sm:opacity-100  w-full lg:w-3/5 ">
-				<div class="text-[10px] px-6">Das Projekt wird durch das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen im Rahmen der Nationalen Stadtentwicklungspolitik gefördert</div>
 				<div class="sm:flex flex-row align-top h-20 gap-5 justify-between items-center pt-1">
 					<div class="w-full">
 						<img class="object-contain max-h-26" src={bmwsb} alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen">
@@ -59,8 +59,11 @@
 						<Fhb class="max-h-20 w-full" />
 					<!--<img class="object-contain max-h-24" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">-->
 					</div>
+					<div class="w-44 mr-4">
+						<img class="object-contain" src={aaalogo} alt="AAA Bremen">
+					</div>
 				</div>
-			  </div>
+			</div>
 		</div>
 
 		<nav class="main-nav h-16 flex border-t border-gray-900 justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
