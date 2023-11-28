@@ -53,7 +53,7 @@ const netzwerkQuery = gql`
 
 const MembersPreviewQuery= gql`
     query getMembers($sort: String!) {
-        members(sort: [$sort]){
+        members(sort: [$sort], pagination: { limit: -1}){
             data {
                 id
                 attributes { 
