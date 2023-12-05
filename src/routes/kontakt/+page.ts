@@ -28,7 +28,12 @@ const kontaktQuery = gql`
                 }
             }
         }
-        states{
+  }
+  `
+
+const formQuery = gql`
+  query getFormData{
+    states(pagination: { limit: -1}) {
           data{
             id
             attributes{
@@ -37,7 +42,7 @@ const kontaktQuery = gql`
             }
           }
         }
-        workAreas{ 
+        workAreas(pagination: { limit: -1}) { 
           data{
               id
               attributes{
@@ -46,7 +51,7 @@ const kontaktQuery = gql`
               }
           }		
         }
-        expertises{
+        expertises(pagination: { limit: -1}) {
           data{
             id
             attributes{
@@ -55,7 +60,7 @@ const kontaktQuery = gql`
             }
         }		
       }
-      workTypes{
+      workTypes(pagination: { limit: -1}) {
         data{
             id
             attributes{
@@ -64,7 +69,7 @@ const kontaktQuery = gql`
             }
         }		
       }
-      contexts {
+      contexts(pagination: { limit: -1}) {
         data{
             id
             attributes{
@@ -73,7 +78,7 @@ const kontaktQuery = gql`
             }
         }		
       }
-      organizationalGoals{ 
+      organizationalGoals(pagination: { limit: -1}) { 
         data{
             id
             attributes{
@@ -82,7 +87,7 @@ const kontaktQuery = gql`
             }
         }	
       }
-      organizationalForms{ 
+      organizationalForms(pagination: { limit: -1}) { 
         data{
             id
             attributes{
@@ -91,7 +96,7 @@ const kontaktQuery = gql`
             }
         }	
       }
-      supports {
+      supports(pagination: { limit: -1}) {
         data{
             id
             attributes{
@@ -101,14 +106,16 @@ const kontaktQuery = gql`
         }	
       }
     }
-  `
+ `
 
 export const load: import('./$types').PageLoad = (async () => {
   try {
 
     const page = await client.request(kontaktQuery);
+    const form = await client.request(formQuery);
     return {
-      page : flattenJson(page)
+      page : flattenJson(page),
+      form: form
     }
   } catch (error) {
     console.error('Error fetching data:', error);

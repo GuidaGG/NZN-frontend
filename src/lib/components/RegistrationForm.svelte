@@ -5,11 +5,23 @@
     import RadioBox from "./RadioBox.svelte";
     import Upload from 'svelte-feathers/Upload.svelte';
     import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
-    export let content 
+    
+    type FormData = {
+    [key: string]: string | string[] | boolean;
+    }
 
-    let selected = 0;
+    type FormErrors = {
+    [key: string]: string;
+    };
+    export let content 
+    export let formData: FormData;
+    export let selected: string | boolean
+    export let errors: FormErrors;
+
     let imageInput: HTMLInputElement;
     let logoInput: HTMLInputElement;
+   
+    let errorMessage = '';
 
     // checkbox contents
 	const states = content.states;
@@ -21,89 +33,134 @@
 	const organizationalGoals = content.organizationalGoals
 	
 	const supports = content.supports
-    
-    $: formData = {
-        name: '',
-        states: [],
-        city: '',
-        organizationalForms: [],
-        other_organizational_forms: '',
-        workAreas: [],
-        other_work_areas: '',
-        contexts: [],
-        other_contextx: '',
-        description: '',
-        email: '',
-        website: '',
-        contact_person: '',
-        phone: '', 
-        organizationalGoals: [],
-        other_organizational_goals: '',
-        workTypes: [],
-        other_work_types: '',
-        finances: '',
-        expertises: [], 
-        other_expertises: '',
-        supports: [], 
-        other_supports: '',
-        special_info: '',
-        image: [],
-        logo: [],
-        agreement: selected,
-    };
 
-
-    function handleSubmit(e){
-       console.log(formData)
-    }
+  
 
 </script>
 
-<form class="w-2/3 m-auto my-10" on:submit|preventDefault={handleSubmit}>
     <div class="rounded-xl border-black border p-5">
-  
         <h2 class="text-base font-nznBold pb-10">Anmeldung Netzwerk</h2>
         <Input name="name" label="Name des Akteurs/Organisation/Verein/Initiative:" required bind:value={formData.name}/>
+        {#if errors.name}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.name}</span>
+        {/if}
+
         <CheckboxGroup options={states} name="states" label="In welchem Bundesland ist ihre Organisation aktiv?" bind:group={formData.states} required/>
+        {#if errors.states}
+        <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.states}</span>
+        {/if}
         <Input name="city" label="In welcher Stadt ist der Hauptsitz ihrer Organisation?" bind:value={formData.city} />
-        <CheckboxGroup options={organizationalForms} name="state" label="Organisationsform:" bind:group={formData.organizationalForms} other_value="other_organizational_forms"/>
-        <CheckboxGroup options={workAreas} name="work-area" label="Arbeitsbereiche:" other_value="other_work_areas" bind:group={formData.workAreas}/>
-        <CheckboxGroup options={contexts} name="context" label="Kontext:"  other_value="other_context" bind:group={formData.contexts} />
+        <CheckboxGroup 
+            options={organizationalForms} 
+            name="organizationalForms" 
+            label="Organisationsform:" 
+            bind:group={formData.organizationalForms} 
+            other_value="other_organizational_forms" 
+            bind:other={formData.other_organizational_forms} 
+            required/>
+        {#if errors.organizationalForms}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.organizationalForms}</span>
+        {/if}
+        <CheckboxGroup 
+            options={workAreas} 
+            name="work-area" 
+            label="Arbeitsbereiche:" 
+            other_value="other_work_areas" 
+            bind:group={formData.workAreas}
+            bind:other={formData.other_work_areas}
+        />
+        <CheckboxGroup 
+            options={contexts} 
+            name="context" 
+            label="Kontext:"  
+            other_value="other_context" 
+            bind:group={formData.contexts} 
+            bind:other={formData.other_contexts}
+        />
         <TextArea name="description" label="Kurzbeschreibung Ihrer Organisation (max. 1800 Zeichen inklusive Leerzeichen):" bind:value={formData.description}/>
-        <Input name="email" label="E-mail" type="email" bind:value={formData.email} required/>
-        <Input name="website" label="Webseite" type="url bind:value={formData.website}"/>
+        {#if errors.description}
+         <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.description}</span>
+        {/if}
+        <Input name="email" label="E-mail" bind:value={formData.email} required/>
+        {#if errors.email}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.email}</span>
+        {/if}
+        <Input name="website" label="Webseite" bind:value={formData.website} />
         <Input name="contact_person" label="Name der Ansprechperson(en) " type="text" bind:value={formData.contact_person}/>
         <Input name="phone" label="Telefonnummer" type="text" bind:value={formData.phone}/>
-        <CheckboxGroup options={organizationalGoals} name="organizational_goals" label="Was sind die Ziele ihrer Organisation?" bind:group={formData.organizationalGoals} other_value="other_prganozational_goals" required/>
-        <CheckboxGroup options={workTypes} name="work_types" label="Sind Sie hauptamtlich oder ehrenamtlich tätig?" bind:group={formData.workTypes} other_value="other_work_types" required/>
+        <CheckboxGroup 
+            options={organizationalGoals} 
+            name="organizationalGoals"
+            label="Was sind die Ziele ihrer Organisation?" 
+            bind:group={formData.organizationalGoals}
+            other_value="other_organizational_goals"
+            bind:other={formData.other_organizational_goals} 
+            required
+        />
+        {#if errors.organizationalGoals}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.organizationalGoals}</span>
+        {/if}
+        <CheckboxGroup 
+            options={workTypes}
+            name="workTypes"
+            label="Sind Sie hauptamtlich oder ehrenamtlich tätig?"
+            bind:group={formData.workTypes}
+            other_value="other_work_types" 
+            bind:other={formData.other_work_types} 
+            required
+        />
+        {#if errors.workTypes}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.workTypes}</span>
+        {/if}   
         <TextArea name="finances" label="Wie finanziert ihre Organisation die Arbeit bezüglich Zwischennutzungen und Leerstandsbelebung? Bitte geben Sie an, welche Förderungen Sie erhalten und wie ggf. Stellen finanziert werden." bind:value={formData.finances}/>
-        <CheckboxGroup options={expertises} name="expertise" label="In diesen Feldern haben wir Expertise und können Unterstützung anbieten:" bind:group={formData.expertises} other_value="other_expertises"/>
-        <CheckboxGroup options={supports} name="support" label="In diesen Feldern benötigen wir Unterstützung:" bind:group={formData.supports} other_value="other_supports"/>
+        <CheckboxGroup 
+            options={expertises} 
+            name="expertise"
+            label="In diesen Feldern haben wir Expertise und können Unterstützung anbieten:" 
+            bind:group={formData.expertises} 
+            bind:other={formData.other_expertises} 
+            other_value="other_expertises"/>
+        <CheckboxGroup 
+            options={supports} 
+            name="support"
+            label="In diesen Feldern benötigen wir Unterstützung:"
+            bind:group={formData.supports}
+            other_value="other_supports"
+            bind:other={formData.other_supports} 
+        />
         <TextArea name="special_info" label="Gibt es sonst noch Besonderheiten bezüglich Ihrer Organisation?" bind:value={formData.special_info}/>
         <div class="py-2">
             <label for="image" class="text-xs uppercase">Bild:</label>
+            <div class="flex items-center gap-2"></div>
             <Upload on:click={() => imageInput.click()} class="border border-black rounded-md p-2 h-10 w-10 my-2"/>
             <input class="py-2 hidden" type="file" name="image" bind:this={imageInput} bind:value={formData.image}/> 
+            <span>{formData.image}</span>
         </div>
         <div class="py-2">
             <label for="image" class="text-xs uppercas">Logo:</label>
-            <Upload on:click={() => logoInput.click()} class="border border-black rounded-md p-2 my-2 h-10 w-10"/>
-            <input class="py-2 hidden"  type="file" name="logo" bind:this={logoInput} bind:value={formData.logo}/>
+            <div class="flex items-center gap-2">
+                <Upload on:click={() => logoInput.click()} class="border border-black rounded-md p-2 my-2 h-10 w-10"/>
+                <input class="py-2 hidden"  type="file" name="logo" bind:this={logoInput} bind:value={formData.logo}/>
+                <span>{formData.logo}</span>
+            </div>
         </div>
         <div class="pt-10">
         <fieldset>
             <legend class="text-xs pb-2 relative">Ich bin damit einverstanden, dass die von mir hier eingegebenen Daten zwecks einer frei zugänglichen Onlinedatenbank auf der Webseite des Netzwerks Zwischennutzung veröffentlicht werden. Das Einverständnis kann jederzeit widerrufen werden.<span class="text-grun-dk text-xl absolute right-0 -top-2">*</span></legend>
             <div class="flex flex-col gap-2">
-                <RadioBox name="agreement" value="1" label="Ich stimme zu" bind:selected />
-                <RadioBox name="agreemen" value="0" label="Ich stimme nicht zu" bind:selected  />
+                <RadioBox name="agreement" value=true label="Ich stimme zu" bind:selected={formData.agreement} />
+                <RadioBox name="agreemen" value=false label="Ich stimme nicht zu" bind:selected={formData.agreement} />
             </div>
         </fieldset>
+        {#if errors.agreement}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.agreement}</span>
+        {/if}
      </div>
     </div>
     <button type="submit" class="bg-oliv-lt py-2 px-5 rounded-xl border border-black text-base hover:shadow-inner-top mt-5 flex justify-between items-center">
         <span class="w-80 text-left">Abschicken</span>
         <span><ArrowRight /></span>
     </button>
-</form>
+
 
 

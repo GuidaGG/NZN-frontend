@@ -6,7 +6,7 @@
     export let value = '';
 </script>
 
-<div class="py-4" class:hidden={hidden}>
+<div class="py-4 scroll-mt-10" class:hidden={hidden}>
     <label for="{name}" class="block uppercase text-xs pb-1 relative">
         {label} 
         {#if required}
