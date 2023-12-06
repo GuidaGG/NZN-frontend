@@ -1,9 +1,9 @@
 <script lang="ts">
     import X from 'svelte-feathers/X.svelte';
     export let name: string;
-    export let value: string;
+    export let value: number[] | string | string[] | boolean;
     export let label: string
-    export let selected: string | number
+    export let selected: number[] | string | string[] | boolean 
 
 
 </script>

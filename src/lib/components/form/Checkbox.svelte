@@ -3,7 +3,7 @@
     import X from 'svelte-feathers/X.svelte';
 
     export let option: Select;
-    export let group: number[]
+    export let group: number[] | string | number | boolean | string[] | number
     export let groupvalues: string[]
 
     let checked= false;

@@ -5,22 +5,27 @@
     import RadioBox from "./RadioBox.svelte";
     import Upload from 'svelte-feathers/Upload.svelte';
     import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
-    
+    import Star from 'svelte-feathers/Star.svelte';
+
     type FormData = {
-    [key: string]: string | string[] | boolean;
+    [key: string]: string  | number[];
     }
 
     type FormErrors = {
     [key: string]: string;
     };
+
     export let content 
     export let formData: FormData;
-    export let selected: string | boolean
     export let errors: FormErrors;
+    export let fileImage: FileList;
+    export let fileLogo: FileList;
 
     let imageInput: HTMLInputElement;
     let logoInput: HTMLInputElement;
-   
+    let logo: String;
+    let image: String;
+
     let errorMessage = '';
 
     // checkbox contents
@@ -34,39 +39,47 @@
 	
 	const supports = content.supports
 
-  
+
 
 </script>
 
     <div class="rounded-xl border-black border p-5">
         <h2 class="text-base font-nznBold pb-10">Anmeldung Netzwerk</h2>
-        <Input name="name" label="Name des Akteurs/Organisation/Verein/Initiative:" required bind:value={formData.name}/>
-        {#if errors.name}
-            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.name}</span>
+
+        <Input name="title" label="Name des Akteurs/Organisation/Verein/Initiative:" required bind:value={formData.title}/>
+        {#if errors.title}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.title}</span>
         {/if}
 
-        <CheckboxGroup options={states} name="states" label="In welchem Bundesland ist ihre Organisation aktiv?" bind:group={formData.states} required/>
+        <CheckboxGroup 
+            options={states} 
+            name="states" 
+            label="In welchem Bundesland ist ihre Organisation aktiv?" 
+            bind:group={formData.states} 
+            other
+            required/>
         {#if errors.states}
         <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.states}</span>
         {/if}
-        <Input name="city" label="In welcher Stadt ist der Hauptsitz ihrer Organisation?" bind:value={formData.city} />
+
+         <Input name="city" label="In welcher Stadt ist der Hauptsitz ihrer Organisation?" bind:value={formData.city} />
         <CheckboxGroup 
             options={organizationalForms} 
             name="organizationalForms" 
             label="Organisationsform:" 
-            bind:group={formData.organizationalForms} 
+            bind:group={formData.organizational_forms} 
             other_value="other_organizational_forms" 
             bind:other={formData.other_organizational_forms} 
             required/>
-        {#if errors.organizationalForms}
+        {#if errors.organizational_forms}
             <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.organizationalForms}</span>
         {/if}
-        <CheckboxGroup 
+       <CheckboxGroup 
             options={workAreas} 
             name="work-area" 
             label="Arbeitsbereiche:" 
             other_value="other_work_areas" 
-            bind:group={formData.workAreas}
+            bind:group={formData.work_areas}
             bind:other={formData.other_work_areas}
         />
         <CheckboxGroup 
@@ -74,8 +87,8 @@
             name="context" 
             label="Kontext:"  
             other_value="other_context" 
-            bind:group={formData.contexts} 
-            bind:other={formData.other_contexts}
+            bind:group={formData.context} 
+            bind:other={formData.other_context}
         />
         <TextArea name="description" label="Kurzbeschreibung Ihrer Organisation (max. 1800 Zeichen inklusive Leerzeichen):" bind:value={formData.description}/>
         {#if errors.description}
@@ -92,64 +105,79 @@
             options={organizationalGoals} 
             name="organizationalGoals"
             label="Was sind die Ziele ihrer Organisation?" 
-            bind:group={formData.organizationalGoals}
+            bind:group={formData.organisation_goals}
             other_value="other_organizational_goals"
             bind:other={formData.other_organizational_goals} 
             required
         />
-        {#if errors.organizationalGoals}
-            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.organizationalGoals}</span>
+        {#if errors.organisation_goals}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.organisation_goals}</span>
         {/if}
         <CheckboxGroup 
             options={workTypes}
             name="workTypes"
             label="Sind Sie hauptamtlich oder ehrenamtlich tätig?"
-            bind:group={formData.workTypes}
+            bind:group={formData.work_types}
             other_value="other_work_types" 
             bind:other={formData.other_work_types} 
             required
         />
-        {#if errors.workTypes}
-            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.workTypes}</span>
+        {#if errors.work_types}
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.work_type}</span>
         {/if}   
         <TextArea name="finances" label="Wie finanziert ihre Organisation die Arbeit bezüglich Zwischennutzungen und Leerstandsbelebung? Bitte geben Sie an, welche Förderungen Sie erhalten und wie ggf. Stellen finanziert werden." bind:value={formData.finances}/>
         <CheckboxGroup 
             options={expertises} 
             name="expertise"
             label="In diesen Feldern haben wir Expertise und können Unterstützung anbieten:" 
-            bind:group={formData.expertises} 
-            bind:other={formData.other_expertises} 
+            bind:group={formData.expertise} 
+            bind:other={formData.other_expertise} 
             other_value="other_expertises"/>
         <CheckboxGroup 
             options={supports} 
             name="support"
             label="In diesen Feldern benötigen wir Unterstützung:"
-            bind:group={formData.supports}
+            bind:group={formData.support}
             other_value="other_supports"
-            bind:other={formData.other_supports} 
+            bind:other={formData.other_support} 
         />
         <TextArea name="special_info" label="Gibt es sonst noch Besonderheiten bezüglich Ihrer Organisation?" bind:value={formData.special_info}/>
         <div class="py-2">
             <label for="image" class="text-xs uppercase">Bild:</label>
-            <div class="flex items-center gap-2"></div>
-            <Upload on:click={() => imageInput.click()} class="border border-black rounded-md p-2 h-10 w-10 my-2"/>
-            <input class="py-2 hidden" type="file" name="image" bind:this={imageInput} bind:value={formData.image}/> 
-            <span>{formData.image}</span>
+            <div class="flex items-center gap-2">
+                <Upload on:click={() => imageInput.click()} class="border border-black rounded-md p-2 h-10 w-10 my-2"/>
+                <input class="py-2 hidden" type="file" name="image" bind:this={imageInput} 
+                bind:files={fileImage}
+                bind:value={image}
+                /> 
+                {#if image}
+                    <span class="border border-black rounded-md p-2">{image}</span>
+                {/if}
+            </div>
         </div>
-        <div class="py-2">
-            <label for="image" class="text-xs uppercas">Logo:</label>
+      
+       <div class="py-2">
+            <label for="image" class="text-xs uppercase">Logo:</label>
             <div class="flex items-center gap-2">
                 <Upload on:click={() => logoInput.click()} class="border border-black rounded-md p-2 my-2 h-10 w-10"/>
-                <input class="py-2 hidden"  type="file" name="logo" bind:this={logoInput} bind:value={formData.logo}/>
-                <span>{formData.logo}</span>
+                <input class="py-2 hidden"  type="file" name="logo" bind:this={logoInput} 
+                bind:value={logo}
+                bind:files={fileLogo}/>
+                {#if logo}
+                    <span class="border border-black rounded-md p-2">{logo}</span>
+                {/if}
             </div>
         </div>
         <div class="pt-10">
         <fieldset>
-            <legend class="text-xs pb-2 relative">Ich bin damit einverstanden, dass die von mir hier eingegebenen Daten zwecks einer frei zugänglichen Onlinedatenbank auf der Webseite des Netzwerks Zwischennutzung veröffentlicht werden. Das Einverständnis kann jederzeit widerrufen werden.<span class="text-grun-dk text-xl absolute right-0 -top-2">*</span></legend>
+            <legend class="text-xs pb-2 relative">Ich bin damit einverstanden, dass die von mir hier eingegebenen Daten zwecks einer frei zugänglichen Onlinedatenbank auf der Webseite des Netzwerks Zwischennutzung veröffentlicht werden. Das Einverständnis kann jederzeit widerrufen werden.
+                <span class="text-grun-dk">
+                    <Star class="inline h-5 pb-2"/>
+                </span>
+            </legend>
             <div class="flex flex-col gap-2">
                 <RadioBox name="agreement" value=true label="Ich stimme zu" bind:selected={formData.agreement} />
-                <RadioBox name="agreemen" value=false label="Ich stimme nicht zu" bind:selected={formData.agreement} />
+                <RadioBox name="agreement" value=false label="Ich stimme nicht zu" bind:selected={formData.agreement} />
             </div>
         </fieldset>
         {#if errors.agreement}

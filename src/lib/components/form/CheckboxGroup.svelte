@@ -1,26 +1,29 @@
 <script lang="ts">
-    import type {Select} from '$lib/types'
+    import type {SelectID} from '$lib/types'
 	import Checkbox from './Checkbox.svelte';
     import Input from './Input.svelte';
+    import Star from 'svelte-feathers/Star.svelte';
 
-    export let group: number[]
-    export let other: string | undefined
+    export let group: number[] | string | string[] | boolean;
+    export let other: number[] | string | string[] | boolean; 
     let groupvalues: string[] = [];
-    export let options: Select[];
+    export let options: SelectID[];
     export let label: string;
     export let name: string;
-    export let other_value: string | null = null
-    export let required = false
+    export let other_value: string | null = null;
+    export let required = false;
 
 
 
 </script>
 <div class="py-4 ">
     <fieldset name={name} id={name} class="scroll-mt-20">
-        <legend class="uppercase text-xs pb-2 relative">
+        <legend class="uppercase text-xs pb-2 relative inline">
             {label}
             {#if required}
-            <span class="text-grun-dk text-xl absolute -top-2">*</span>
+            <span class="text-grun-dk">
+                <Star class="inline h-5 pb-2"/>
+            </span>
             {/if}
         </legend>
         <div class="flex flex-col gap-3">

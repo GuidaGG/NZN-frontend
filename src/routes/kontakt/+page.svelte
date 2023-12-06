@@ -7,48 +7,52 @@
 	import * as yup from 'yup';
 	import { goto } from '$app/navigation';
 	import { error } from '@sveltejs/kit';
+	import { config } from '$lib/config.js';
 
 	export let data;
 
-	let selected = "false";
-	const page = data.page.pages[0]
-	const content = data.form
+	let selected: string = "false" ;
+	const page = data.page.pages[0];
+	const content = data.form;
+	let form :HTMLFormElement;
+	$: fileImage = {} as FileList;
+	$: fileLogo = {} as FileList;
+
 
 	$: responseHandler = "register"
 	$: validationErrors = {}
 	$: formData = {
-        name: '',
-        states: [],
+		title: '',
+		states: [],
         city: '',
-        organizationalForms: [],
+        organizational_forms: [],
         other_organizational_forms: '',
-        workAreas: [],
+        work_areas: [],
         other_work_areas: '',
-        contexts: [],
-        other_contexts: '',
+        context: [],
+        other_context: '',
         description: '',
         email: '',
         website: '',
         contact_person: '',
         phone: '', 
-        organizationalGoals: [],
-        other_organizational_goals: '',
-        workTypes: [],
+        organisation_goals: [],
+        other_organisation_goals: '',
+        work_types: [],
         other_work_types: '',
         finances: '',
-        expertises: [], 
-        other_expertises: '',
-        supports: [], 
-        other_supports: '',
+        expertise: [], 
+        other_expertise: '',
+        support: [], 
+        other_support: '',
         special_info: '',
-        image: '',
-        logo: '',
         agreement: selected,
-    };
+		publishedAt: null
+	}
 
 
 	const schema = yup.object().shape({
-        name: yup.string().required("Name ist ein Pflichtfeld"),
+        title: yup.string().required("Name ist ein Pflichtfeld"),
         states: yup.array().min(1, "Du musst mindestens eine Option wählen").required("Du musst mindestens eine Option wählen"),
         organizationalForms: yup.array().min(1,"Du musst mindestens eine Option wählen"),
         description: yup.string().max(1800, "Der Text ist zu lang"),
@@ -59,12 +63,6 @@
         .oneOf([true], "Du musst der Datenvereinbarung zustimmen."),
     });
 
-    function replacer(key: string, value: any) {
-        if (key === "agreement" && value === "true") {
-            return true ;
-        }
-        return value;
-    }
 
     const handleSubmit = async (event: Event) => {
        
@@ -72,10 +70,24 @@
                 await schema.validate(formData, { abortEarly: false });
 
                 try {
-                    const response = await fetch('/api/register', {
-                        method: 'POST',
-                        body: JSON.stringify(formData, replacer),
-                    })
+
+    				const data = new FormData();
+
+					//appends image to FormData
+					if(fileImage){
+					data.append(`files.image`, fileImage[0], fileImage[0].name);
+					}
+					if(fileLogo){
+						data.append(`files.logo`, fileLogo[0], fileLogo[0].name);
+					}
+					
+					data.append('data', JSON.stringify(formData));
+				
+					const response = await fetch(`${config.apiUrl}/api/members`, {
+						method: 'post',
+						body: data
+					});
+					
                     if (response.ok) {
                         const data = await response.json();
                         responseHandler = "sucess"
@@ -119,14 +131,17 @@
 
 <Maintray>
 	<Page class="{page.slug}">
-		{JSON.stringify(formData, null, 2)}
 		{#if (responseHandler === "register")}
-		<form class="w-2/3 m-auto my-10" on:submit|preventDefault={handleSubmit} method="POST">
+		<form class="w-full md:w-2/3 m-auto my-10" on:submit|preventDefault={handleSubmit} method="POST" bind:this={form}>
 			<RegistrationForm 
 				{content} 
 				bind:formData={formData} 
 				bind:errors={validationErrors}
-				selected />
+				bind:fileImage={fileImage}
+				bind:fileLogo={fileLogo}
+				/>
+			
+			 
 		</form>
 		{:else if (responseHandler === "sucess")}
 			<div class="bg-oliv-lt w-full sm:w-5/6 mx-auto p-10 mt-10 rounded-xl border border-black">
@@ -181,7 +196,6 @@
 					<li class="border-t border-black  px-5 py-2 pb-14">
 						{section.steuer}
 					<li>
-	
 
 				</ul>
 			{/if}
