@@ -50,51 +50,14 @@ const PageQuery = gql`
     }
 `
 
-const WorkMaterialsQuery= gql`
-    query getWorkMaterials {
-        workMaterials(pagination: { limit: -1}){
-            data {
-                id
-                attributes { 
-                    title
-                    slug
-                    author
-                    description
-                    file {
-                        data {
-                            id
-                            attributes{
-                                name
-                                alternativeText
-                                url
-                                formats
-                            }
-                        }
-                    }
 
-                }
-            }
-            meta { 
-                pagination {
-                    page
-                    pageSize
-                    pageCount
-                }
-            }
-        }
-    }
-`
-
-export const load: import('./$types').PageLoad = (async ({ params, url }) => {
+export const load: import('./$types').PageLoad = (async () => {
   try {
 
-
     const dataPage = await client.request(PageQuery);
-    const dataMaterials = await client.request(WorkMaterialsQuery)
 
     return {
         materials_page: flattenJson(dataPage),
-        materials:  flattenJson(dataMaterials),
     }
   } catch (error) {
     console.error('Error fetching data:', error);

@@ -1,26 +1,21 @@
 <script lang="ts">
-	
-	import Maintray from '$lib/components/Maintray.svelte';
 	import Page from '$lib/components/Page.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import Sidetray from '$lib/components/Sidetray.svelte';
-	import UnderConstruction from '$lib/components/UnderConstruction.svelte';
-	
+	import type { PageContents } from '$lib/types';
+	import type { PageData } from './$types';
+	import DynamicContent from '$lib/components/DynamicContent.svelte';
+
+	export let data: PageData;
+
+	let page: PageContents = data.practices_page.pages[0];
+	let practices = data.practices
 </script>
 
 <svelte:head>
-	<title> Best Practice </title>
+	<title> Best Practices </title>
 </svelte:head>
 
-<Maintray>
-	<Page>
-		<UnderConstruction />
-	</Page>
-	<Footer />
-</Maintray>
+<Page class="{page.slug} bg-grun-lt">
+	<DynamicContent {page} />
+</Page>
 
-<Sidetray>
-	<div class="p-5">
-		
-	</div>
-</Sidetray>
+<pre>{JSON.stringify(practices, null, 2)}</pre>
