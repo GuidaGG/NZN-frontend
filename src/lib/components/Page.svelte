@@ -12,7 +12,7 @@
 <section class="
 	flex-col
 	min-h-[calc(100vh-24rem)]
-	bg-oliv-lt
+	pb-10
 	{$$restProps.class}" 
 	bind:this={main}>
 	<slot />

@@ -10,15 +10,14 @@
 
 	export let data: PageData;
 
-	let page: PageContents = data.materials_page.pages[0];
+	let material = data.material.workMaterials[0];
 
 </script>
 
 <svelte:head>
-	<title> Arbeitsmaterialen </title>
+	<title> {material.title}</title>
 </svelte:head>
 
+<pre>{JSON.stringify(material, null, 2)}</pre>
 
-<Page class="{page.slug} bg-oliv-dk">
-	<DynamicContent {page} />
-</Page>
+

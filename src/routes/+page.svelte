@@ -22,7 +22,7 @@
 
 
 <Maintray>
-	<Page>
+	<Page class="bg-lime-dk">
 		<DynamicContent page={homepage}/>
 	</Page>
 	<!-- stupid temporary fix for mobile - remove later -->
