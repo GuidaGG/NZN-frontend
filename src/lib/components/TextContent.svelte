@@ -4,7 +4,7 @@
     export let size = "text-xl";
 </script>
 
-<div class="px-5 pt-5 text-content">
+<div class="px-5 pt-10 text-content">
     {#if content.title}
         <h1>{content.title}</h1>
     {/if}

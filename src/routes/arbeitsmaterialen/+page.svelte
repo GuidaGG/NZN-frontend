@@ -4,10 +4,15 @@
 	import Page from '$lib/components/Page.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Sidetray from '$lib/components/Sidetray.svelte';
-	import UnderConstruction from '$lib/components/UnderConstruction.svelte';
-	
-	// import type { PageData } from './$types';
-	// export let data: PageData;
+	import type { PageContents } from '$lib/types';
+	import type { PageData } from './$types';
+	import DynamicContent from '$lib/components/DynamicContent.svelte';
+
+	export let data: PageData;
+
+	let page: PageContents = data.materials_page.pages[0];
+	let materials = data.materials.workMaterials;
+
 </script>
 
 <svelte:head>
@@ -15,13 +20,18 @@
 </svelte:head>
 
 <Maintray>
-	<Page>
-		<UnderConstruction />
+	<Page class="{page.slug} bg-oliv-dk">
+		<DynamicContent {page} />
 	</Page>
 	<Footer />
 </Maintray>
 
 <Sidetray>
-	<div class="p-5">
+	<div class="flex flex-col">
+		{#each materials as material}
+		<a href="/arbeitsmaterialen/{material.slug}" class="block text-base hover:bg-oliv-dk leading-tight p-5 hover:bg--dk border-b border-black" >
+			{material.title}
+		</a>
+		{/each}
 	</div>
 </Sidetray>
