@@ -1,3 +1,7 @@
+<script lang="ts">
+     import ArrowLeft from 'svelte-feathers/ArrowLeft.svelte';
+</script>
+
 <div class="bg-grun-dk p-10">
     <div class="bg-oliv-lt w-full sm:w-5/6 mx-auto p-10 rounded-xl border border-black">
         <h1>404-Seite nicht gefunden </h1>
@@ -6,6 +10,6 @@
         </div>
     </div>
     <div class="w-5/6 mt-5 mx-auto ">
-        <a class="bg-oliv-lt py-2 inline-block px-10 mx-auto rounded-xl border border-black text-base hover:shadow-inner-top" href="/">← Gehe Zurück, ziehe nicht über Los, löse kein 100 DM ein.</a>
+        <a class="bg-oliv-lt py-2 inline-block px-10 mx-auto rounded-xl border border-black text-base hover:shadow-inner-top" href="/"><ArrowLeft  class="inline"/>Gehe Zurück, ziehe nicht über Los, löse kein 100 DM ein.</a>
     </div>
 </div>

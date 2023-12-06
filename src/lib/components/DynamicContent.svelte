@@ -14,5 +14,8 @@ export let page: Page;
 		<Image image={section.image} />
 	{:else if section.__typename === "ComponentImageSlideshow"}
 		<Slideshow slideshow={section.images} />
+	{:else if section.__typename === "ComponentTextContactData"}
+		kontakt
 	{/if}
+
 {/each}

@@ -28,6 +28,14 @@ export type Select = {
     value: string;
 }
 
+export type SelectID = { 
+    id: number;
+    attributes: {
+        name: string;
+        value: string;      
+    }
+}
+
 export type ImageSection = { 
     __typename: string;
     image: Image;
