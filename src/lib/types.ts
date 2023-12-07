@@ -72,7 +72,18 @@ export type MemberPreview = {
     description: string;
     states: Select[];
     work_areas: Select[];
-  }
+}
+
+export type PracticePreview = {
+    id: number;
+    title: string;
+    slug: string;
+    header: string;
+    upper_content: string;
+    main_content: string;
+    sidebar: string;
+    gallery: Image[];
+}
   
 export type NewsItem = {
     id: number;
