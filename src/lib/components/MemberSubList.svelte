@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex flex-row gap-5 pb-5 text-xs w-full">
-    <div class="uppercase min-w-[205px]">{label}</div>
+    <div class="uppercase min-w-[200px]">{label}</div>
     <ul class="grow">
         {#each values as value}
         <li class="break-words">{value.name}</li>	
