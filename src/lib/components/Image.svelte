@@ -9,7 +9,7 @@ $: url = size != null && image.formats[size].url ? image.formats[size].url : ima
 
 </script>
     <img
-        class="w-full min-w-full object-cover {$$restProps.class}"
+        class="w-full min-w-full object-cover {$$restProps.class} "
         src={`${config.apiUrl}${url}`} 
         alt={image.alternativeText}
     />

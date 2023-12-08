@@ -45,30 +45,30 @@
 				<h1>{member.title}</h1>
 				<div>{member.description}</div>
 			</div>
-			<div class="xl:w-5/12 font-nznBold text-xs">
+			<div class="xl:w-5/12 font-nznBold text-xs overflow-hidden">
 				<MemberSubList values={member.states} label = "wirkungsraum:" />
 				<MemberSubList values={member.organizational_forms} label = "organisationsform:" />
 				<MemberSubList values={member.work_areas} label = "arbeitsbereiche:" />
 				<MemberSubList values={member.context} label = "kontext:" />
-				<div class="uppercase w-52">kontaktdaten:</div>
+				<div class="uppercase min-w-[200px]">kontaktdaten:</div>
 				<div class="flex gap-5 ">
-					<div class="uppercase w-52">mailadresse</div>
+					<div class="uppercase min-w-[200px]">mailadresse</div>
 					<div>{member.email}</div>
 				</div>
 				{#if member.website}
 					<div class="flex gap-5">
-						<div class="uppercase w-52">website</div>
-						<div>{member.website}</div>
+						<div class="uppercase min-w-[200px]">website</div>
+						<div class="break-all"><a href={member.website} class="text-grun-dk">{member.website}</a></div>
 					</div>
 				{/if}
 				{#if member.phone_number}
 				<div class="flex gap-5 ">
-					<div class="uppercase w-52">telefonnummer</div>
+					<div class="uppercase min-w-[200px]">telefonnummer</div>
 					<div>{member.phone_number}</div>
 				</div>
 				{/if}
 				{#if member.logo}
-				<div class="w-60 pt-20">
+				<div class="max-w-[200px] w-full h-auto pt-20">
 					<Image image={member.logo} size="thumbnail"/>
 				</div>
 				{/if}

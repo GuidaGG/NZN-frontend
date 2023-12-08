@@ -105,10 +105,10 @@ const MembersPreviewQuery= gql`
 
 export const load: import('./$types').PageLoad = (async ({ params, url }) => {
   try {
-    const filter = url.searchParams.get('sort') ? url.searchParams.get('sort')  : 'title'
-
+    const filter = url.searchParams.get('sort') ? url.searchParams.get('sort')  : 'description'
+    const order = filter === "publishedAt" ? "desc" : "asc";
     const variables = {
-        sort : filter,
+        sort : `${filter}:${order}`,
     }
 
     const dataPage = await client.request(netzwerkQuery);
