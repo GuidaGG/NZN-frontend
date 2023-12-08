@@ -115,13 +115,7 @@ const MembersQuery= gql`
                     }
                 }
             }
-            meta { 
-                pagination {
-                    page
-                    pageSize
-                    pageCount
-                }
-            }
+          
         }
     }
 `

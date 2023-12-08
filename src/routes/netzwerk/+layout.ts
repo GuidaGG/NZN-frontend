@@ -52,8 +52,8 @@ const netzwerkQuery = gql`
 `
 
 const MembersPreviewQuery= gql`
-    query getMembers($sort: String!) {
-        members(sort: [$sort], pagination: { limit: -1}){
+    query getMembers($sort: String!, $page: Int!) {
+        members(sort: [$sort], pagination: { page: $page, pageSize: 6 }){
             data {
                 id
                 attributes { 
@@ -103,22 +103,26 @@ const MembersPreviewQuery= gql`
     }
 `
 
-export const load: import('./$types').PageLoad = (async ({ params, url }) => {
+export const load: import('../$types').PageLoad = (async ({ params, url }) => {
   try {
+    const page = url.searchParams.get('page') ? url.searchParams.get('page')  : 0
     const filter = url.searchParams.get('sort') ? url.searchParams.get('sort')  : 'description'
     const order = filter === "publishedAt" ? "desc" : "asc";
     const variables = {
         sort : `${filter}:${order}`,
+        page: parseInt(page)
     }
 
     const dataPage = await client.request(netzwerkQuery);
     const dataMembers = await client.request(MembersPreviewQuery, variables)
 
+    const pagination = dataMembers.members.meta;
     const organizedMembers = filter !== "description" ? flattenJson(dataMembers.members) : randomArray(flattenJson(dataMembers.members));
    
     return {
         netzwerk: flattenJson(dataPage),
         members:  organizedMembers,
+        pagination: pagination
     }
   } catch (error) {
     console.error('Error fetching data:', error);

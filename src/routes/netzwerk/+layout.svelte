@@ -13,7 +13,7 @@
 	export let data;
 
 	$: members = data.members
-
+	$: pagination = data.pagination
 
 	let selected = "description"
 
@@ -29,8 +29,9 @@
 	<title> Netzwerk </title>
 </svelte:head>
 
+
 <Maintray>
-	<slot />
+		<slot />
 	<Footer />
 </Maintray>
 
@@ -50,5 +51,7 @@
 				<Member {member}  />
 			</a>
 		{/each}
+		
 	</div>
+
 </Sidetray>

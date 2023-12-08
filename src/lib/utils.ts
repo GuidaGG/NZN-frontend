@@ -6,7 +6,11 @@ export function flattenJson(json: any): any {
     if (json.hasOwnProperty('data')) {
       return flattenJson(json['data']);
     }
-  
+    
+    if (json.hasOwnProperty('meta')) {
+      return flattenJson(json['meta']);
+    }
+    
     if (json.hasOwnProperty('attributes')) {
       return flattenJson(json['attributes']);
     }
