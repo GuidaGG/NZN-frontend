@@ -5,6 +5,9 @@ export type Image = {
     alternativeText: string
     url: string;
     formats: {
+        thumbnail: {
+            url: string;
+        }
         small: {
             url: string;
         },
