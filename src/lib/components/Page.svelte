@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { afterNavigate } from "$app/navigation";
-	
+	export let scrollTop = false
+
 	let main: HTMLElement;
 
 	afterNavigate(() => {
-	if (main) { 
-		//main.scrollIntoView();
+	if (main && scrollTop) { 
+		main.scrollIntoView();
 	}
 	});
 </script>

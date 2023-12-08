@@ -5,7 +5,6 @@
     export let label: string
     export let selected: number[] | string | string[] | boolean 
 
-
 </script>
 
 <div class="flex items-center gap-4 relative ">

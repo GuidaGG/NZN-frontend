@@ -3,9 +3,9 @@ import type { Image } from "$lib/types";
 import { config } from "$lib/config";
 
 export let image: Image
-export let size = null
+export let size: "small" | "thumbnail" | "large" | "medium" | null = null
 
-const url = size != null && image.formats[size].url ? image.formats[size].url : image.url
+$: url = size != null && image.formats[size].url ? image.formats[size].url : image.url
 
 </script>
     <img
