@@ -7,6 +7,7 @@
 	import type { PageContents } from '$lib/types';
 	import type { PageData } from './$types';
 	import DynamicContent from '$lib/components/DynamicContent.svelte';
+	import PdfViewer from 'svelte-pdf';
 
 	export let data: PageData;
 
@@ -15,9 +16,11 @@
 </script>
 
 <svelte:head>
-	<title> {material.title}</title>
+	<title> {material.title} </title>
 </svelte:head>
 
+<!-- <div>
+	<PdfViewer src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" />
+</div> -->
+
 <pre>{JSON.stringify(material, null, 2)}</pre>
-
-
