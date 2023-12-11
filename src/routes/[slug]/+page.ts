@@ -59,8 +59,7 @@ export const load: import('./$types').PageLoad = (async ({ params, url }) => {
       page : flattenJson(page)
     }
   } catch (error) {
-    console.error('Error fetching data:', error);
-    // return [];
+      console.error('Error fetching data:', error);
     return {
       data: []
     };
