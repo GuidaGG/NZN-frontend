@@ -6,14 +6,12 @@
 	import Sidetray from '$lib/components/Sidetray.svelte';
 	import Member from '$lib/components/Member.svelte';
 	import RadioBox from '$lib/components/RadioBox.svelte';
-
+	import link from '$app/navigation';
 	import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
-
 
 	export let data;
 
 	$: members = data.members
-
 
 	let selected = "description"
 
