@@ -7,17 +7,22 @@
 	import type { PageContents } from '$lib/types';
 	import type { PageData } from './$types';
 	import DynamicContent from '$lib/components/DynamicContent.svelte';
+	import PdfViewer from 'svelte-pdf';
+	import UnderConstruction from '$lib/components/UnderConstruction.svelte';
 
 	export let data: PageData;
 
-	let material = data.material.workMaterials[0];
+	$: material = data.material.workMaterials[0];
 
 </script>
 
 <svelte:head>
-	<title> {material.title}</title>
+	<title> {material.title} </title>
 </svelte:head>
 
-<pre>{JSON.stringify(material, null, 2)}</pre>
+<!-- <div>
+	<PdfViewer src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" />
+	<pre>{JSON.stringify(material, null, 2)}</pre>
+</div> -->
 
-
+<UnderConstruction />

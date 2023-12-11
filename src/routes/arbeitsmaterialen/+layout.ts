@@ -13,6 +13,15 @@ const WorkMaterialsQuery= gql`
                     slug
                     author
                     description
+                    category {
+                        data { 
+                            id
+                          attributes { 
+                              name
+                            value
+                          }
+                        }
+                      }
                     file {
                         data {
                             id
