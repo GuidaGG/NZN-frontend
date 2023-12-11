@@ -8,10 +8,11 @@
 	import type { PageData } from './$types';
 	import DynamicContent from '$lib/components/DynamicContent.svelte';
 	import PdfViewer from 'svelte-pdf';
+	import UnderConstruction from '$lib/components/UnderConstruction.svelte';
 
 	export let data: PageData;
 
-	let material = data.material.workMaterials[0];
+	$: material = data.material.workMaterials[0];
 
 </script>
 
@@ -21,6 +22,7 @@
 
 <!-- <div>
 	<PdfViewer src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" />
+	<pre>{JSON.stringify(material, null, 2)}</pre>
 </div> -->
 
-<pre>{JSON.stringify(material, null, 2)}</pre>
+<UnderConstruction />
