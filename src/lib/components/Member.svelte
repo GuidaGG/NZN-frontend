@@ -9,8 +9,7 @@
     function addCommas(value: string, index: number, array: Select[]){
         return (index < array.length - 1) ? `${value}, ` : value;
     }
-
-    console.log(member);
+    // console.log(member);
     
 </script>
 

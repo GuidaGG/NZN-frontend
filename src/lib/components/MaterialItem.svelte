@@ -5,7 +5,7 @@
 
   export let index: number;
   export let materialGroup: MaterialPreview[];
-  console.log(materialGroup);
+  // console.log(materialGroup);
   
 
   let active: boolean;
