@@ -15,7 +15,7 @@
 
 	$: members = data.members
 	$: pagination = data.pagination.pagination
-
+	$: allMembers = data.allMembers;
 
 	let netzwerk: PageContents = data.netzwerk.pages[0]
 
@@ -40,7 +40,7 @@
 			minZoom: initialState.minZoom
 		});
 
-		members.forEach((member: { longitude: string; latitude: string; slug: string; }) => {
+		allMembers.forEach((member: { longitude: string; latitude: string; slug: string; }) => {
 			if(member.longitude && member.latitude){
 				const imgElement = document.createElement('img');
 				imgElement.src = pinIcon;

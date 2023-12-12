@@ -12,8 +12,7 @@
 
 	export let data;
 
-	$: members = data.members
-	$: pagination = data.pagination
+	$: allMembers = data.allMembers;
 
 	let selected = "description"
 
@@ -46,7 +45,7 @@
 	</div>
 	
 	<div class="flex flex-col">
-		{#each members as member}
+		{#each allMembers as member}
 			<a href="/netzwerk/{member.slug}" class="p-5 hover:bg-grun-dk" >
 				<Member {member}  />
 			</a>
