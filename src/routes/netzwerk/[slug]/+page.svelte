@@ -7,7 +7,6 @@
 	import { getSortParams } from '$lib/utils.js';
 	import { page } from '$app/stores';
 
-
 	export let data;
 
 	$: member = data.member.members[0];

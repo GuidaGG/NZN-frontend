@@ -47,7 +47,7 @@
 	
 	<div class="flex flex-col">
 		{#each allMembers as member}
-			<a href="/netzwerk/{member.slug}" class="p-5 hover:bg-grun-dk" >
+			<a href="/netzwerk/{member.slug}{getSortParams($page)}" class="p-5 hover:bg-grun-dk" >
 				<Member {member}  />
 			</a>
 		{/each}
