@@ -105,10 +105,18 @@ export const load: import('./$types').PageLoad = (async ({ params }) => {
         slug : params.slug
       }
     const bestPractice = await client.request(BestPracticesQuery, variables);
-    const member = await client.request(MembersPreviewQuery, {id: bestPractice.bestPractices.data[0].attributes.member.data.id});
-    return {
-        bestPractice:  flattenJson(bestPractice),
-        member: flattenJson(member),
+    let assignedMember = await bestPractice.bestPractices.data[0].attributes.member.data;
+    if (Object.is(assignedMember, null)) {
+        return {
+            bestPractice:  flattenJson(bestPractice),
+            member: null,
+        }
+    } else {
+        const member = await client.request(MembersPreviewQuery, {id: assignedMember.id});
+        return {
+            bestPractice:  flattenJson(bestPractice),
+            member: flattenJson(member),
+        }
     }
   } catch (error) {
     console.error('Error fetching data:', error);
