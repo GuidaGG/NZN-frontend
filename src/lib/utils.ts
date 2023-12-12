@@ -35,3 +35,9 @@ export function randomArray<T>(array: T[]): T[] {
   }
   return shuffledArray;
 }
+
+export 	const getSortParams = (page) => {
+  const query = new URLSearchParams(page.url.searchParams.toString());
+  const sort = query.get('sort')
+  return sort ? `?sort=${sort}` : ''
+}
