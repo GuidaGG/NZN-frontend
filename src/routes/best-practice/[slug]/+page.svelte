@@ -4,6 +4,8 @@
 	import { X, ArrowRight } from 'svelte-feathers';
 	import Slideshow from '$lib/components/Slideshow.svelte';
 	import Member from '$lib/components/Member.svelte';
+	import { getPageParams} from '$lib/utils';
+	import { page } from '$app/stores';
 	
 	export let data: PageData;
 
@@ -21,7 +23,7 @@
 	<div class="w-full relative">
 		
 		<div class="sticky ml-auto z-10 top-0 h-16 w-16 bg-oliv-lt">
-			<a href="/best-practice">
+			<a href="/best-practice?page={getPageParams($page)}">
 				<X class="h-16 w-16 stroke-[0.5] focus:outline-none"/>
 			</a>
 		</div>

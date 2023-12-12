@@ -43,5 +43,11 @@ export function randomArray<T>(array: T[]): T[] {
 export 	const getSortParams = (page) => {
   const query = new URLSearchParams(page.url.searchParams.toString());
   const sort = query.get('sort')
-  return sort ? `?sort=${sort}` : ''
+  return sort ? sort : ''
+}
+
+export 	const getPageParams = (page) => {
+  const query = new URLSearchParams(page.url.searchParams.toString());
+  const currentPage = query.get('page')
+  return currentPage ? currentPage : ''
 }

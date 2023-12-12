@@ -4,7 +4,6 @@
 	import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
     import { page } from "$app/stores";
     import { goto } from "$app/navigation";
-
     export let pagination: Pagination
 
     function gotoPage(page: number){
@@ -23,9 +22,9 @@
         {/if}
         </div>
         {#each Array(pagination.pageCount) as value, index}
-            <a class="cursor-pointer" href="/netzwerk?page={index+1}" class:font-nznBold={pagination.page === index+1}>{index+1}</a>
+           <div class="cursor-pointer" on:keydown={() => { gotoPage(index+1)}} on:click="{() => { gotoPage(index+1)}}" class:font-nznBold={pagination.page === index+1}>{index+1}</div>
         {/each}
-        <div class="w-12">
+        <div class="w-12">                  
         {#if pagination.page < pagination.pageCount}
             <ArrowRight class="w-12 h-12 cursor-pointer" on:click="{() => { gotoPage(pagination.page+1)}}" />
         {/if}
