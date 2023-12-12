@@ -9,10 +9,8 @@
 
 	export let data;
 
-	
-	$: member = data.member.members[0]
-
-	
+	$: member = data.member.members[0];
+	$: pagination = data.pagination.pagination
 	let main: HTMLElement;
 
 	afterNavigate(() => {
@@ -26,10 +24,9 @@
 	<title> {member.title}</title>
 </svelte:head>
 
-
 <Page scrollTop>
 	<div class="w-full relative">
-		
+
 		{#if member.image}
 				<Image image={member.image} class="max-h-[50vh]"/>
 		{:else} 
@@ -41,7 +38,6 @@
 				<X class="h-16 w-16 stroke-[0.5] focus:outline-none"/>
 			</a>
 		</div>
-
 		<div class="flex flex-col xl:flex-row gap-5 w-full p-5">
 			<div class="xl:w-7/12 text-base shrink-0">
 				<h1>{member.title}</h1>
@@ -60,7 +56,7 @@
 				{#if member.website}
 					<div class="flex gap-5">
 						<div class="uppercase min-w-[200px]">website</div>
-						<div class="break-all"><a href={member.website} class="text-grun-dk">{member.website}</a></div>
+						<div class="break-all"><a href={member.website} class="text-grun-dk		">{member.website}</a></div>
 					</div>
 				{/if}
 				{#if member.phone_number}

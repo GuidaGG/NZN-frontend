@@ -62,6 +62,12 @@ export type PageSection =
  | Slideshow
 
 
+export type Pagination= { 
+    page: number;
+    pageCount: number;
+}
+  
+
 // PAGE TYPES
 
 export type PageContents=  {

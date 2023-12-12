@@ -9,11 +9,16 @@
 	import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 	import pinIcon from '$lib/images/map-pin.svg';
 	import DynamicContent from '$lib/components/DynamicContent.svelte';
+	import Pagination from '$lib/components/Pagination.svelte';
 	import { getSortParams } from '$lib/utils.js';
+
 
 	export let data;
 
 	$: members = data.members
+	$: pagination = data.pagination.pagination
+	$: allMembers = data.allMembers;
+
 	let netzwerk: PageContents = data.netzwerk.pages[0]
 
 	const accessToken = import.meta.env.VITE_MAPBOX_API_TOKEN;
@@ -37,7 +42,7 @@
 			minZoom: initialState.minZoom
 		});
 
-		members.forEach((member: { longitude: string; latitude: string; slug: string; }) => {
+		allMembers.forEach((member: { longitude: string; latitude: string; slug: string; }) => {
 			if(member.longitude && member.latitude){
 				const imgElement = document.createElement('img');
 				imgElement.src = pinIcon;
@@ -55,6 +60,8 @@
 		
 	});
 
+
+
 </script>
 
 <svelte:head>
@@ -69,6 +76,7 @@
 			<a href="/netzwerk/{member?.slug}{getSortParams($page)}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >
 				<Member {member} image location/>
 			</a>
-		{/each}						
+		{/each}			
 	</div> 
+	<Pagination {pagination} />
 </Page>
