@@ -7,6 +7,7 @@
 	import Member from '$lib/components/Member.svelte';
 	import RadioBox from '$lib/components/RadioBox.svelte';
 	import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
+	import { getSortParams } from '$lib/utils.js';
 
 	export let data;
 
@@ -19,6 +20,8 @@
 			query.set('sort', selected);	
 			goto(`?${query.toString()}`);
 	}
+
+
 
 </script>
 
@@ -43,7 +46,7 @@
 	
 	<div class="flex flex-col">
 		{#each members as member}
-			<a href="/netzwerk/{member.slug}" class="p-5 hover:bg-grun-dk" >
+			<a href="/netzwerk/{member.slug}{getSortParams($page)}" class="p-5 hover:bg-grun-dk" >
 				<Member {member}  />
 			</a>
 		{/each}
