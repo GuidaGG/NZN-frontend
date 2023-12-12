@@ -25,7 +25,14 @@ export type TextContent = {
     title: string;
     body: HTMLElement;
 }
-  
+
+export type PDF = {
+    id: number;
+    name: string;
+    alternativeText: string;
+    url: string;
+}
+
 export type Select = { 
     name: string;
     value: string;
@@ -92,6 +99,15 @@ export type PracticePreview = {
     main_content: string;
     sidebar: string;
     gallery: Image[];
+}
+
+export type MaterialPreview = {
+    title: string;
+    category: Select;
+    description: string;
+    file: PDF;
+    slug: string;
+    author: string;
 }
   
 export type NewsItem = {

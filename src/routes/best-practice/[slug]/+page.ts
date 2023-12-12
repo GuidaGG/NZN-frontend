@@ -14,6 +14,7 @@ const BestPracticesQuery = gql`
                     upper_content
                     main_content
                     sidebar
+
                     gallery {
                         data {
                             id 
@@ -25,7 +26,66 @@ const BestPracticesQuery = gql`
                             }
                         }
                     }
+                    member { 
+                        data {
+                            id
+                        }
+                    }
+                  
 
+
+                }
+            }
+            meta { 
+                pagination {
+                    page
+                    pageSize
+                    pageCount
+                }
+            }
+        }
+    }
+`
+
+const MembersPreviewQuery= gql`
+    query getMembers($id: ID!) {
+        members(filters: {id: { eq: $id }}){
+            data {
+                id
+                attributes { 
+                    title
+                    slug
+                    agreement 
+                    latitude
+                    longitude
+                    description
+                    states {
+                        data {
+                            attributes {
+                            name
+                            value
+                            }
+                        }
+                    }
+                    work_areas{
+                        data {
+                            attributes {
+                            name
+                            value
+                            }
+                        }
+                    }
+                    image {
+                        data {
+                            id
+                            attributes{
+                                name
+                                alternativeText
+                                url
+                                formats
+                            }
+                        }
+                    }
                 }
             }
             meta { 
@@ -44,10 +104,20 @@ export const load: import('./$types').PageLoad = (async ({ params }) => {
     const variables = {
         slug : params.slug
       }
-    const material = await client.request(BestPracticesQuery, variables);
-
-    return {
-        material:  flattenJson(material),
+    const bestPractice = await client.request(BestPracticesQuery, variables);
+    let assignedMember = await bestPractice.bestPractices.data[0].attributes.member.data;
+    
+    if (Object.is(assignedMember, null)) {
+        return {
+            bestPractice:  flattenJson(bestPractice),
+            member: null,
+        }
+    } else {
+        const member = await client.request(MembersPreviewQuery, {id: assignedMember.id});
+        return {
+            bestPractice:  flattenJson(bestPractice),
+            member: flattenJson(member),
+        }
     }
   } catch (error) {
     console.error('Error fetching data:', error);

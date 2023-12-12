@@ -69,12 +69,12 @@
 		<nav class="main-nav h-16 flex border-t border-gray-900 justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
 			<ul class="flex w-full justify-between px-5 text-base">
 				{#each menuRoutes as menuItem}
-					<li class={menuItem.name === active.name ?
+					<li class="{menuItem.name === active.name ?
 						'flex items-center mr-8 underline underline-offset-4' :
-						'flex items-center mr-8'}>
+						'flex items-center mr-8'} group">
 						<a class="whitespace-nowrap" href={menuItem.pathname}> {menuItem.name} </a>
 						<div class="w-10 h-8">
-							<div class="hidden arrow h-full">
+							<div class="hidden arrow h-full group-hover:flex">
 								<ArrowRight class="hidden xl:block self-center stroke-[3] h-10 w-10" />
 							</div>
 						</div>
@@ -93,10 +93,10 @@
 				<h2 class="pl-6 whitespace-nowrap"> Anmeldung <span class="hidden xl:inline">zum Netzwerk</span> </h2>
 				<ul class="flex flex-col gap-2 w-full text-base">
 					<li>
-						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-netzwerk"> Teilnehmen</a>
+						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/kontakt"> Teilnehmen</a>
 					</li>
 					<li>
-						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/anmeldung-mail"> Mailverteiler </a>
+						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/kontakt"> Mailverteiler </a>
 					</li>
 				</ul>
 		</nav>
@@ -106,11 +106,5 @@
 		</div>
 
 	</div>
-
 </header>
 
-<style lang="postcss">
-	.main-nav li:hover .arrow {
-		display: inline-flex;
-	}
-</style>

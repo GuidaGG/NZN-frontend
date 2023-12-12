@@ -10,6 +10,8 @@
 	import pinIcon from '$lib/images/map-pin.svg';
 	import DynamicContent from '$lib/components/DynamicContent.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
+	import { getSortParams } from '$lib/utils.js';
+
 
 	export let data;
 
@@ -71,7 +73,7 @@
 	<DynamicContent page={netzwerk} />
 	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap">
 		{#each members as member}
-			<a href="/netzwerk/{member?.slug}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >
+			<a href="/netzwerk/{member?.slug}{getSortParams($page)}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >
 				<Member {member} image location/>
 			</a>
 		{/each}			

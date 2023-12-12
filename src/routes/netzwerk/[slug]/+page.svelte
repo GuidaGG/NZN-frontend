@@ -4,6 +4,8 @@
 	import MemberSubList from '$lib/components/MemberSubList.svelte';
 	import X from 'svelte-feathers/X.svelte';
 	import { afterNavigate } from "$app/navigation";
+	import { getSortParams } from '$lib/utils.js';
+	import { page } from '$app/stores';
 
 
 	export let data;
@@ -33,7 +35,7 @@
 		{/if}
 		
 		<div class="absolute top-0 right-0 h-16 w-16 bg-oliv-lt">
-			<a href="/netzwerk">
+			<a href="/netzwerk{getSortParams($page)}">
 				<X class="h-16 w-16 stroke-[0.5] focus:outline-none"/>
 			</a>
 		</div>

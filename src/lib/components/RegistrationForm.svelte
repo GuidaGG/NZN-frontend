@@ -72,7 +72,7 @@
             bind:other={formData.other_organizational_forms} 
             required/>
         {#if errors.organizational_forms}
-            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.organizationalForms}</span>
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.organizational_forms}</span>
         {/if}
        <CheckboxGroup 
             options={workAreas} 
@@ -123,7 +123,7 @@
             required
         />
         {#if errors.work_types}
-            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.work_type}</span>
+            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.work_types}</span>
         {/if}   
         <TextArea name="finances" label="Wie finanziert ihre Organisation die Arbeit bezüglich Zwischennutzungen und Leerstandsbelebung? Bitte geben Sie an, welche Förderungen Sie erhalten und wie ggf. Stellen finanziert werden." bind:value={formData.finances}/>
         <CheckboxGroup 
@@ -180,8 +180,11 @@
                 <RadioBox name="agreement" value=false label="Ich stimme nicht zu" bind:selected={formData.agreement} />
             </div>
         </fieldset>
+
         {#if errors.agreement}
-            <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.agreement}</span>
+        <div class="mt-3"> 
+            <span class="p-1 px-2  border rounded-md border-red-500 text-red-500">{errors.agreement}</span>
+        </div>
         {/if}
      </div>
     </div>

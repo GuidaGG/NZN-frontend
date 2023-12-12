@@ -1,7 +1,7 @@
 <script lang="ts">
   import Bm from './BM.svelte';
   import fbh_bms from '$lib/images/FHB_Senatorin.png';
-  import Instagram from 'svelte-feathers/Instagram.svelte';
+  import { Instagram, X, Facebook } from 'svelte-feathers';
   import Nsp from './NSP_rgb.svelte';
 </script>
 
@@ -25,14 +25,11 @@
   <div class="grow flex gap-3">
     <nav >
       <ul class="flex flex-col gap-3 text-base border-black">
-				<ul class="flex gap-2 items-start">
-          <li>
-            <a class="border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/kontakt"> Kontakt </a>
-          </li>
-          <li>
-            <a class="border-2 h-8 3xl:h-11 rounded-lg border-black px-1 3xl:px-2 inline-block flex hover:shadow-inner-top" target="_blank" href="https://www.instagram.com/netzwerk_zwischennutzung"> <Instagram class="self-center h-6 w-6 3xl:h-3xl:8 w-8" /> </a>
-          </li>
-				</ul>
+
+        <li>
+          <a class="border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/kontakt"> Kontakt </a>
+        </li>
+   
 	
         <li>
 					<a class="border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/impressum"> Impressum </a>
@@ -54,7 +51,17 @@
         <li>
 					<a class="inline-block border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/anmeldung-mail"> Anmeldung Mailverteiler </a>
 				</li>
-	
+        <ul class="flex gap-1">
+          <li>
+            <a class="border-2 h-8 3xl:h-11 rounded-lg border-black px-1 3xl:px-2 inline-block flex hover:shadow-inner-top" target="_blank" href="https://www.instagram.com/netzwerk_zwischennutzung"> <Instagram class="self-center h-6  3xl:h-3xl:8 w-8" /> </a>
+          </li>
+          <li>
+            <a class="border-2 h-8 3xl:h-11 rounded-lg border-black px-1 3xl:px-2 inline-block flex hover:shadow-inner-top" target="_blank" href="https://twitter.com/zw65089?s=20"> <X class="self-center h-6 w-6 3xl:h-3xl:8 w-8" /> </a>
+          </li>
+          <li>
+            <a class="border-2 h-8 3xl:h-11 rounded-lg border-black px-1 3xl:px-2 inline-block flex hover:shadow-inner-top" target="_blank" href="https://www.facebook.com/profile.php?id=61551498520154"> <Facebook class="self-center h-6 w-6 3xl:h-3xl:8 w-8" /> </a>
+          </li>
+        </ul>
 			</ul>
     </nav>
   </div>

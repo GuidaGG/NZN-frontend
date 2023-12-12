@@ -14,6 +14,8 @@
 	let selected: string = "false" ;
 	const page = data.page.pages[0];
 	const content = data.form;
+
+	
 	let form :HTMLFormElement;
 	$: fileImage = {} as FileList;
 	$: fileLogo = {} as FileList;
@@ -54,11 +56,11 @@
 	const schema = yup.object().shape({
         title: yup.string().required("Name ist ein Pflichtfeld"),
         states: yup.array().min(1, "Du musst mindestens eine Option wählen").required("Du musst mindestens eine Option wählen"),
-        organizationalForms: yup.array().min(1,"Du musst mindestens eine Option wählen"),
+        organizational_forms: yup.array().min(1,"Du musst mindestens eine Option wählen"),
         description: yup.string().max(1800, "Der Text ist zu lang"),
         email: yup.string().required("E-Mail ist ein Pflichtfeld").email("Dies ist keine gültige E-Mail"),
-        organizationalGoals: yup.array().min(1, "Du musst mindestens eine Option wählen"),
-        workTypes: yup.array().min(1, "Du musst mindestens eine Option wählen"),
+        organisation_goals: yup.array().min(1, "Du musst mindestens eine Option wählen"),
+        work_types: yup.array().min(1, "Du musst mindestens eine Option wählen"),
         agreement: yup.bool().required("Du musst der Datenvereinbarung zustimmen.")
         .oneOf([true], "Du musst der Datenvereinbarung zustimmen."),
     });

@@ -16,7 +16,7 @@
 	<title> Best Practices </title>
 </svelte:head>
 
-<Page class="{page.slug} bg-grun-lt">
+<Page class="{page.slug} bg-grun-lt" scrollTop>
 	<DynamicContent {page} />
 	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap">
 		{#each practices as practice}
