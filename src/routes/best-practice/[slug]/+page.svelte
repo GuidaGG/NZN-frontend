@@ -8,7 +8,7 @@
 	export let data: PageData;
 
 	$: practice = data.bestPractice.bestPractices[0];
-	$: member = data.member;
+	$: member = data.member?.members[0];
 
 </script>
 
@@ -51,9 +51,9 @@
 			</div>
 		</div>
 
-		{#if member !== null}
+		{#if member }
 		<div class="flex flex-col gap-12 lg:w-1/3 py-12 px-5">
-			<Member member={member.members[0]} image location/>
+			<Member {member} image location/>
 			<a href="/netzwerk/{member.slug}" class="flex justify-between text-base items-center font-nznBold">
 				Zum Netzwerkprofil
 				<ArrowRight class="h-14 w-14 stroke-[2.5] focus:outline-none"/>
@@ -64,7 +64,3 @@
 	</div>
 
 </Page>
-
-
-<!-- <pre>{JSON.stringify(member, null, 2)}</pre> -->
-<!-- <pre>{JSON.stringify(practice, null, 2)}</pre> -->

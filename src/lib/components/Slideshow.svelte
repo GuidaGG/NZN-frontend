@@ -58,16 +58,16 @@ onDestroy(() => {
     {#if buttons}
     <div class="relative px-8 w-full bottom-10">
         <div class="flex justify-between">
-            <!-- {#if currentSlide !== 0} -->
+            {#if currentSlide !== 0} 
             <button on:click={prevSlide} class="border-2 p-2 rounded-2xl border-black bg-oliv-lt">
                 <ArrowLeft class="h-10 w-10 stroke-[2.5]"/>
             </button>
-            <!-- {/if} -->
-            <!-- {#if currentSlide !== slideshow.length - 1} -->
+             {/if}
+            {#if currentSlide !== slideshow.length - 1} 
             <button on:click={nextSlide} class="ml-auto border-2 p-2 rounded-2xl border-black bg-oliv-lt">
                 <ArrowRight class="h-10 w-10 stroke-[2.5]"/>
             </button>
-            <!-- {/if} -->
+            {/if} 
         </div>
     </div>
     {/if}

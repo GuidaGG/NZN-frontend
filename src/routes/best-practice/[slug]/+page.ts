@@ -106,6 +106,7 @@ export const load: import('./$types').PageLoad = (async ({ params }) => {
       }
     const bestPractice = await client.request(BestPracticesQuery, variables);
     let assignedMember = await bestPractice.bestPractices.data[0].attributes.member.data;
+    
     if (Object.is(assignedMember, null)) {
         return {
             bestPractice:  flattenJson(bestPractice),

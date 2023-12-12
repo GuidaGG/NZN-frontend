@@ -7,9 +7,8 @@
 	import Sidenews from '$lib/components/Sidenews.svelte';
 	import { page } from '$app/stores';
 	import type { NewsItem } from '$lib/types.js';
-	import { ArrowRight, Download } from 'svelte-feathers';
-	import Gallery from '$lib/components/Gallery.svelte';
-
+	import {  Download } from 'svelte-feathers';
+	import Slideshow from '$lib/components/Slideshow.svelte';
 	export let data;
 
 	let news = data.news;
@@ -37,7 +36,8 @@
 		</div>
 		{/if}
 		{#if currentNews.gallery.length > 0}
-			<Gallery gallery={currentNews.gallery} />
+			<Slideshow slideshow={currentNews.gallery} manual/>
+
 		{/if}
 	</Page>
 	<Footer />
