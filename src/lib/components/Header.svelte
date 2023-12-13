@@ -3,12 +3,15 @@
 	import Logo from './Logo.svelte';
 	import bmwsb from '$lib/images/BMWSB.png';
 	import aaalogo from '$lib/images/aaa-logo-bw.svg';
-	import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
+	import { ArrowRight } from 'svelte-feathers';
 	import Fhb from './FHB.svelte';
 	import Nsp from './NSP.svelte';
+	
+	import { activeName } from '$lib/stores';
+	$: activeName.set(active.name);
 
 	let defaultColor = 'bg-lime-dk';
-	let active = { name: '', color: defaultColor };
+	$: active = { name: '', color: defaultColor };
 
 	let routes = [
 		{ pathname: '/', name: 'News', color: defaultColor },
@@ -21,7 +24,7 @@
 	];
 	
 	$: for (let route of routes) {		
-		if (route.pathname === $page.url.pathname) {
+		if (route.pathname === $page.url.pathname || route.pathname === route.pathname.split('/')[1]) {
 			active.name = route.name;
 			active.color = route.color;
 		}
@@ -31,12 +34,12 @@
 
 </script>
 
-<!-- temporary mobile-->
-<header class="w-screen sm:w-full fixed sm:relative z-10  sm:flex justify-between border-b border-gray-900 bg-oliv-lt">
+<header class="w-screen absolute bottom-0 sm:bottom-auto sm:top-0 sm:w-full flex z-10 justify-between bg-oliv-lt">
 	
-	<div class="w-full md:w-3/4 border-r border-gray-900">
+	<div class="w-full flex sm:w-3/4 flex-col-reverse sm:flex-col">
 
-		<div class="flex items-center justify-between h-20 sm:h-36 3xl:h-40 px-5">
+		<div class="flex items-center justify-between h-24 sm:h-36 3xl:h-40 px-5 overflow-hidden">
+			
 			<div class="">
 				<a href="/">
 					<div class="h-full object-contain">	
@@ -44,36 +47,36 @@
 					</div>
 				</a>
 			</div>
-			<!-- temporary mobile-->
-			<div class="opacity-0 sm:opacity-100  w-full lg:w-3/5 ">
-				<div class="sm:flex flex-row align-top h-20 gap-5 justify-between items-center pt-1">
+
+			<div class="w-full lg:w-3/5 ">	
+				<div class="flex flex-row align-top h-20 sm:gap-5 justify-between items-center pt-1">
 					<div class="w-full">
 						<img class="object-contain max-h-26" src={bmwsb} alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen">
 					</div>
-					<div class="w-full">
+					<div class="hidden md:block w-full">
 						<Nsp class="max-h-16 w-full" />
 						<!--<Nsp class="max-h-20" alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen" /> -->
 					</div>
-				
 					<div class="w-full">
 						<Fhb class="max-h-20 w-full" />
-					<!--<img class="object-contain max-h-24" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">-->
+						<!--<img class="object-contain max-h-24" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">-->
 					</div>
-					<div class="w-44 mr-4">
+					<div class="hidden lg:block w-44 mr-4">
 						<img class="object-contain" src={aaalogo} alt="AAA Bremen">
 					</div>
 				</div>
 			</div>
+
 		</div>
 
-		<nav class="main-nav h-16 flex border-t border-gray-900 justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
+		<nav class="main-nav h-12 sm:h-16 flex border-b border-t border-black justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
 			<ul class="flex w-full justify-between px-5 text-base">
 				{#each menuRoutes as menuItem}
 					<li class="{menuItem.name === active.name ?
 						'flex items-center mr-8 underline underline-offset-4' :
 						'flex items-center mr-8'} group">
 						<a class="whitespace-nowrap" href={menuItem.pathname}> {menuItem.name} </a>
-						<div class="w-10 h-8">
+						<div class="w-10 h-8 pointer-events-none">
 							<div class="hidden arrow h-full group-hover:flex">
 								<ArrowRight class="hidden xl:block self-center stroke-[3] h-10 w-10" />
 							</div>
@@ -86,14 +89,13 @@
 	</div>
 
 
-	<div class="w-1/4 flex-col hidden md:block">
+	<div class="hidden sm:block sm:w-1/4 fixed top-0 right-0 sm:relative border-l border-black">
 
-		<nav class="h-36 3xl:h-40 p-2 font-nznBold flex flex-col place-content-center">
-				<!-- tempory fix for mobile -->
-				<h2 class="pl-6 whitespace-nowrap"> Anmeldung <span class="hidden xl:inline">zum Netzwerk</span> </h2>
+		<nav class="flex flex-col h-36 3xl:h-40 p-2 font-nznBold place-content-center">
+				<h2 class="pl-6 whitespace-nowrap hidden sm:block"> Anmeldung <span class="hidden xl:inline">zum Netzwerk</span> </h2>
 				<ul class="flex flex-col gap-2 w-full text-base">
 					<li>
-						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/kontakt"> Teilnehmen</a>
+						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/kontakt"> Teilnehmen </a>
 					</li>
 					<li>
 						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/kontakt"> Mailverteiler </a>
@@ -101,10 +103,11 @@
 				</ul>
 		</nav>
 
-		<div class="flex h-16 border-t border-gray-900 items-center px-5 overflow-scroll scrollbar-hide">
+		<div class="flex h-16 border-t border-b border-black items-center px-5 overflow-scroll scrollbar-hide">
 			<div class="text-base font-nznBold scrollbar-hide overflow-scroll"> {active.name} </div>
 		</div>
 
 	</div>
+
 </header>
 
