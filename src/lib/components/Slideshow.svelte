@@ -18,13 +18,13 @@ $: buttons = false;
 $: imgWidth = 100;
 
 const nextSlide = (): void => {
-    currentSlide = (currentSlide + 1) ;
+    currentSlide = (currentSlide + 1) < slideshow.length ? currentSlide + 1 : 0;
     currentSlideElement = container?.children[currentSlide].offsetLeft;
     container.scrollLeft = currentSlideElement
 };
 
 const prevSlide = (): void => {
-    currentSlide = currentSlide - 1;
+    currentSlide = (currentSlide - 1) >= 0 ? currentSlide - 1 : slideshow.length
     currentSlideElement = container?.children[currentSlide].offsetLeft;
     container.scrollLeft = currentSlideElement
 };
