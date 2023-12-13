@@ -6,6 +6,8 @@
     import Upload from 'svelte-feathers/Upload.svelte';
     import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
     import Star from 'svelte-feathers/Star.svelte';
+    import X from 'svelte-feathers/X.svelte';
+	import { fix_and_destroy_block } from "svelte/internal";
 
     type FormData = {
     [key: string]: string  | number[];
@@ -23,8 +25,8 @@
 
     let imageInput: HTMLInputElement;
     let logoInput: HTMLInputElement;
-    let logo: String;
-    let image: String;
+    $: logo = "";
+    $: image = ""
 
     let errorMessage = '';
 
@@ -150,9 +152,12 @@
                 bind:files={fileImage}
                 bind:value={image}
                 /> 
-                {#if image}
+                {#if fileImage[0]}
+                <div class="flex gap-1 items-center">
                     <span class="border border-black rounded-md p-2">{image}</span>
-                {/if}
+                    <X on:click={() =>imageInput.value = ""} class=" cursor-pointer w-11 h-11 border border-red-500 rounded-md p-2 stroke-1 stroke-red-500"/>
+                </div>
+            {/if}
             </div>
         </div>
       
@@ -163,8 +168,11 @@
                 <input class="py-2 hidden"  type="file" name="logo" bind:this={logoInput} 
                 bind:value={logo}
                 bind:files={fileLogo}/>
-                {#if logo}
-                    <span class="border border-black rounded-md p-2">{logo}</span>
+                {#if fileLogo[0]}
+                    <div class="flex gap-1 items-center">
+                        <span class="border border-black rounded-md p-2">{logo}</span>
+                        <X on:click={() =>logoInput.value = ""} class=" cursor-pointer w-11 h-11 border border-red-500 rounded-md p-2 stroke-1 stroke-red-500"/>
+                    </div>
                 {/if}
             </div>
         </div>
