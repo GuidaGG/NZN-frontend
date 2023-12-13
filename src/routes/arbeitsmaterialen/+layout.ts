@@ -12,6 +12,7 @@ const WorkMaterialsQuery= gql`
                     title
                     slug
                     author
+                    url
                     description
                     category {
                         data { 

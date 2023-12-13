@@ -14,6 +14,7 @@ const WorkMaterialsQuery= gql`
                     slug
                     author
                     description
+                    url
                     file {
                         data {
                             id
