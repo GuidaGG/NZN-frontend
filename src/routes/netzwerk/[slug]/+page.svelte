@@ -2,7 +2,7 @@
 	import Page from '$lib/components/Page.svelte';
 	import Image from '$lib/components/Image.svelte';
 	import MemberSubList from '$lib/components/MemberSubList.svelte';
-	import X from 'svelte-feathers/X.svelte';
+	import { X } from 'svelte-feathers';
 	import { afterNavigate } from "$app/navigation";
 
 	export let data;
@@ -34,9 +34,9 @@
 			<div class="h-16 w-full" />
 		{/if}
 		
-		<div class="absolute top-0 right-0 h-16 w-16 bg-oliv-lt">
+		<div class="absolute top-0 right-0 bg-oliv-lt">
 			<a href="/netzwerk">
-				<X class="h-16 w-16 stroke-[0.5] focus:outline-none"/>
+				<X class="h-12 w-12 sm:h-16 sm:w-16 stroke-[0.5] focus:outline-none"/>
 			</a>
 		</div>
 
