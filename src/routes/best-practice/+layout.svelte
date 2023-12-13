@@ -7,7 +7,7 @@
 
 	export let data: PageData;
 
-	let practices = data.practices.bestPractices;
+	let practices = data.allpractices.bestPractices;
 	// console.log(practices);
 
 </script>
