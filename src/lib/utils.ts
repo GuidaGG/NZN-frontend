@@ -6,7 +6,11 @@ export function flattenJson(json: any): any {
     if (json.hasOwnProperty('data')) {
       return flattenJson(json['data']);
     }
-  
+    
+    if (json.hasOwnProperty('meta')) {
+      return flattenJson(json['meta']);
+    }
+    
     if (json.hasOwnProperty('attributes')) {
       return flattenJson(json['attributes']);
     }
@@ -34,4 +38,16 @@ export function randomArray<T>(array: T[]): T[] {
     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
   return shuffledArray;
+}
+
+export 	const getSortParams = (page) => {
+  const query = new URLSearchParams(page.url.searchParams.toString());
+  const sort = query.get('sort')
+  return sort ? sort : ''
+}
+
+export 	const getPageParams = (page) => {
+  const query = new URLSearchParams(page.url.searchParams.toString());
+  const currentPage = query.get('page')
+  return currentPage ? currentPage : ''
 }

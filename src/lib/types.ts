@@ -62,6 +62,12 @@ export type PageSection =
  | Slideshow
 
 
+export type Pagination= { 
+    page: number;
+    pageCount: number;
+}
+  
+
 // PAGE TYPES
 
 export type PageContents=  {
@@ -102,6 +108,7 @@ export type MaterialPreview = {
     file: PDF;
     slug: string;
     author: string;
+    url: string
 }
   
 export type NewsItem = {

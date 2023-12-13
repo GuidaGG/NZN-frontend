@@ -5,12 +5,12 @@
 
 	export let data: PageData;
 
-	$: material = data.material.workMaterials[0];
+	$: material = data.material?.workMaterials[0];
 
 </script>
 
 <svelte:head>
-	<title> {material.title} </title>
+	<title> {material?.title} </title>
 </svelte:head>
 
 <!-- <div>

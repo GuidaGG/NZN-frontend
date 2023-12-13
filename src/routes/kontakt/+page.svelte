@@ -8,13 +8,14 @@
 	import { goto } from '$app/navigation';
 	import { error } from '@sveltejs/kit';
 	import { config } from '$lib/config.js';
+	import Loader from 'svelte-feathers/Loader.svelte';
 
 	export let data;
 
 	let selected: string = "false" ;
 	const page = data.page.pages[0];
 	const content = data.form;
-
+	let loading = false;
 	
 	let form :HTMLFormElement;
 	$: fileImage = {} as FileList;
@@ -67,19 +68,18 @@
 
 
     const handleSubmit = async (event: Event) => {
-       
+		loading = true
         try {
                 await schema.validate(formData, { abortEarly: false });
-
                 try {
 
     				const data = new FormData();
 
 					//appends image to FormData
-					if(fileImage){
+					if(fileImage[0]){
 					data.append(`files.image`, fileImage[0], fileImage[0].name);
 					}
-					if(fileLogo){
+					if(fileLogo[0]){
 						data.append(`files.logo`, fileLogo[0], fileLogo[0].name);
 					}
 					
@@ -91,22 +91,24 @@
 					});
 					
                     if (response.ok) {
+						loading = false
                         const data = await response.json();
                         responseHandler = "sucess"
 
                     } 
 					else{ 
-						console.log(error)
+						loading = false
 						responseHandler = "error"
 					}
                 }
                 catch(error){ 
+					loading = false
                     console.log(error)
 					responseHandler = "error"
                 }
           
             } catch (error: any) {
-                console.log(error)
+                loading = false
                 validationErrors = error.inner.reduce((acc: any, err: any) => {
                     return { ...acc, [err.path]: err.message };
                 }, {});
@@ -131,6 +133,9 @@
 	<meta name="NZN" content="website for netzwerkzwischennutzung" />
 </svelte:head>
 
+<div class={`h-full w-full absolute top-0 bg-grun-lt opacity-60 z-10 items-center justify-center ${loading ? 'flex' : 'hidden'}`}>
+	<Loader class="animate-spin duration-1000 text-black h-10 w-10 "  />
+</div>
 <Maintray>
 	<Page class="{page.slug}">
 		{#if (responseHandler === "register")}
@@ -145,6 +150,7 @@
 			
 			 
 		</form>
+
 		{:else if (responseHandler === "sucess")}
 			<div class="bg-oliv-lt w-full sm:w-5/6 mx-auto p-10 mt-10 rounded-xl border border-black">
 				<h1>Registrierung erfolgreich</h1>

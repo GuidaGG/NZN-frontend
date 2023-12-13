@@ -7,10 +7,11 @@
 	import Member from '$lib/components/Member.svelte';
 	import RadioBox from '$lib/components/RadioBox.svelte';
 	import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
+	import { getPageParams, getSortParams } from '$lib/utils.js';
 
 	export let data;
 
-	$: members = data.members
+	$: allMembers = data.allMembers;
 
 	let selected = "description"
 
@@ -20,14 +21,17 @@
 			goto(`?${query.toString()}`);
 	}
 
+
+
 </script>
 
 <svelte:head>
 	<title> Netzwerk </title>
 </svelte:head>
 
+
 <Maintray>
-	<slot />
+		<slot />
 	<Footer />
 </Maintray>
 
@@ -42,10 +46,12 @@
 	</div>
 	
 	<div class="flex flex-col">
-		{#each members as member}
-			<a href="/netzwerk/{member.slug}" class="p-5 hover:bg-grun-dk" >
+		{#each allMembers as member}
+			<a href="/netzwerk/{member.slug}?page={getPageParams($page)}&sort={getSortParams($page)}" class="p-5 hover:bg-grun-dk" >
 				<Member {member}  />
 			</a>
 		{/each}
+		
 	</div>
+
 </Sidetray>
