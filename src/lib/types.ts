@@ -108,6 +108,7 @@ export type MaterialPreview = {
     file: PDF;
     slug: string;
     author: string;
+    url: string
 }
   
 export type NewsItem = {

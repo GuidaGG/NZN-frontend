@@ -53,19 +53,43 @@
 
   {#if active}
     {#each materialGroup as material, index}
+      {#if material.file}
       <a href="/arbeitsmaterialen/{material.slug}" class={`flex p-5 ${index === length-1 ? 'border-b border-black' : ''} hover:bg-oliv-dk`}>
         <div class="w-full flex-col">
           <h2 class="text-base">{order}.{index + 1}</h2>
           <p class="pb-4 pr-2">{material.description}</p>
+          {#if material.url}
+            <div class="pb-4">
+              <a href={material.url} target="_blank" class="underline break-all">
+                {material.url}
+              </a>
+            </div>
+          {/if}
           <p class="uppercase">{material.author}</p>
+     
         </div>
         <div class="flex flex-col justify-end">
           <!-- <button on:click={() => donwnloadPdf(material.file.url, material.file.name)}> -->
-          <a href={`https://admin.netzwerkzwischennutzung.de${material.file.url}`} class="hover:border hover:border-black" download target="_blank">
+          <a href={`https://admin.netzwerkzwischennutzung.de${material.file?.url}`} class="hover:border hover:border-black" download target="_blank">
             <Download class="self-center stroke-[2.5] h-10 w-10"/>
           </a>
         </div>
       </a>
+      {:else}
+        <div class="w-full flex-col p-5">
+          <h2 class="text-base">{order}.{index + 1}</h2>
+          <p class="pb-4 pr-2">{material.description}</p>
+          {#if material.url}
+            <div class="pb-4">
+              <a href={material.url} target="_blank" class="underline break-all">
+                {material.url}
+              </a>
+            </div>
+          {/if}
+          <p class="uppercase">{material.author}</p>
+        </div>
+
+      {/if}
     {/each}
   {/if}  
 
