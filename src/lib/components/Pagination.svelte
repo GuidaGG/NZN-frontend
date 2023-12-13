@@ -14,6 +14,7 @@
 	
 </script>
 
+{#if pagination.pageCount > 1}
 <div class="w-full">
     <div class="flex gap-3 text-base m-auto w-min items-center">
         <div class="w-12">
@@ -31,3 +32,4 @@
         </div>
     </div>
 </div>
+{/if}
