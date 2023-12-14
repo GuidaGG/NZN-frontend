@@ -28,7 +28,12 @@
 	<div class="w-full relative">
 
 		{#if member.image}
-				<Image image={member.image} class="max-h-[50vh]"/>
+		<div class="relative">
+				<Image image={member.image} class="max-h-[50vh] border-b border-black text-xs"/>
+				{#if member.image.caption} 
+					<div class="absolute right-0 bottom-0 bg-oliv-lt  px-2 border-b border-black ">{member.image.caption}</div>	
+				{/if}
+		</div>
 		{:else} 
 			<div class="h-16 w-full" />
 		{/if}
