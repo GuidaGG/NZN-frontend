@@ -41,7 +41,7 @@
 
 <div class="font-nznBold">
 
-  <button on:click={toggleVisibility} class="flex justify-between items-center w-full text-base py-3 px-5 border-b border-black">
+  <button on:click={toggleVisibility} class="flex justify-between items-center w-full text-base py-3 px-5 border-b border-black break-all">
     <span class="pointer-events-none">
       {#if typeof order !== 'undefined'} {order}. {/if}
       {materialGroup[0].category.name}
@@ -57,7 +57,7 @@
       <a href="/arbeitsmaterialen/{material.slug}" class={`flex p-5 ${index === length-1 ? 'border-b border-black' : ''} hover:bg-oliv-dk`}>
         <div class="w-full flex-col">
           <h2 class="text-base">{order}.{index + 1}</h2>
-          <p class="pb-4 pr-2">{material.description}</p>
+          <p class="mb-4 pr-2 line-clamp-4">{material.description}</p>
           {#if material.url}
             <div class="pb-4">
               <a href={material.url} target="_blank" class="underline break-all">
@@ -66,7 +66,6 @@
             </div>
           {/if}
           <p class="uppercase">{material.author}</p>
-     
         </div>
         <div class="flex flex-col justify-end">
           <!-- <button on:click={() => donwnloadPdf(material.file.url, material.file.name)}> -->
@@ -76,9 +75,9 @@
         </div>
       </a>
       {:else}
-        <div class="w-full flex-col p-5">
+        <div class={`w-full flex-col p-5 ${index === length-1 ? 'border-b border-black' : ''}`}>
           <h2 class="text-base">{order}.{index + 1}</h2>
-          <p class="pb-4 pr-2">{material.description}</p>
+          <p class="pr-2 mb-4">{material.description}</p>
           {#if material.url}
             <div class="pb-4">
               <a href={material.url} target="_blank" class="underline break-all">
@@ -88,7 +87,6 @@
           {/if}
           <p class="uppercase">{material.author}</p>
         </div>
-
       {/if}
     {/each}
   {/if}  
