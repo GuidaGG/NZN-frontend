@@ -6,11 +6,13 @@
 	import { afterNavigate } from "$app/navigation";
 	import { getSortParams, getPageParams } from '$lib/utils.js';
 	import { page } from '$app/stores';
+	import PracticeItem from '$lib/components/PracticeItem.svelte';
 
 	export let data;
 
 	$: member = data.member.members[0];
-	$: pagination = data.pagination.pagination
+	$: practices = data.practices?.bestPractices;
+
 	let main: HTMLElement;
 
 	afterNavigate(() => {
@@ -77,5 +79,18 @@
 				{/if}
 			</div>	
 		</div>
+
+		{#if practices }
+		<div class="border-t mt-10 border-black w-full py-5">
+			<h4 class="text-base font-nznBold px-5 pb-5">Projekt:</h4>
+			<div class="flex flex-col lg:flex-row flex-wrap px-3">
+				{#each practices as practice}
+					<a href="/best-practice/{practice.slug}" class="w-full lg:w-1/2 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >
+					<PracticeItem {practice} image />
+					</a>
+				{/each}
+			</div>
+		</div>
+		{/if}
 	</div>
 </Page>
