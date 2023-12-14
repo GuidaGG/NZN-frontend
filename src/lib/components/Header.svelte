@@ -6,13 +6,23 @@
 	import { ArrowRight } from 'svelte-feathers';
 	import Fhb from './FHB.svelte';
 	import Nsp from './NSP.svelte';
-	
+	import { goto } from '$app/navigation';  
 	import { activeName } from '$lib/stores';
+  
+  let defaultColor = 'bg-lime-dk';
 	$: activeName.set(active.name);
-
-	let defaultColor = 'bg-lime-dk';
+  $: searchQuery = '';
 	$: active = { name: '', color: defaultColor };
 
+
+	function searchPage(){
+		let query = new URLSearchParams($page.url.searchParams.toString());
+		query.set('search', searchQuery.toString());	
+		goto(`/search?${query.toString()}`);
+	}
+
+	function keyDown(even)
+	
 	let routes = [
 		{ pathname: '/', name: 'News', color: defaultColor },
 		{ pathname: '/netzwerk', name: 'Netzwerk', color: 'bg-grun-dk' },
@@ -103,8 +113,12 @@
 				</ul>
 		</nav>
 
-		<div class="flex h-16 border-t border-b border-black items-center px-5 overflow-scroll scrollbar-hide">
-			<div class="text-base font-nznBold scrollbar-hide overflow-scroll"> {active.name} </div>
+		<div class="border-t border-gray-900 px-2 h-16 flex items-center ">
+			<div class="flex gap-2 text-base font-nznBold items-center border-b border-black w-full">
+				<Search class="cursor-pointer" on:click={() => searchPage()}/>
+				<input bind:value={searchQuery} on:keydown={(e) => { if (e.keyCode === 13 || e.which === 13) {searchPage()}}} class={`grow bg-transparent placeholder:text-black focus:outline-none`} placeholder="Suche"/>
+				
+			</div>
 		</div>
 
 	</div>
