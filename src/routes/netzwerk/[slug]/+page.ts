@@ -114,9 +114,47 @@ const MembersQuery= gql`
                             }
                         }
                     }
+                    bestPractices{
+                        data{
+                            id
+                         
+                        }
+                    }
                 }
             }
           
+        }
+    }
+`
+
+const BestPracticesQuery = gql`
+    query getBestPractices($id: [ID]!) {
+        bestPractices(filters: {id: { in: $id }}){
+            data {
+                id
+                attributes { 
+                    title
+                    slug
+                    header
+                    upper_content
+                    main_content
+                    sidebar
+
+                    gallery {
+                        data {
+                            id 
+                            attributes { 
+                                url
+                                formats
+                                alternativeText
+                                name
+                            }
+                        }
+                    }
+
+                }
+            }
+
         }
     }
 `
@@ -127,8 +165,20 @@ export const load: import('./$types').PageLoad = (async ({ params, url }) => {
         slug : params.slug
       }
       const data = await client.request(MembersQuery, variables);
+      let practices = []
+
+      const practiceIds = data.members.data[0].attributes.bestPractices
+      const IDs = [] 
+      if(practiceIds) {
+        for (const item of practiceIds.data) {
+            IDs.push(item.id)
+          }
+       practices = await client.request(BestPracticesQuery, {id: IDs});
+      }
+      
       return {
-        member : flattenJson(data)
+        member : flattenJson(data),
+        practices: flattenJson(practices)
       }
     } catch (error) {
       console.error('Error fetching data:', error);
