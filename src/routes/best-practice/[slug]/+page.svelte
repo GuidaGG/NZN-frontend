@@ -22,9 +22,10 @@
 <Page scrollTop>
 	<div class="w-full relative">
 		
-		<div class="sticky ml-auto z-10 top-0 h-16 w-16 bg-oliv-lt">
-			<a href="/best-practice?page={getPageParams($page)}">
-				<X class="h-16 w-16 stroke-[0.5] focus:outline-none"/>
+		<!-- CAN BE JUST ABSOLUTE (fixed / sticky problems) -->
+		<div class="fixed sm:absolute z-10 right-0 bg-oliv-lt">
+				<a href="/best-practice?page={getPageParams($page)}">
+				<X class="h-12 w-12 sm:h-16 sm:w-16 stroke-[0.5] focus:outline-none"/>
 			</a>
 		</div>
 
@@ -54,11 +55,11 @@
 		</div>
 
 		{#if member }
-		<div class="flex flex-col gap-12 lg:w-1/3 py-12 px-5">
+		<div class="flex flex-col gap-6 sm:gap-12 lg:w-1/3 py-12 px-5">
 			<Member {member} image location/>
 			<a href="/netzwerk/{member.slug}" class="flex justify-between text-base items-center font-nznBold">
-				Zum Netzwerkprofil
-				<ArrowRight class="h-14 w-14 stroke-[2.5] focus:outline-none"/>
+				<span>Zum Netzwerkprofil</span>
+				<ArrowRight class="h-8 w-8 sm:h-12 sm:w-12 stroke-[2.5] focus:outline-none"/>
 			</a>
 		</div>
 		{/if}

@@ -25,8 +25,7 @@
 	<Page class="bg-lime-dk">
 		<DynamicContent page={homepage}/>
 	</Page>
-	<!-- stupid temporary fix for mobile - remove later -->
-	<Footer class="hidden sm:flex"/>
+	<Footer />
 </Maintray>
 
 <Sidetray>
@@ -36,5 +35,3 @@
 		{/each}
 	</div>
 </Sidetray>
-<!-- stupid temporary fix for mobile - remove later -->
-<Footer class="block sm:hidden"/>
