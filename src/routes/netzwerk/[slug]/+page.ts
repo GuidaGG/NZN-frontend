@@ -99,6 +99,7 @@ const MembersQuery= gql`
                                 alternativeText
                                 url
                                 formats
+                                caption
                             }
                         }
                     }
