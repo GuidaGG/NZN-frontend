@@ -3,7 +3,7 @@
 	import Logo from './Logo.svelte';
 	import bmwsb from '$lib/images/BMWSB.png';
 	import aaalogo from '$lib/images/aaa-logo-bw.svg';
-	import { ArrowRight } from 'svelte-feathers';
+	import { Search, ArrowRight } from 'svelte-feathers';
 	import Fhb from './FHB.svelte';
 	import Nsp from './NSP.svelte';
 	import { goto } from '$app/navigation';  
@@ -113,7 +113,7 @@
 				</ul>
 		</nav>
 
-		<div class="border-t border-gray-900 px-2 h-16 flex items-center ">
+		<div class="border-t border-b  border-gray-900 px-2 h-12 sm:h-16 flex items-center ">
 			<div class="flex gap-2 text-base font-nznBold items-center border-b border-black w-full">
 				<Search class="cursor-pointer" on:click={() => searchPage()}/>
 				<input bind:value={searchQuery} on:keydown={(e) => { if (e.keyCode === 13 || e.which === 13) {searchPage()}}} class={`grow bg-transparent placeholder:text-black focus:outline-none`} placeholder="Suche"/>
