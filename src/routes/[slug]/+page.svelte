@@ -20,7 +20,7 @@
 
 
 <Maintray>
-	<Page class="{page?.slug}">
+	<Page class="{page?.slug}" noSidebar>
 		<DynamicContent {page} size="text-base"/>
 	</Page>
 
