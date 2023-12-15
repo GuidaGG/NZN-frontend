@@ -67,7 +67,7 @@
          <Input name="city" label="In welcher Stadt ist der Hauptsitz ihrer Organisation?" bind:value={formData.city} />
         <CheckboxGroup 
             options={organizationalForms} 
-            name="organizationalForms" 
+            name="organizational_forms" 
             label="Organisationsform:" 
             bind:group={formData.organizational_forms} 
             other_value="other_organizational_forms" 
@@ -105,7 +105,7 @@
         <Input name="phone" label="Telefonnummer" type="text" bind:value={formData.phone}/>
         <CheckboxGroup 
             options={organizationalGoals} 
-            name="organizationalGoals"
+            name="organizational_goals"
             label="Was sind die Ziele ihrer Organisation?" 
             bind:group={formData.organisation_goals}
             other_value="other_organizational_goals"

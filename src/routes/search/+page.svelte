@@ -1,14 +1,11 @@
 <!-- Search.svelte -->
 <script lang="ts">
-  import { MeiliSearch } from 'meilisearch'
-  import { page } from '$app/stores';  
-  import { Search } from 'svelte-feathers';
-	import { dataset_dev } from 'svelte/internal';
+
 	import Page from '$lib/components/Page.svelte';
   import SearchResult from '$lib/components/SearchResult.svelte';
 
   export let data;
- 
+
   $: searchResults = data.search?.results
 
   
@@ -43,6 +40,7 @@
   }
 
   </script>
+
 <Page >
   <div class="text-base">
       <h1 class="p-5">Suchergebnisse:</h1>

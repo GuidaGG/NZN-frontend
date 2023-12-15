@@ -129,7 +129,7 @@
 
 
 <svelte:head>
-	<title>{page.title}</title>
+	<title>{page?.title}</title>
 	<meta name="NZN" content="website for netzwerkzwischennutzung" />
 </svelte:head>
 

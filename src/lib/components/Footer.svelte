@@ -45,11 +45,11 @@
     <nav class="grow">
       <ul class="flex flex-col gap-2 w-full text-base">
         <li>
-					<a class="inline-block border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/anmeldung-netzwerk"> Anmeldung Netzwerk </a>
+					<a class="inline-block border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/kontakt"> Anmeldung Netzwerk </a>
 				</li>
 		
         <li>
-					<a class="inline-block border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/anmeldung-mail"> Anmeldung Mailverteiler </a>
+					<a class="inline-block border-2 rounded-lg border-black px-2 hover:shadow-inner-top" href="/kontakt"> Anmeldung Mailverteiler </a>
 				</li>
         <ul class="flex gap-1">
           <li>
