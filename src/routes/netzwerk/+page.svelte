@@ -47,7 +47,7 @@
 				const imgElement = document.createElement('img');
 				imgElement.src = pinIcon;
 				imgElement.style.cursor = 'pointer';
-				imgElement.className = 'h-20 w-20'; // tailwind class works here
+				imgElement.className = 'h-14 w-14 sm:h-20 sm:w-20'; // tailwind class works here
 				
 				const location: [number, number] = [parseFloat(member.longitude), parseFloat(member.latitude)];
 				const marker = new mapboxgl.Marker(imgElement).setLngLat(location).addTo(nznMap);
@@ -69,7 +69,7 @@
 </svelte:head>
 
 <Page>
-	<div id="map" class="h-[55vh]"></div>
+	<div id="map" class="h-[45vh] sm:h-[50vh]"></div>
 	<DynamicContent page={netzwerk} />
 	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap">
 		{#each members as member}

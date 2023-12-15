@@ -4,7 +4,8 @@
 	import { ArrowRight } from 'svelte-feathers';
 	import { onMount } from 'svelte';
 	
-	export let scrollTop = false
+	export let scrollTop = false;
+	export let noSidebar = false;
 
 	$: isOpen = false;
 	$: title = '';
@@ -36,6 +37,7 @@
 </script>
 
 <section class="pb-10	{$$restProps.class}" bind:this={main}>
+	{#if !noSidebar}
 	<div class={`sm:hidden flex justify-between items-center w-full border-b border-black h-12 pr-1 ${!isOpen ? 'pl-4': 'pl-1'}`}>
 		{#if !isOpen}
 		<h2 class="text-sm font-nznBold"> {title} </h2>
@@ -44,5 +46,6 @@
 			<ArrowRight class={`p-2 h-10 w-10 stroke-[3] ${isOpen ? 'transform rotate-180' : ''} focus:outline-none`}/>
 		</button>
 	</div>
+	{/if}
 	<slot />
 </section>
