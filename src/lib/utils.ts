@@ -51,3 +51,9 @@ export 	const getPageParams = (page) => {
   const currentPage = query.get('page')
   return currentPage ? currentPage : ''
 }
+
+export const getSearchParams = (page)  => {
+  const query = new URLSearchParams(page.url.searchParams.toString());
+  const searchQuery = query.get('search')
+  return searchQuery
+}

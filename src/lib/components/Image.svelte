@@ -15,6 +15,7 @@ $: url = size != null && image.formats[size].url ? image.formats[size].url : ima
     class={`object-cover ${buttons ? count > 1 ? 'w-auto pr-6' : 'w-auto' : 'w-full  min-w-full'} ${$$restProps.class}` }
     src={`${config.apiUrl}${url}`} 
     alt={image.alternativeText}
+    loading="lazy"
 />
 
 <!-- class="w-full min-w-full object-cover {$$restProps.class} " -->
