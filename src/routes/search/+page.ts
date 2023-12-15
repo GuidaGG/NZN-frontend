@@ -3,7 +3,7 @@ import { searchClient } from '$lib/api';
 import { getSearchParams } from '$lib/utils';
 
 
-export const load: import('./$types').PageLoad = (async (params, url) => {
+export const load: import('./$types').PageLoad = (async (params) => {
 
     try {
         const searchQuery = getSearchParams(params)
@@ -43,8 +43,9 @@ export const load: import('./$types').PageLoad = (async (params, url) => {
             else {
                 response = []
             }
+            
         return {
-           search: response
+           search:  response
         }
       } catch (error) {
         console.error('Error fetching data:', error);

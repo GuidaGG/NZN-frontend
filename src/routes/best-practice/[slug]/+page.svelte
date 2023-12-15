@@ -16,7 +16,7 @@
 
 
 <svelte:head>
-	<title> {practice.title} </title>
+	<title> {practice?.title} </title>
 </svelte:head>
 
 <Page scrollTop>

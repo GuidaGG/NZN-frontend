@@ -23,7 +23,7 @@
 </script>
 
 <svelte:head>
-	<title> {member.title}</title>
+	<title> {member?.title}</title>
 </svelte:head>
 
 <Page scrollTop>
