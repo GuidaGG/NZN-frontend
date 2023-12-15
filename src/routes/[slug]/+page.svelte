@@ -14,7 +14,9 @@
 
 
 <svelte:head>
+	{#if page.title}
 	<title> {page.title}</title>
+	{/if}
 	<meta name="NZN" content="website for netzwerkzwischennutzung" />
 </svelte:head>
 
