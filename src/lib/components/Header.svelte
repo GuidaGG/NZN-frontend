@@ -20,8 +20,6 @@
 		query.set('search', searchQuery.toString());	
 		goto(`/search?${query.toString()}`);
 	}
-
-	function keyDown(even)
 	
 	let routes = [
 		{ pathname: '/', name: 'News', color: defaultColor },
@@ -44,7 +42,7 @@
 
 </script>
 
-<header class="w-screen absolute bottom-0 sm:bottom-auto sm:top-0 sm:w-full flex z-10 justify-between bg-oliv-lt">
+<header class="w-screen absolute bottom-0 sm:bottom-auto sm:top-0 sm:w-full flex z-20 justify-between bg-oliv-lt">
 	
 	<div class="w-full flex sm:w-3/4 flex-col-reverse sm:flex-col">
 

@@ -7,7 +7,7 @@
     PdfLoadSuccessContent,
     PdfPageContent,
   } from "svelte-pdf-simple";
-	import { ArrowLeft, ArrowRight, Download, Maximize, Minimize } from 'svelte-feathers';
+	import { ArrowLeft, ArrowRight, Download, Maximize, Minimize, Loader } from 'svelte-feathers';
 
 	export let data: PageData;
 	// $: material = data.material?.workMaterials[0];
@@ -86,22 +86,20 @@
 
 <Page >
 	
-	{#if isPdfLoaded}
 	<div class="text-base font-nznBold p-5 mb-14 sm:mb-0"> {material.description} </div>
-	{/if}
-	
+
 	<div class="relative flex flex-col w-full items-center justify-center center" id="pdf-container">
 	
 		{#if isPdfLoaded}
 		<div class="absolute flex flex-col sm:flex-row gap-5 left-8 -top-14 sm:top-8">
 			<button
 				on:click={downloadPdf}
-				class="border-2 p-2 rounded-2xl border-black bg-oliv-lt hover:shadow-inner-top focus:hover:shadow-inner-top">
+				class="border-2 p-2 rounded-lg sm:rounded-2xl border-black bg-oliv-lt hover:shadow-inner-top focus:hover:shadow-inner-top">
 				<Download class="h-6 w-6 sm:h-10 sm:w-10 stroke-[2.5] focus:outline-none"/>
 			</button>
 			<button
 				on:click={toggleFullscreen}
-				class="ml-auto hidden sm:block border-2 p-2 rounded-2xl border-black bg-oliv-lt hover:shadow-inner-top focus:hover:shadow-inner-top">
+				class="ml-auto hidden sm:block border-2 p-2 rounded-lg sm:rounded-2xl border-black bg-oliv-lt hover:shadow-inner-top focus:hover:shadow-inner-top">
 				{#if fullscreen}
 				<Minimize class="h-6 w-6 sm:h-10 sm:w-10 stroke-[2.5] focus:outline-none"/>
 				{:else}
@@ -114,7 +112,7 @@
 			{#if pageNumber !== 1} 
 			<button
 				on:click={() => goToPage(pageNumber - 1)}
-				class="border-2 p-2 rounded-2xl border-black bg-oliv-lt hover:shadow-inner-top focus:hover:shadow-inner-top">
+				class="border-2 p-2 rounded-lg sm:rounded-2xl border-black bg-oliv-lt hover:shadow-inner-top focus:hover:shadow-inner-top">
 				<ArrowLeft class="h-6 w-6 sm:h-10 sm:w-10 stroke-[2.5] focus:outline-none"/>
 			</button>
 			{/if}
@@ -122,7 +120,7 @@
 			{#if pageNumber !== totalPages} 
 			<button
 				on:click={() => goToPage(pageNumber + 1)}
-				class="ml-auto border-2 p-2 rounded-2xl border-black bg-oliv-lt hover:shadow-inner-top focus:hover:shadow-inner-to">
+				class="ml-auto border-2 p-2 rounded-lg sm:rounded-2xl border-black bg-oliv-lt hover:shadow-inner-top focus:hover:shadow-inner-to">
 				<ArrowRight class="h-6 w-6 sm:h-10 sm:w-10 stroke-[2.5] focus:outline-none"/>
 			</button>
 			{/if}
@@ -142,7 +140,13 @@
 			on:load_success={handleLoadedSuccess}
 			on:load_failure={handleLoadFailure}
 			on:page_changed={handlePageChanged}
-		/>
+		>
+			<svelte:fragment slot="loading">
+				<div class="flex h-32 w-full opacity-60 items-center justify-center">
+					<Loader class="animate-spin duration-1000 text-black h-10 w-10 "/>
+				</div>
+			</svelte:fragment>
+		</PdfViewer>
 		{/key}
 	</div>
 	
