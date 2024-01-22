@@ -10,7 +10,7 @@
 
 	export let data;
 
-	$: member = data.member.members[0];
+	$: member= data.member.members[0];
 	$: practices = data.practices?.bestPractices;
 
 	let main: HTMLElement;
@@ -31,7 +31,7 @@
 
 		{#if member.image}
 		<div class="relative">
-				<Image image={member.image} class="max-h-[50vh] border-b border-black text-xs"/>
+				<Image image={member.image} class="max-h-[50vh] border-b border-black text-xs object-{member.imageRelevantArea}"/>
 				{#if member.image.caption} 
 					<div class="absolute right-0 bottom-0 bg-oliv-lt  px-2 border-b border-black ">{member.image.caption}</div>	
 				{/if}
