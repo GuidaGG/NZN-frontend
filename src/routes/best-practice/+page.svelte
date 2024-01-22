@@ -7,6 +7,7 @@
 	import Pagination from '$lib/components/Pagination.svelte';
 	import { getPageParams } from '$lib/utils';
 	import { page } from '$app/stores';
+	import { afterNavigate } from "$app/navigation";
 
 	export let data: PageData;
 
@@ -14,6 +15,12 @@
 	$: practices = data.practices?.bestPractices;
 	$: pagination = data.pagination?.pagination;
 
+	let mainArea: HTMLElement;
+	afterNavigate(() => {
+		if (mainArea && getPageParams($page)) { 
+			mainArea.scrollIntoView();
+		}
+	});
 </script>
 
 <svelte:head>
@@ -22,7 +29,7 @@
 
 <Page class="{pageContent.slug} bg-grun-lt" scrollTop>
 	<DynamicContent page={pageContent} />
-	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap">
+	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap" bind:this={mainArea}>
 		{#each practices as practice}
 			<a href="/best-practice/{practice.slug}?page={getPageParams($page)}" class="w-full lg:w-1/2 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >
 				<PracticeItem {practice} image/>

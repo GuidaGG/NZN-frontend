@@ -11,7 +11,7 @@
 	import DynamicContent from '$lib/components/DynamicContent.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
 	import { getSortParams, getPageParams } from '$lib/utils.js';
-
+	import { afterNavigate } from "$app/navigation";
 
 	export let data;
 
@@ -60,8 +60,12 @@
 		
 	});
 
-
-
+	let mainArea: HTMLElement;
+	afterNavigate(() => {
+		if (mainArea && getPageParams($page)) { 
+			mainArea.scrollIntoView();
+		}
+	});
 </script>
 
 <svelte:head>
@@ -71,7 +75,7 @@
 <Page>
 	<div id="map" class="h-[45vh] sm:h-[50vh]"></div>
 	<DynamicContent page={netzwerk} />
-	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap">
+	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap scroll-mt-20" bind:this={mainArea}>
 		{#each members as member}
 			<a href="/netzwerk/{member?.slug}?page={getPageParams($page)}&sort={getSortParams($page)}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >
 				<Member {member} image location/>
