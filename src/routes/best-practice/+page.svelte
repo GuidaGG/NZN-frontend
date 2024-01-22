@@ -31,7 +31,7 @@
 	<DynamicContent page={pageContent} />
 	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap" bind:this={mainArea}>
 		{#each practices as practice}
-			<a href="/best-practice/{practice.slug}?page={getPageParams($page)}" class="w-full lg:w-1/2 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >
+			<a href="/best-practice/{practice.slug}?page={getPageParams($page)}" class="w-full lg:w-1/2 p-2 pt-4 pb-12 border-2 border-transparent hover:border-black rounded-xl">
 				<PracticeItem {practice} image/>
 			</a>
 		{/each}

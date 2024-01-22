@@ -56,7 +56,7 @@
       {#if material.file}
       <a href="/arbeitsmaterialen/{material.slug}" class={`flex p-5 ${index === length-1 ? 'border-b border-black' : ''} hover:bg-oliv-dk`}>
         <div class="w-full flex-col">
-          <h2 class="text-base">{order}.{index + 1}</h2>
+          <h2 class="text-base mb-2">{order}.{index + 1} {material.title}</h2>
           <p class="mb-4 pr-2 line-clamp-4">{material.description}</p>
           {#if material.url}
             <div class="pb-4">
@@ -76,7 +76,7 @@
       </a>
       {:else}
         <div class={`w-full flex-col p-5 ${index === length-1 ? 'border-b border-black' : ''}`}>
-          <h2 class="text-base">{order}.{index + 1}</h2>
+          <h2 class="text-base mb-2">{order}.{index + 1} {material.title}</h2>
           <p class="pr-2 mb-4">{material.description}</p>
           {#if material.url}
             <div class="pb-4">
