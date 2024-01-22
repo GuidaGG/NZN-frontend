@@ -11,7 +11,7 @@
   
   let defaultColor = 'bg-lime-dk';
 	$: activeName.set(active.name);
-  $: searchQuery = '';
+  	$: searchQuery = '';
 	$: active = { name: '', color: defaultColor };
 
 
@@ -106,7 +106,7 @@
 						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/kontakt"> Teilnehmen </a>
 					</li>
 					<li>
-						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/kontakt"> Mailverteiler </a>
+						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="mailto:verteilerNZN+subscribe@netzwerkzwischennutzung.de"> Mailverteiler </a>
 					</li>
 				</ul>
 		</nav>

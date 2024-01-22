@@ -5,10 +5,9 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import RegistrationForm from '$lib/components/RegistrationForm.svelte';
 	import * as yup from 'yup';
-	import { goto } from '$app/navigation';
-	import { error } from '@sveltejs/kit';
 	import { config } from '$lib/config.js';
 	import Loader from 'svelte-feathers/Loader.svelte';
+	import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
 
 	export let data;
 
@@ -66,7 +65,6 @@
         .oneOf([true], "Du musst der Datenvereinbarung zustimmen."),
     });
 
-
     const handleSubmit = async (event: Event) => {
 		loading = true
         try {
@@ -122,7 +120,6 @@
                     });
                     }
             }
-
     }
 
 </script>
@@ -138,6 +135,19 @@
 </div>
 <Maintray>
 	<Page class="{page.slug}">
+		<div class="w-full md:w-2/3 m-auto my-10 pb-10 border-b border-black md:border-0 ">
+			<div class="rounded-xl md:border-black md:border p-5">
+				<h2 class="text-base font-nznBold pb-10">Anmeldung Mailverteiler</h2>
+				<span>
+					Nachdem du auf "Beitreten" geklickt hast, öffnet sich automatisch dein Standard-E-Mail-Programm mit einer neuen Nachricht an die angegebene E-Mail-Adresse. Du musst weder Betreff noch Text in der E-Mail eingeben. Sobald du die E-Mail sendest, bekommst du kurz darauf eine Bestätigungsmail. Um die Anmeldung abzuschließen, antworte einfach auf diese Bestätigungsmail.
+				</span>
+			</div>
+			<a href="mailto:verteilerNZN+subscribe@netzwerkzwischennutzung.de"><button type="submit" class="bg-oliv-lt ml-5 md:ml-0 py-2 px-5 rounded-xl border border-black text-base hover:shadow-inner-top mt-5 flex justify-between items-center">
+				<span class="w-48 md:w-64 text-left">Beitreten</span>
+		
+				<span><ArrowRight /></span>
+			</button></a>
+		</div>
 		{#if (responseHandler === "register")}
 		<form class="w-full md:w-2/3 m-auto my-10" on:submit|preventDefault={handleSubmit} method="POST" bind:this={form}>
 			<RegistrationForm 
@@ -186,6 +196,8 @@
 						<li class="border-b border-black text-xs px-5 py-2">Netzwerk Zwischennutzung:</li>
 						<li class="px-5 py-2 pb-14">{section.description}</li>
 					<li>
+						<li class="border-b border-black text-xs px-5 py-2">Mail:</li>
+						<li class="px-5 py-2 pb-14">{section.email}</li>
 					<li>
 						<li class="border-b border-black text-xs px-5 py-2">Umsetzung der Webseite:</li>
 						<li class="px-5 py-2 pb-14">{section.website}</li>
@@ -199,8 +211,7 @@
 						<li class="px-5 py-2 pb-14">{section.phone_number}</li>
 					<li>
 					<li>
-						<li class="border-b border-black text-xs px-5 py-2">Mail:</li>
-						<li class="px-5 py-2 pb-14">{section.email}</li>
+					
 					<li class="border-t border-black  px-5 py-2 pb-14">
 						{section.steuer}
 					<li>
