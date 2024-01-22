@@ -97,8 +97,11 @@
 		@apply m-0
 	}
 
+	.text-content ul {
+		@apply ml-5
+	}
 	.text-content li {
-		@apply list-disc  list-inside 
+		@apply list-disc list-outside
 	}
 
 	.text-content p { 
@@ -118,5 +121,11 @@
 	.no-scrollbar {
 		-ms-overflow-style: none;  /* IE and Edge */
 		scrollbar-width: none;  /* Firefox */
+	}
+}
+
+@media (min-width: 1024px) {
+	.text-content ul {
+		@apply ml-8
 	}
 }
