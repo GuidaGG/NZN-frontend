@@ -1,5 +1,5 @@
 <script lang="ts">
-    import X from 'svelte-feathers/X.svelte';
+    import { X } from 'svelte-feathers';
     export let name: string;
     export let value: number[] | string | string[] | boolean;
     export let label: string
@@ -7,7 +7,7 @@
 
 </script>
 
-<div class="flex items-center gap-4 relative ">
+<div class="flex items-center gap-2 relative">
     <div class="relative">
         <input id="green-checkbox" type="radio" {name} bind:group={selected} {value} class="
         appearance-none w-8 h-8 border-0 rounded-md bg-grun-dk 

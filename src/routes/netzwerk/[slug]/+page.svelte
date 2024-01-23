@@ -52,9 +52,15 @@
 			</div>
 			<div class="xl:w-5/12 font-nznBold text-xs overflow-hidden">
 				<MemberSubList values={member.states} label = "wirkungsraum:" />
+				<div class="flex flex-row gap-5 pb-5 text-xs w-full">
+					<div class="uppercase min-w-[200px]">stadt:</div>
+					<p>{member.city}</p>
+				</div>
 				<MemberSubList values={member.organizational_forms} label = "organisationsform:" />
 				<MemberSubList values={member.work_areas} label = "arbeitsbereiche:" />
 				<MemberSubList values={member.context} label = "kontext:" />
+				<MemberSubList values={member.expertise} label = "expertise:" />
+				<MemberSubList values={member.support} label = "unterstützung benötigen bei:" />
 				<div class="uppercase min-w-[200px]">kontaktdaten:</div>
 				<div class="flex gap-5 ">
 					<div class="uppercase min-w-[200px]">mailadresse</div>
