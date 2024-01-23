@@ -42,7 +42,7 @@
 			minZoom: initialState.minZoom
 		});
 
-		allMembers.forEach((member: { longitude: string; latitude: string; slug: string; }) => {
+		allMembers.forEach((member: { longitude: string; latitude: string; slug: string; title: string}) => {
 			if(member.longitude && member.latitude){
 				const imgElement = document.createElement('img');
 				imgElement.src = pinIcon;
@@ -51,6 +51,20 @@
 				
 				const location: [number, number] = [parseFloat(member.longitude), parseFloat(member.latitude)];
 				const marker = new mapboxgl.Marker(imgElement).setLngLat(location).addTo(nznMap);
+
+				const titleElement = document.createElement('div');
+				titleElement.className = 'text-center text-sm font-bold';
+				titleElement.textContent = member.title;
+				const popup = new mapboxgl.Popup({ offset: 36, closeButton: false }).setDOMContent(titleElement);
+				marker.setPopup(popup);
+				
+				imgElement.addEventListener('mouseenter', () => {
+					popup.addTo(nznMap);
+				});
+
+				imgElement.addEventListener('mouseleave', () => {
+					popup.remove();
+				});
 
 				imgElement.addEventListener('click', () => {
 					goto(`${$page.url.pathname}/${member.slug}`);
@@ -74,7 +88,7 @@
 
 <Page>
 	<div id="map" class="h-[45vh] sm:h-[50vh]"></div>
-	<DynamicContent page={netzwerk} />
+	<DynamicContent page={netzwerk} size="text-base"/>
 	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap scroll-mt-20" bind:this={mainArea}>
 		{#each members as member}
 			<a href="/netzwerk/{member?.slug}?page={getPageParams($page)}&sort={getSortParams($page)}" class="w-full lg:w-1/3 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >

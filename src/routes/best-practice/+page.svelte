@@ -28,7 +28,7 @@
 </svelte:head>
 
 <Page class="{pageContent.slug} bg-grun-lt" scrollTop>
-	<DynamicContent page={pageContent} />
+	<DynamicContent page={pageContent} size="text-base"/>
 	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap" bind:this={mainArea}>
 		{#each practices as practice}
 			<a href="/best-practice/{practice.slug}?page={getPageParams($page)}" class="w-full lg:w-1/2 p-2 py-4 border-2 border-transparent hover:border-black rounded-xl" >
