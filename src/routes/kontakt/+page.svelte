@@ -192,27 +192,27 @@
 				<!--<TextContent content={section} /> -->
 			{:else if section.__typename === "ComponentTextContactData"}
 				<ul class="text-base py-5">
-					<li>
-						<li class="border-b border-black text-xs px-5 py-2">Netzwerk Zwischennutzung:</li>
-						<li class="px-5 py-2 pb-14">{section.description}</li>
-					<li>
+				
 						<li class="border-b border-black text-xs px-5 py-2">Mail:</li>
-						<li class="px-5 py-2 pb-14">{section.email}</li>
+						<li class="px-5 py-2 pb-8">{section.email}</li>
 					<li>
 						<li class="border-b border-black text-xs px-5 py-2">Umsetzung der Webseite:</li>
-						<li class="px-5 py-2 pb-14">{section.website}</li>
+						<li class="px-5 py-2 pb-8">{@html section.website}</li>
 					<li>
 					<li>
 						<li class="border-b border-black text-xs px-5 py-2">Ansprechpartnerin:</li>
-						<li class="px-5 py-2 pb-14">{section.contact_person}</li>
+						<li class="px-5 py-2 pb-8">{section.contact_person}</li>
 					<li>
 					<li>
 						<li class="border-b border-black text-xs px-5 py-2">Telefon:</li>
-						<li class="px-5 py-2 pb-14">{section.phone_number}</li>
+						<li class="px-5 py-2 pb-8">{section.phone_number}</li>
 					<li>
 					<li>
-					
-					<li class="border-t border-black  px-5 py-2 pb-14">
+					<li>
+						<li class="border-b border-black text-xs px-5 py-2">Netzwerk Zwischennutzung:</li>
+						<li class="px-5 py-2 pb-8">{section.description}</li>
+					<li>			
+					<li class="border-t border-black  px-5 py-2 pb-8">
 						{section.steuer}
 					<li>
 

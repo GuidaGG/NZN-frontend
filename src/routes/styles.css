@@ -108,7 +108,7 @@
 		@apply pb-5
 	}
 	
-	.text-content a {
+	.text-content a, li a {
 		@apply underline
 	}
 
