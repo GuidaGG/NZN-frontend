@@ -26,9 +26,9 @@
             <img alt="Netzwerk-Thumbnail" src={thumbnails[randomIndex]} class="object-cover h-full">
         </div>
     {/if}
-    <h3 class="pt-2 text-base pb-2">{member.title}</h3>
+    <h3 class="pt-2 text-base pb-0 md:pb-2">{member.title}</h3>
     {#if location}
-    <div class="text-xs pt-2 pb-4">
+    <div class="text-xs pt-2 pb-0 md:pb-4">
         {#each member.states as state, index}
         <span>{addCommas(state.name, index, member.states)}</span>
         {/each}   

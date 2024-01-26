@@ -11,8 +11,8 @@
 <div class="font-nznBold">
   
   {#if image && practice.gallery.length}
-    <div class="text-base pt-2 line-clamp-6"> {practice.title}</div>
-    <h3 class="pt-2 text-xl pb-2">{practice.header}</h3> 
+    <div class="text-xs md:text-base pt-2 line-clamp-6"> {practice.title}</div>
+    <h3 class="md:pt-2 text-xl pb-2">{practice.header}</h3> 
     <Image class="h-96" image={practice.gallery[0]} />
   {:else}
     <h3 class="pt-2 text-base">{practice.header}</h3> 

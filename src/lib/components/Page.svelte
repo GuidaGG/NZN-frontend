@@ -40,7 +40,7 @@
 	{#if !noSidebar}
 	<div class={`sm:hidden flex justify-between items-center w-full border-b border-black h-12 pr-1 ${!isOpen ? 'pl-4': 'pl-1'}`}>
 		{#if !isOpen}
-		<h2 class="text-sm font-nznBold"> {title} </h2>
+		<h2 class="text-base font-nznBold"> {title} </h2>
 		{/if}
 		<button on:click={toggleSidetray} class="flex justify-center items-center">
 			<ArrowRight class={`p-2 h-10 w-10 stroke-[3] ${isOpen ? 'transform rotate-180' : ''} focus:outline-none`}/>

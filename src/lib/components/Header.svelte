@@ -78,11 +78,11 @@
 		</div>
 
 		<nav class="main-nav h-12 sm:h-16 flex border-b border-t border-black justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
-			<ul class="flex w-full justify-between px-5 text-base">
+			<ul class="flex w-full justify-between px-5 text-base tracking-wider">
 				{#each menuRoutes as menuItem}
 					<li class="{menuItem.name === active.name ?
-						'flex items-center mr-8 underline underline-offset-4' :
-						'flex items-center mr-8'} group">
+						'flex items-center md:mr-8 underline underline-offset-4' :
+						'flex items-center md:mr-8'} group">
 						<a class="whitespace-nowrap" href={menuItem.pathname}> {menuItem.name} </a>
 						<div class="w-10 h-8 pointer-events-none">
 							<div class="hidden arrow h-full group-hover:flex">
