@@ -45,7 +45,7 @@
 
 </script>
 
-    <div class="rounded-xl md:border-black md:border p-5">
+    <div class="rounded-xl border-black border-2 p-5 bg-oliv-lt">
         <h2 class="text-base font-nznBold pb-10">Anmeldung Netzwerk</h2>
 
         <Input name="title" label="Name des Akteurs/Organisation/Verein/Initiative:" required bind:value={formData.title}/>
@@ -196,7 +196,7 @@
         {/if}
      </div>
     </div>
-    <button type="submit" class="bg-oliv-lt ml-5 md:ml-0 py-2 px-5 rounded-xl border border-black text-base hover:shadow-inner-top mt-5 flex justify-between items-center">
+    <button type="submit" class="bg-oliv-lt  py-2 px-5 rounded-xl border-2 border-black text-base hover:shadow-inner-top mt-5 flex justify-between items-center">
         <span class="w-48 md:w-64 text-left">Abschicken</span>
         <span><ArrowRight /></span>
     </button>

@@ -8,6 +8,7 @@
 	import { config } from '$lib/config.js';
 	import Loader from 'svelte-feathers/Loader.svelte';
 	import ArrowRight from 'svelte-feathers/ArrowRight.svelte';
+	import background from '$lib/images/NZN_Website_background.png';
 
 	export let data;
 
@@ -134,52 +135,54 @@
 	<Loader class="animate-spin duration-1000 text-black h-10 w-10 "  />
 </div>
 <Maintray>
-	<Page class="{page.slug}">
-		<div class="w-full md:w-2/3 m-auto my-10 pb-10 border-b border-black md:border-0 ">
-			<div class="rounded-xl md:border-black md:border p-5">
-				<h2 class="text-base font-nznBold pb-10">Anmeldung Mailverteiler</h2>
-				<span>
-					Nachdem du auf "Beitreten" geklickt hast, öffnet sich automatisch dein Standard-E-Mail-Programm mit einer neuen Nachricht an die angegebene E-Mail-Adresse. Du musst weder Betreff noch Text in der E-Mail eingeben. Sobald du die E-Mail sendest, bekommst du kurz darauf eine Bestätigungsmail. Um die Anmeldung abzuschließen, antworte einfach auf diese Bestätigungsmail.
-				</span>
-			</div>
-			<a href="mailto:verteilerNZN+subscribe@netzwerkzwischennutzung.de"><button type="submit" class="bg-oliv-lt ml-5 md:ml-0 py-2 px-5 rounded-xl border border-black text-base hover:shadow-inner-top mt-5 flex justify-between items-center">
-				<span class="w-48 md:w-64 text-left">Beitreten</span>
-		
-				<span><ArrowRight /></span>
-			</button></a>
-		</div>
-		{#if (responseHandler === "register")}
-		<form class="w-full md:w-2/3 m-auto my-10" on:submit|preventDefault={handleSubmit} method="POST" bind:this={form}>
-			<RegistrationForm 
-				{content} 
-				bind:formData={formData} 
-				bind:errors={validationErrors}
-				bind:fileImage={fileImage}
-				bind:fileLogo={fileLogo}
-				/>
+	<Page class="{page.slug}" >
+		<div class="bg-fixed" style="background-image: url('{background}')">
+			<div class=" md:w-2/3 mx-5 md:m-auto py-10 pb-10 ">
+				<div class="rounded-xl border-black border-2 p-5 bg-oliv-lt">
+					<h2 class="text-base font-nznBold pb-10">Anmeldung Mailverteiler</h2>
+					<span>
+						Nachdem du auf "Beitreten" geklickt hast, öffnet sich automatisch dein Standard-E-Mail-Programm mit einer neuen Nachricht an die angegebene E-Mail-Adresse. Du musst weder Betreff noch Text in der E-Mail eingeben. Sobald du die E-Mail sendest, bekommst du kurz darauf eine Bestätigungsmail. Um die Anmeldung abzuschließen, antworte einfach auf diese Bestätigungsmail.
+					</span>
+				</div>
+				<a href="mailto:verteilerNZN+subscribe@netzwerkzwischennutzung.de"><button type="submit" class="bg-oliv-lt py-2 px-5 rounded-xl border-2 border-black text-base hover:shadow-inner-top mt-5 flex justify-between items-center">
+					<span class="w-48 md:w-64 text-left">Beitreten</span>
 			
-			 
-		</form>
+					<span><ArrowRight /></span>
+				</button></a>
+			</div>
+			{#if (responseHandler === "register")}
+			<form class="mx-5 md:w-2/3 md:m-auto py-10" on:submit|preventDefault={handleSubmit} method="POST" bind:this={form}>
+				<RegistrationForm 
+					{content} 
+					bind:formData={formData} 
+					bind:errors={validationErrors}
+					bind:fileImage={fileImage}
+					bind:fileLogo={fileLogo}
+					/>
+				
+				
+			</form>
 
-		{:else if (responseHandler === "sucess")}
-			<div class="bg-oliv-lt w-full sm:w-5/6 mx-auto p-10 mt-10 rounded-xl border border-black">
-				<h1>Registrierung erfolgreich</h1>
-				<div class="text-base">
-					<p class="pb-8">Ihre Organisation wird bald online sein. 
-						Wenn du einen Fehler gemacht hast oder etwas ändern möchtest, kannst du uns schreiben.</p> 
+			{:else if (responseHandler === "sucess")}
+				<div class="bg-oliv-lt w-full sm:w-5/6 mx-auto p-10 mt-10 rounded-xl border border-black b">
+					<h1>Registrierung erfolgreich</h1>
+					<div class="text-base">
+						<p class="pb-8">Ihre Organisation wird bald online sein. 
+							Wenn du einen Fehler gemacht hast oder etwas ändern möchtest, kannst du uns schreiben.</p> 
+					</div>
 				</div>
-			</div>
-		{:else}
-			<div class="bg-oliv-lt w-full sm:w-5/6 mx-auto p-10 mt-10 rounded-xl border border-black">
-				<h1>Oops, es ist ein Fehler aufgetreten.</h1>
-				<div class="text-base">
-					<p class="pb-8">
-						Es gab einen Fehler bei der Registrierung deiner Organisation.
-						
-						Lade die Seite neu und versuche es erneut. Falls das Problem weiterhin besteht, kontaktiere uns bitte.</p> 
+			{:else}
+				<div class="bg-oliv-lt w-full sm:w-5/6 mx-auto p-10 mt-10 rounded-xl border border-black">
+					<h1>Oops, es ist ein Fehler aufgetreten.</h1>
+					<div class="text-base">
+						<p class="pb-8">
+							Es gab einen Fehler bei der Registrierung deiner Organisation.
+							
+							Lade die Seite neu und versuche es erneut. Falls das Problem weiterhin besteht, kontaktiere uns bitte.</p> 
+					</div>
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</div>
 	</Page>
 
 	<Footer />

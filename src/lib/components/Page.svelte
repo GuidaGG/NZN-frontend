@@ -36,7 +36,7 @@
 	});
 </script>
 
-<section class="pb-10	{$$restProps.class}" bind:this={main}>
+<section class="pb-10" {...$$restProps} bind:this={main}>
 	{#if !noSidebar}
 	<div class={`sm:hidden flex justify-between items-center w-full border-b border-black h-12 pr-1 ${!isOpen ? 'pl-4': 'pl-1'}`}>
 		{#if !isOpen}
