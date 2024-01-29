@@ -4,7 +4,7 @@
 	import MemberSubList from '$lib/components/MemberSubList.svelte';
 	import { X } from 'svelte-feathers';
 	import { afterNavigate } from "$app/navigation";
-	import { getSortParams, getPageParams } from '$lib/utils.js';
+	import { getURLParams } from '$lib/utils.js';
 	import { page } from '$app/stores';
 	import PracticeItem from '$lib/components/PracticeItem.svelte';
 
@@ -41,7 +41,7 @@
 		{/if}
 		
 		<div class="absolute top-0 right-0 bg-oliv-lt">
-			<a href="/netzwerk?page={getPageParams($page)}&sort={getSortParams($page)}">
+			<a href="/netzwerk?page={getURLParams($page, 'page')}&sort={getURLParams($page, 'page')}">
 				<X class="h-12 w-12 sm:h-16 sm:w-16 stroke-[0.5] focus:outline-none"/>
 			</a>
 		</div>
