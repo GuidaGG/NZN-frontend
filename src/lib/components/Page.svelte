@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { afterNavigate } from "$app/navigation";
-	import { sidetrayVisible, activeName } from '$lib/stores';
+	import { sidetrayVisible, activeName, activeColor } from '$lib/stores';
 	import { ArrowRight } from 'svelte-feathers';
 	import { onMount } from 'svelte';
 	
 	export let scrollTop = false;
-	export let noSidebar = false;
+	export let noSidebar = false; // for pages without sidebar e.g. kontakt
 
 	$: isOpen = false;
 	$: title = '';
+	$: bgColor = '';
 
 	const toggleSidetray = () => {
     sidetrayVisible.update(value => !value);
@@ -20,6 +21,10 @@
 
 	$: activeName.subscribe(value => {
 		title = value;
+	});
+
+	$: activeColor.subscribe(value => {
+		bgColor = value;
 	});
 	
 	onMount(() => {
@@ -38,14 +43,17 @@
 
 <section class="pb-10" {...$$restProps} bind:this={main}>
 	{#if !noSidebar}
-	<div class={`sm:hidden flex justify-between items-center w-full border-b border-black h-12 pr-1 ${!isOpen ? 'pl-4': 'pl-1'}`}>
+	<div class={`sm:hidden absolute z-10 ${bgColor} flex justify-between items-center w-full border-b border-black h-12 pr-1 ${!isOpen ? 'pl-4': 'pl-1'}`}>
 		{#if !isOpen}
 		<h2 class="text-base font-nznBold"> {title} </h2>
 		{/if}
 		<button on:click={toggleSidetray} class="flex justify-center items-center">
-			<ArrowRight class={`p-2 h-10 w-10 stroke-[3] ${isOpen ? 'transform rotate-180' : ''} focus:outline-none`}/>
+			{#if !isOpen}	<span class="text-base mr-1">Mehr</span> {/if}
+			<ArrowRight class={`h-10 w-10 stroke-[2] ${isOpen ? 'transform rotate-180' : ''} focus:outline-none`}/>
 		</button>
 	</div>
 	{/if}
-	<slot />
+	<div class="pt-12 sm:p-0">
+		<slot />
+	</div>
 </section>

@@ -65,6 +65,7 @@
 	html, body {
 		padding: 0;
 		margin: 0;
+		overflow: hidden;
 		@apply font-nznMedium bg-oliv-lt tracking-wide
 	}
 	* {
@@ -109,8 +110,15 @@
 		@apply pb-5
 	}
 	
-	.text-content a, li a {
+	.text-content a {
 		@apply underline
+	}
+
+	@media (max-width: 639px) {
+		#main, #sidetray {
+			height: calc(100vh - 9rem);
+			height: calc(100dvh - 9rem);
+		}
 	}
 
 	/* For Webkit-based browsers (Chrome, Safari and Opera) */
