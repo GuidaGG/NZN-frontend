@@ -19,15 +19,16 @@
 	
 	:root {
 		--nzn-text-2xl: 40px;
-		--nzn-text-xl: 24px;
+		--nzn-text-xl: 20px;
 		--nzn-text-base: 20px;
 		--nzn-text-sm: 18px;
 		--nzn-text-xs: 16px;
-		--nzn-line-2xl: 47px;
-		--nzn-line-xl: 30px;
-		--nzn-line-base: 30px;
+		--nzn-line-2xl: 38px;
+		--nzn-line-xl: 25px;
+		--nzn-line-base: 25px;
 		--nzn-line-sm: 22px;
 		--nzn-line-xs: 20px;
+		
 	}
 
 	@screen lg {
@@ -121,6 +122,10 @@
 	.no-scrollbar {
 		-ms-overflow-style: none;  /* IE and Edge */
 		scrollbar-width: none;  /* Firefox */
+	}
+
+	.uppercase {
+		@apply tracking-wider
 	}
 }
 

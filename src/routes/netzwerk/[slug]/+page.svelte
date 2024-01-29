@@ -52,7 +52,7 @@
 			</div>
 			<div class="xl:w-5/12 font-nznBold text-xs overflow-hidden">
 				<MemberSubList values={member.states} label = "wirkungsraum:" />
-				<div class="flex flex-row gap-5 pb-5 text-xs w-full">
+				<div class="flex flex-col md:flex-row gap-5 pb-5 text-xs w-full">
 					<div class="uppercase min-w-[200px]">stadt:</div>
 					<p>{member.city}</p>
 				</div>
@@ -61,19 +61,19 @@
 				<MemberSubList values={member.context} label = "kontext:" />
 				<MemberSubList values={member.expertise} label = "expertise:" />
 				<MemberSubList values={member.support} label = "unterstützung benötigen bei:" />
-				<div class="uppercase min-w-[200px]">kontaktdaten:</div>
-				<div class="flex gap-5 ">
+				<div class="uppercase min-w-[200px] pb-5 md:pb-0">kontaktdaten:</div>
+				<div class="flex flex-col md:flex-row md:gap-5">
 					<div class="uppercase min-w-[200px]">mailadresse</div>
 					<div>{member.email}</div>
 				</div>
 				{#if member.website}
-					<div class="flex gap-5">
+					<div class="flex flex-col md:flex-row md:gap-5">
 						<div class="uppercase min-w-[200px]">website</div>
 						<div class="break-all"><a href={member.website} class="text-grun-dk		">{member.website}</a></div>
 					</div>
 				{/if}
 				{#if member.phone_number}
-				<div class="flex gap-5 ">
+				<div class="flex flex-col md:flex-row gap-5 pb-5">
 					<div class="uppercase min-w-[200px]">telefonnummer</div>
 					<div>{member.phone_number}</div>
 				</div>

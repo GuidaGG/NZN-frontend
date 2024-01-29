@@ -3,8 +3,8 @@
     export let content: TextContent;
     export let size: string;
 </script>
-
-<div class="px-5 pt-10 text-content">
+<!-- recheck the tracking -->
+<div class="px-5 pt-10 text-content tracking-wider">
     {#if content.title}
         <h1>{content.title}</h1>
     {/if}

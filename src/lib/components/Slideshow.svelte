@@ -81,7 +81,7 @@ onDestroy(() => {
 
 <div class="relative overflow-hidden">
 
-    <div class={`flex transition-transform duration-500 ease-in-out overflow-x-auto scroll-smooth no-scrollbar ${manual && slideshow.length > 1 ? 'pr-[50%]' : 'pr-0'} ${slideshow.length > 1 ? "h-[50vh]" : "h-auto max-h-[80vh]"}`} bind:this={container}>
+    <div class={`flex transition-transform duration-500 ease-in-out overflow-x-auto scroll-smooth no-scrollbar ${manual && slideshow.length > 1 ? 'md:pr-[50%]' : 'pr-0'} ${slideshow.length > 1 ? "h-[50vh]" : "h-auto max-h-[80vh]"}`} bind:this={container}>
         {#each slideshow as image}
             <ImageComponent {image} {buttons} {manual} count={slideshow.length}/> 
         {/each}

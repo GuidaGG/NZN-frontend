@@ -8,7 +8,9 @@
 	import Nsp from './NSP.svelte';
 	import { goto } from '$app/navigation';  
 	import { activeName } from '$lib/stores';
-  
+	import AAA from './AAA.svelte';
+	import Bm from './BM.svelte';
+
   let defaultColor = 'bg-lime-dk';
 	$: activeName.set(active.name);
   	$: searchQuery = '';
@@ -46,31 +48,29 @@
 	
 	<div class="w-full flex sm:w-3/4 flex-col-reverse sm:flex-col">
 
-		<div class="flex items-center justify-between h-24 sm:h-36 3xl:h-40 px-5 overflow-hidden">
+		<div class="flex items-center justify-between h-24 sm:h-36 3xl:h-40 px-5 overflow-hidden ">
 			
-			<div class="">
+			<div class="flex">
 				<a href="/">
 					<div class="h-full object-contain">	
-						<Logo class="w-full"/>
+						<Logo class="w-full min-w-[200px]"/>
 					</div>
 				</a>
 			</div>
 
-			<div class="w-full lg:w-3/5 ">	
-				<div class="flex flex-row align-top h-20 sm:gap-5 justify-between items-center pt-1">
-					<div class="w-full">
-						<img class="object-contain max-h-26" src={bmwsb} alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen">
+			<div>	
+				<div class="flex flex-row align-top h-20  justify-between pt-1 items-center">
+					<div >
+						<Bm class="w-full"/>
 					</div>
-					<div class="hidden md:block w-full">
-						<Nsp class="max-h-16 w-full" />
-						<!--<Nsp class="max-h-20" alt="Bunderministerium für Wohnen, Stadtentwicklung und Bauwesen" /> -->
+					<div >
+						<Nsp class="w-full hidden md:flex " />
+					</div >
+					<div >
+						<Fhb class="w-full"/>
 					</div>
-					<div class="w-full">
-						<Fhb class="max-h-20 w-full" />
-						<!--<img class="object-contain max-h-24" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">-->
-					</div>
-					<div class="hidden lg:block w-44 mr-4">
-						<img class="object-contain" src={aaalogo} alt="AAA Bremen">
+					<div class=" w-autol">
+						<AAA  class="w-full hidden lg:flex"/>
 					</div>
 				</div>
 			</div>
@@ -78,11 +78,11 @@
 		</div>
 
 		<nav class="main-nav h-12 sm:h-16 flex border-b border-t border-black justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
-			<ul class="flex w-full justify-between px-5 text-base">
+			<ul class="flex w-full justify-between px-5 text-base tracking-wider">
 				{#each menuRoutes as menuItem}
 					<li class="{menuItem.name === active.name ?
-						'flex items-center mr-8 underline underline-offset-4' :
-						'flex items-center mr-8'} group">
+						'flex items-center md:mr-8 underline underline-offset-4' :
+						'flex items-center md:mr-8'} group">
 						<a class="whitespace-nowrap" href={menuItem.pathname}> {menuItem.name} </a>
 						<div class="w-10 h-8 pointer-events-none">
 							<div class="hidden arrow h-full group-hover:flex">
