@@ -1,12 +1,12 @@
 
 import { searchClient } from '$lib/api';
-import { getSearchParams } from '$lib/utils';
+import { getURLParams } from '$lib/utils';
 
 
 export const load: import('./$types').PageLoad = (async (params) => {
 
     try {
-        const searchQuery = getSearchParams(params)
+        const searchQuery = getURLParams(params, 'search')
         let response;
         if(searchQuery){
           // const response = await index.search(searchQuery);

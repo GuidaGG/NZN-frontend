@@ -8,6 +8,8 @@
     PdfPageContent,
   } from "svelte-pdf-simple";
 	import { ArrowLeft, ArrowRight, Download, Maximize, Minimize, Loader } from 'svelte-feathers';
+    import { getURLParams } from '$lib/utils';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 	// $: material = data.material?.workMaterials[0];
@@ -18,6 +20,8 @@
       resetElements();
     }
   }
+
+  	$: order = getURLParams($page, 'order')
 
 	$: pathToPDF = `https://admin.netzwerkzwischennutzung.de${material?.file.url}`;
 	let pdfViewer: PdfViewer;
@@ -85,12 +89,13 @@
 </svelte:head>
 
 <Page >
-	
+	<h1 class="p-5 pb-0 text-xl">{order} {material.title}</h1>	
 	<div class="text-base font-nznBold p-5 mb-14 sm:mb-0"> {material.description} </div>
 
 	<div class="relative flex flex-col w-full items-center justify-center center" id="pdf-container">
-	
+		
 		{#if isPdfLoaded}
+		
 		<div class="absolute flex flex-col sm:flex-row gap-5 left-8 -top-14 sm:top-8">
 			<button
 				on:click={downloadPdf}

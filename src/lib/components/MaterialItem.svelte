@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { ArrowRight, Download } from 'svelte-feathers';
   import type { MaterialPreview } from "$lib/types";
+  import { readable, writable } from "svelte/store";
 
   export let index: number;
   export let materialGroup: MaterialPreview[];
@@ -54,10 +55,13 @@
   {#if active}
     {#each materialGroup as material, index}
       {#if material.file}
-      <a href="/arbeitsmaterialen/{material.slug}" class={`flex p-5 ${index === length-1 ? 'border-b border-black' : ''} hover:bg-oliv-dk`}>
+      <a href="/arbeitsmaterialen/{material.slug}?order={order}.{index + 1}" class={`flex p-5 ${index === length-1 ? 'border-b border-black' : ''} hover:bg-oliv-dk`}>
         <div class="w-full flex-col">
-          <h2 class="text-base mb-2">{order}.{index + 1} {material.title}</h2>
-          <p class="mb-4 pr-2 line-clamp-4">{material.description}</p>
+          <h2 class="text-base mb-2">
+            {order}.{index + 1}
+           <span class="block text-sm">{material.title}</span>
+          </h2>
+
           {#if material.url}
             <div class="pb-4">
               <a href={material.url} target="_blank" class="underline break-all">
@@ -69,14 +73,17 @@
         </div>
         <div class="flex flex-col justify-end">
           <!-- <button on:click={() => donwnloadPdf(material.file.url, material.file.name)}> -->
-          <a href={`https://admin.netzwerkzwischennutzung.de${material.file?.url}`} class="hover:border hover:border-black" download target="_blank">
+          <a href={`https://admin.netzwerkzwischennutzung.de${material.file?.url}`}  download target="_blank">
             <Download class="self-center stroke-[2.5] h-10 w-10"/>
           </a>
         </div>
       </a>
       {:else}
         <div class={`w-full flex-col p-5 ${index === length-1 ? 'border-b border-black' : ''}`}>
-          <h2 class="text-base mb-2">{order}.{index + 1} {material.title}</h2>
+          <h2 class="text-base mb-2">
+            {order}.{index + 1}
+           <span class="block text-sm">{material.title}</span>
+          </h2>
           <p class="pr-2 mb-4">{material.description}</p>
           {#if material.url}
             <div class="pb-4">

@@ -40,13 +40,13 @@ export function randomArray<T>(array: T[]): T[] {
   return shuffledArray;
 }
 
-export 	const getSortParams = (page) => {
+export 	const getURLParams = (page, type) => {
   const query = new URLSearchParams(page.url.searchParams.toString());
-  const sort = query.get('sort')
+  const sort = query.get(type)
   return sort ? sort : ''
 }
 
-export 	const getPageParams = (page) => {
+/* export 	const getPageParams = (page) => {
   const query = new URLSearchParams(page.url.searchParams.toString());
   const currentPage = query.get('page')
   return currentPage ? currentPage : ''
@@ -56,4 +56,4 @@ export const getSearchParams = (page)  => {
   const query = new URLSearchParams(page.url.searchParams.toString());
   const searchQuery = query.get('search')
   return searchQuery
-}
+} */

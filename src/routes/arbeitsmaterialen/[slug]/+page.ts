@@ -1,8 +1,6 @@
 import { gql } from 'graphql-request';
 import { client } from '$lib/api';
 import { flattenJson} from '$lib/utils';
-import { randomArray } from '$lib/utils.js';
-
 
 const WorkMaterialsQuery= gql`
     query getWorkMaterials($slug: String!) {
