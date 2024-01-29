@@ -4,7 +4,7 @@
 	import { X, ArrowRight } from 'svelte-feathers';
 	import Slideshow from '$lib/components/Slideshow.svelte';
 	import Member from '$lib/components/Member.svelte';
-	import { getPageParams} from '$lib/utils';
+	import { getURLParams} from '$lib/utils';
 	import { page } from '$app/stores';
 	
 	export let data: PageData;
@@ -24,7 +24,7 @@
 		
 		<!-- CAN BE JUST ABSOLUTE (fixed / sticky problems) -->
 		<div class="fixed sm:absolute z-10 right-0 bg-oliv-lt">
-				<a href="/best-practice?page={getPageParams($page)}">
+				<a href="/best-practice?page={getURLParams($page, 'page')}">
 				<X class="h-12 w-12 sm:h-16 sm:w-16 stroke-[0.5] focus:outline-none"/>
 			</a>
 		</div>

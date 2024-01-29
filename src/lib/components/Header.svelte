@@ -1,19 +1,20 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Logo from './Logo.svelte';
-	import bmwsb from '$lib/images/BMWSB.png';
-	import aaalogo from '$lib/images/aaa-logo-bw.svg';
+	// import bmwsb from '$lib/images/BMWSB.png';
+	// import aaalogo from '$lib/images/aaa-logo-bw.svg';
 	import { Search, ArrowRight } from 'svelte-feathers';
 	import Fhb from './FHB.svelte';
 	import Nsp from './NSP.svelte';
 	import { goto } from '$app/navigation';  
-	import { activeName } from '$lib/stores';
+	import { activeName, activeColor } from '$lib/stores';
 	import AAA from './AAA.svelte';
 	import Bm from './BM.svelte';
 
   let defaultColor = 'bg-lime-dk';
 	$: activeName.set(active.name);
-  	$: searchQuery = '';
+	$: activeColor.set(active.color);
+  $: searchQuery = '';
 	$: active = { name: '', color: defaultColor };
 
 
@@ -44,7 +45,7 @@
 
 </script>
 
-<header class="w-screen absolute bottom-0 sm:bottom-auto sm:top-0 sm:w-full flex z-20 justify-between bg-oliv-lt">
+<header class="w-screen absolute bottom-0 sm:bottom-auto sm:top-0 sm:w-full flex z-30 justify-between bg-oliv-lt">
 	
 	<div class="w-full flex sm:w-3/4 flex-col-reverse sm:flex-col">
 

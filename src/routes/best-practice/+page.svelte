@@ -5,7 +5,7 @@
 	import DynamicContent from '$lib/components/DynamicContent.svelte';
 	import PracticeItem from '$lib/components/PracticeItem.svelte';
 	import Pagination from '$lib/components/Pagination.svelte';
-	import { getPageParams } from '$lib/utils';
+	import { getURLParams } from '$lib/utils';
 	import { page } from '$app/stores';
 	import { afterNavigate } from "$app/navigation";
 
@@ -17,7 +17,7 @@
 
 	let mainArea: HTMLElement;
 	afterNavigate(() => {
-		if (mainArea && getPageParams($page)) { 
+		if (mainArea && getURLParams($page, 'page')) { 
 			mainArea.scrollIntoView();
 		}
 	});
@@ -31,7 +31,7 @@
 	<DynamicContent page={pageContent} size="text-base"/>
 	<div class="flex  p-4 pt-8 flex-col lg:flex-row flex-wrap" bind:this={mainArea}>
 		{#each practices as practice}
-			<a href="/best-practice/{practice.slug}?page={getPageParams($page)}" class="w-full lg:w-1/2 p-2 pt-4 pb-12 border-2 border-transparent hover:border-black rounded-xl">
+			<a href="/best-practice/{practice.slug}?page={getURLParams($page, 'page')}" class="w-full lg:w-1/2 p-2 pt-4 pb-12 border-2 border-transparent hover:border-black rounded-xl">
 				<PracticeItem {practice} image/>
 			</a>
 		{/each}
