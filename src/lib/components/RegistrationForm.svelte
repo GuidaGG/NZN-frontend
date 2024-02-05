@@ -43,7 +43,7 @@
 
 
 
-</script>
+</script> 
 
     <div class="rounded-xl border-black border-2 p-5 bg-oliv-lt">
         <h2 class="text-base font-nznBold pb-10">Anmeldung Netzwerk</h2>
@@ -101,6 +101,7 @@
             <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.email}</span>
         {/if}
         <Input name="website" label="Webseite" bind:value={formData.website} />
+        <span>Bitte trenn die URLs mit Kommas und füg am Anfang "http://" oder "https://" hinzu.</span>
         <Input name="contact_person" label="Name der Ansprechperson(en) " type="text" bind:value={formData.contact_person}/>
         <Input name="phone" label="Telefonnummer" type="text" bind:value={formData.phone}/>
         <CheckboxGroup 
