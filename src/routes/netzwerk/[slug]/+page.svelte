@@ -30,8 +30,8 @@
 	<div class="w-full relative">
 
 		{#if member.image}
-		<div class="relative">
-				<Image image={member.image} class="max-h-[50vh] border-b border-black text-xs object-{member.imageRelevantArea}"/>
+		<div class="relative h-[50vh] w-full bg-yellow-50 ">
+				<Image image={member.image} class="border-b border-black h-full text-xs object-cover object-{member.imageRelevantArea}"/>
 				{#if member.image.caption} 
 					<div class="absolute right-0 bottom-0 bg-oliv-lt  px-2 border-b border-black ">{member.image.caption}</div>	
 				{/if}
