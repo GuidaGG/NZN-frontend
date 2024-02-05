@@ -52,7 +52,7 @@ const homeQuery = gql`
 
 const newsQuery = gql`
   {
-    posts {
+    posts( sort: "publishedAt:desc") {
       data {
         id
         attributes { 
