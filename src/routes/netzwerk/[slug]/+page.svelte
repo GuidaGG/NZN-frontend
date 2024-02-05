@@ -20,6 +20,14 @@
 		main.scrollIntoView();
 	}
 	});
+
+	function parseUrls(input: string): string[] {
+    const urlArray = input.replace(/\s/g, '').split(',');
+    const trimmedUrls = urlArray.map(url => url.trim());
+    return trimmedUrls;
+}
+
+	$: websites = member.website.length ? parseUrls(member?.website) : [];
 </script>
 
 <svelte:head>
@@ -28,7 +36,6 @@
 
 <Page scrollTop>
 	<div class="w-full relative">
-
 		{#if member.image}
 		<div class="relative h-[50vh] w-full bg-yellow-50 ">
 				<Image image={member.image} class="border-b border-black h-full text-xs object-cover object-{member.imageRelevantArea}"/>
@@ -69,7 +76,13 @@
 				{#if member.website}
 					<div class="flex flex-col md:flex-row md:gap-5">
 						<div class="uppercase min-w-[200px]">website</div>
-						<div class="break-all"><a href={member.website} class="text-grun-dk		">{member.website}</a></div>
+						<div class="break-all flex-col w-full">
+						{#each websites as website}
+						<div>
+							<a href={website} target="_blank" class="text-grun-dk		">{website}</a>
+						</div>
+						{/each}
+						</div>
 					</div>
 				{/if}
 				{#if member.phone_number}
