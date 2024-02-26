@@ -35,7 +35,7 @@ $: getTypeContent(type, hit)
 
 </script>
 
-<li class="w-[calc(33%-8px)] rounded-md border hover:border-black p-2 ">
+<li class="w-full md:w-[calc(33%-8px)] rounded-md border hover:border-black p-2 ">
     <a href="{path}/{hit.slug}">
         <h3>{hit.title}</h3>
         <div class="pt-1 line-clamp-4 text-xs"> { @html text }</div>

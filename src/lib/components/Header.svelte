@@ -25,6 +25,7 @@
 	}
 	
 	let routes = [
+		{ pathname: '/search', name: 'Search', color: defaultColor },
 		{ pathname: '/', name: 'News', color: defaultColor },
 		{ pathname: '/netzwerk', name: 'Netzwerk', color: 'bg-grun-dk' },
 		{ pathname: '/best-practice', name: 'Best Practice', color: 'bg-grun-lt' },
@@ -45,7 +46,7 @@
 
 </script>
 
-<header class="w-screen absolute bottom-0 sm:bottom-auto sm:top-0 sm:w-full flex z-30 justify-between bg-oliv-lt">
+<header class="overflow-hidden w-screen absolute bottom-0 sm:bottom-auto sm:top-0 sm:w-full flex z-30 justify-between bg-oliv-lt">
 	
 	<div class="w-full flex sm:w-3/4 flex-col-reverse sm:flex-col">
 
@@ -77,15 +78,15 @@
 			</div>
 
 		</div>
-
 		<nav class="main-nav h-12 sm:h-16 flex border-b border-t border-black justify-center font-nznBold overflow-x-auto scrollbar-hide overflow-y-hidden">
 			<ul class="flex w-full justify-between px-5 text-base tracking-wider">
+			
 				{#each menuRoutes as menuItem}
 					<li class="{menuItem.name === active.name ?
 						'flex items-center md:mr-8 underline underline-offset-4' :
-						'flex items-center md:mr-8'} group">
+						'flex items-center md:mr-8'} {menuItem.name === "Search" ? "sm:hidden border-r-2 border-black mr-4" : "group"} ">
 						<a class="whitespace-nowrap" href={menuItem.pathname}> {menuItem.name} </a>
-						<div class="w-10 h-8 pointer-events-none">
+						<div class=" pointer-events-none  {menuItem.name === "Search" ? "w-4 h-8" : "w-8 h-8"}">
 							<div class="hidden arrow h-full group-hover:flex">
 								<ArrowRight class="hidden xl:block self-center stroke-[3] h-10 w-10" />
 							</div>
@@ -113,9 +114,9 @@
 		</nav>
 
 		<div class="border-t border-b  border-gray-900 px-2 h-12 sm:h-16 flex items-center ">
-			<div class="flex gap-2 text-base font-nznBold items-center border-b border-black w-full">
-				<Search class="cursor-pointer" on:click={() => searchPage()}/>
-				<input bind:value={searchQuery} on:keydown={(e) => { if (e.keyCode === 13 || e.which === 13) {searchPage()}}} class={`grow bg-transparent placeholder:text-black focus:outline-none`} placeholder="Suche"/>
+			<div class="flex gap-2 text-base font-nznBold items-center border border-black w-full rounded-full p-2">
+				<Search class="h-8 w-8 cursor-pointer" on:click={() => searchPage()}/>
+				<input bind:value={searchQuery} on:keydown={(e) => { if (e.keyCode === 13 || e.which === 13) {searchPage()}}} class={`grow bg-transparent placeholder:text-black focus:outline-none`} placeholder="Suchebegriff"/>
 				
 			</div>
 		</div>

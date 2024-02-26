@@ -3,13 +3,15 @@
 	import { sidetrayVisible, activeName, activeColor } from '$lib/stores';
 	import { ArrowRight } from 'svelte-feathers';
 	import { onMount } from 'svelte';
-	
+	import { page } from '$app/stores';
+
 	export let scrollTop = false;
 	export let noSidebar = false; // for pages without sidebar e.g. kontakt
 
 	$: isOpen = false;
 	$: title = '';
 	$: bgColor = '';
+	$: isSearch = $page.url.pathname  === "/search"; 
 
 	const toggleSidetray = () => {
     sidetrayVisible.update(value => !value);
@@ -47,10 +49,12 @@
 		{#if !isOpen}
 		<h2 class="text-base font-nznBold"> {title} </h2>
 		{/if}
+		{#if !isSearch}
 		<button on:click={toggleSidetray} class="flex justify-center items-center">
 			{#if !isOpen}	<span class="text-base mr-1">Mehr</span> {/if}
 			<ArrowRight class={`h-10 w-10 stroke-[2] ${isOpen ? 'transform rotate-180' : ''} focus:outline-none`}/>
 		</button>
+		{/if}
 	</div>
 	{/if}
 	<div class="pt-12 sm:p-0">
