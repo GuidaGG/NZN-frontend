@@ -40,7 +40,7 @@
 <Page scrollTop>
 	<div class="w-full relative">
 		{#if member.image}
-		<div class="relative h-[50vh] w-full bg-yellow-50 overflow-hidden">
+		<div class="relative h-[50vh] w-full overflow-hidden">
 
 				<Image image={member.image} class="border-b border-black h-full text-xs {imageAlignment}"/> 
 				{#if member.image.caption} 

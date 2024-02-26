@@ -13,15 +13,15 @@
 	export let data;
 
 	let selected: string = "false" ;
-	const page = data.page.pages[0];
-	const content = data.form;
+	let page = data?.page.pages[0];
+	 const content = data?.form;
 	let loading = false;
 	
 	let form :HTMLFormElement;
 	$: fileImage = {} as FileList;
 	$: fileLogo = {} as FileList;
 
-
+	
 	$: responseHandler = "register"
 	$: validationErrors = {}
 	$: formData = {
@@ -125,7 +125,6 @@
 
 </script>
 
-
 <svelte:head>
 	<title>{page?.title}</title>
 	<meta name="NZN" content="website for netzwerkzwischennutzung" />
@@ -134,11 +133,12 @@
 <div class={`h-full w-full absolute top-0 bg-grun-lt opacity-60 z-10 items-center justify-center ${loading ? 'flex' : 'hidden'}`}>
 	<Loader class="animate-spin duration-1000 text-black h-10 w-10 "  />
 </div>
+
 <Maintray>
 	<Page class="{page.slug}" >
-		<div class="bg-fixed" style="background-image: url('{background}')">
+		<div class="bg-fixed"  style="background-image: url('{background}')">
 			<div class=" md:w-2/3 mx-5 md:m-auto py-10 pb-10 ">
-				<div class="rounded-xl border-black border-2 p-5 bg-oliv-lt">
+				<div class="rounded-xl border-black border-2 p-5 bg-oliv-lt ">
 					<h2 class="text-base font-nznBold pb-10">Anmeldung Mailverteiler</h2>
 					<span>
 						Nachdem du auf "Beitreten" geklickt hast, öffnet sich automatisch dein Standard-E-Mail-Programm mit einer neuen Nachricht an die angegebene E-Mail-Adresse. Du musst weder Betreff noch Text in der E-Mail eingeben. Sobald du die E-Mail sendest, bekommst du kurz darauf eine Bestätigungsmail. Um die Anmeldung abzuschließen, antworte einfach auf diese Bestätigungsmail.
@@ -190,9 +190,9 @@
 
 <Sidetray>
 	<div class="flex flex-col">
-		{#each page.content as section}
+		{#each page?.content as section}
 			{#if section.__typename === "ComponentTextTextContent"}
-				<!--<TextContent content={section} /> -->
+				<!--<TextContent content={section} />  -->
 			{:else if section.__typename === "ComponentTextContactData"}
 				<ul class="text-base py-5">
 				
