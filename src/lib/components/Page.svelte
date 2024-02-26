@@ -11,7 +11,7 @@
 	$: isOpen = false;
 	$: title = '';
 	$: bgColor = '';
-	$: isSearch = $page.url.pathname  === "/search"; 
+	$: isSearch = $page.url.pathname  === "/suche"; 
 
 	const toggleSidetray = () => {
     sidetrayVisible.update(value => !value);

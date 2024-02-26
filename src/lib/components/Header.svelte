@@ -11,21 +11,21 @@
 	import AAA from './AAA.svelte';
 	import Bm from './BM.svelte';
 
-  let defaultColor = 'bg-lime-dk';
+  	let defaultColor = 'bg-lime-dk';
 	$: activeName.set(active.name);
 	$: activeColor.set(active.color);
-  $: searchQuery = '';
+  	$: searchQuery = '';
 	$: active = { name: '', color: defaultColor };
 
 
 	function searchPage(){
 		let query = new URLSearchParams($page.url.searchParams.toString());
 		query.set('search', searchQuery.toString());	
-		goto(`/search?${query.toString()}`);
+		goto(`/suche?${query.toString()}`);
 	}
 	
 	let routes = [
-		{ pathname: '/search', name: 'Search', color: defaultColor },
+		{ pathname: '/suche', name: 'Suche', color: 'bg-oliv-lt'},
 		{ pathname: '/', name: 'News', color: defaultColor },
 		{ pathname: '/netzwerk', name: 'Netzwerk', color: 'bg-grun-dk' },
 		{ pathname: '/best-practice', name: 'Best Practice', color: 'bg-grun-lt' },
@@ -50,29 +50,37 @@
 	
 	<div class="w-full flex sm:w-3/4 flex-col-reverse sm:flex-col">
 
-		<div class="flex items-center justify-between h-24 sm:h-36 3xl:h-40 px-5 overflow-hidden ">
+		<div class="flex items-center justify-between  h-20 sm:h-36 3xl:h-40 px-2 sm:px-5 overflow-hidden ">
 			
-			<div class="flex">
+			<div class="flex w-28 sm:w-auto ">
 				<a href="/">
-					<div class="h-full object-contain">	
-						<Logo class="w-full min-w-[200px]"/>
+					<div class="sm:h-full object-contain">	
+						<Logo class="w-full sm:min-w-[200px]"/>
 					</div>
 				</a>
 			</div>
 
-			<div>	
+			<div class="hidden sm:block">	
 				<div class="flex flex-row align-top h-20  justify-between pt-1 items-center">
 					<div >
+						<a	target="_blank" href="https://www.bmwsb.bund.de/Webs/BMWSB/DE/startseite/startseite-node.html">
 						<Bm class="w-full"/>
+						</a>
 					</div>
 					<div >
+						<a	target="_blank" href="https://www.nationale-stadtentwicklungspolitik.de/NSPWeb/DE/Home/home_node.html">
 						<Nsp class="w-full hidden md:flex " />
+						</a>
 					</div >
 					<div >
+						<a	target="_blank" href="https://bau.bremen.de/">
 						<Fhb class="w-full"/>
+						</a>
 					</div>
 					<div class=" w-autol">
-						<AAA  class="w-full hidden lg:flex"/>
+						<a	target="_blank" href="https://www.aaa-bremen.de/aktuelles/">
+						<AAA  class="w-full hidden lg:flex "/>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -84,9 +92,9 @@
 				{#each menuRoutes as menuItem}
 					<li class="{menuItem.name === active.name ?
 						'flex items-center md:mr-8 underline underline-offset-4' :
-						'flex items-center md:mr-8'} {menuItem.name === "Search" ? "sm:hidden border-r-2 border-black mr-4" : "group"} ">
+						'flex items-center md:mr-8'} {menuItem.name === "Suche" ? "sm:hidden border-r-2 border-black mr-4" : "group"} ">
 						<a class="whitespace-nowrap" href={menuItem.pathname}> {menuItem.name} </a>
-						<div class=" pointer-events-none  {menuItem.name === "Search" ? "w-4 h-8" : "w-8 h-8"}">
+						<div class=" pointer-events-none  {menuItem.name === "Suche" ? "w-4 h-8" : "w-8 h-8"}">
 							<div class="hidden arrow h-full group-hover:flex">
 								<ArrowRight class="hidden xl:block self-center stroke-[3] h-10 w-10" />
 							</div>
@@ -99,21 +107,21 @@
 	</div>
 
 
-	<div class="hidden sm:block sm:w-1/4 fixed top-0 right-0 sm:relative border-l border-black">
+	<div class=" fixed sm:block sm:w-1/4 bottom-4 sm:bottom-auto sm:top-0 right-0 sm:relative sm:border-l border-black ">
 
-		<nav class="flex flex-col h-36 3xl:h-40 p-2 font-nznBold place-content-center">
+		<nav class="flex flex-row 0 sm:flex-col sm:h-36 3xl:h-40 p-2 font-nznBold place-content-center">
 				<h2 class="pl-6 whitespace-nowrap hidden sm:block"> Anmeldung <span class="hidden xl:inline">zum Netzwerk</span> </h2>
-				<ul class="flex flex-col gap-2 w-full text-base">
+				<ul class="flex flex-row sm:flex-col gap-2 w-full sm:text-base">
 					<li>
-						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="/kontakt"> Teilnehmen </a>
+						<a class={`block rounded-2xl ${active.color} py-1 px-2 sm:px-5 hover:shadow-inner-top`} href="/kontakt"> Teilnehmen </a>
 					</li>
 					<li>
-						<a class={`block rounded-2xl ${active.color} py-1 px-5 hover:shadow-inner-top`} href="mailto:verteilerNZN+subscribe@netzwerkzwischennutzung.de"> Mailverteiler </a>
+						<a class={`block rounded-2xl ${active.color} py-1 px-2 sm:px-5 hover:shadow-inner-top`} href="mailto:verteilerNZN+subscribe@netzwerkzwischennutzung.de"> Mailverteiler </a>
 					</li>
 				</ul>
 		</nav>
 
-		<div class="border-t border-b  border-gray-900 px-2 h-12 sm:h-16 flex items-center ">
+		<div class="hidden sm:block border-t border-b  border-gray-900 px-2 h-12 sm:h-16 flex items-center ">
 			<div class="flex gap-2 text-base font-nznBold items-center border border-black w-full rounded-full p-2">
 				<Search class="h-8 w-8 cursor-pointer" on:click={() => searchPage()}/>
 				<input bind:value={searchQuery} on:keydown={(e) => { if (e.keyCode === 13 || e.which === 13) {searchPage()}}} class={`grow bg-transparent placeholder:text-black focus:outline-none`} placeholder="Suchebegriff"/>

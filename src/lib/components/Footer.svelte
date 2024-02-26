@@ -3,6 +3,7 @@
   import fbh_bms from '$lib/images/FHB_Senatorin.png';
   import { Instagram, X, Facebook } from 'svelte-feathers';
   import Nsp from './NSP_rgb.svelte';
+  import AAA from './AAA.svelte';
 </script>
 
 <footer class="flex flex-col-reverse lg:flex-row border-t border-gray-900 bg-oliv-lt p-4 gap-10 {$$restProps.class}">
@@ -10,15 +11,26 @@
     <div class="text-[10px]">Das Projekt wird durch das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen im Rahmen der Nationalen Stadtentwicklungspolitik gefördert.</div>
     <div class="text-[10px]">Realisiert wird das Projekt von der AAA GmbH, die seit 2009 das Projekt ZZZ – ZwischenZeitZentrale Bremen im Auftrag der Stadt Bremen umsetzt, das von 2009 bis 2012 ebenfalls im Rahmen der Nationalen Stadtentwicklungspolitik gefördert wurde.</div>
     <div class="text-[10px]">Das Netzwerk Zwischennutzung wird von der Bremer Senatorin für Klimaschutz, Umwelt, Mobilität, Stadtentwicklung und Wohnungsbau unterstützt.</div>
-    <div class="flex flex-row justify-between items-center">
+    <div class="flex flex-row justify-between items-top">
       <div class="w-full">
-        <Bm class="max-h-24 w-full" />
+        <a	target="_blank" href="https://www.bmwsb.bund.de/Webs/BMWSB/DE/startseite/startseite-node.html">
+          <Bm class="max-h-24 w-full" />
+        </a>
       </div>
       <div class="w-full">
-        <Nsp class="max-h-24 w-full" />
+        <a	target="_blank" href="https://www.nationale-stadtentwicklungspolitik.de/NSPWeb/DE/Home/home_node.html">
+          <Nsp class="max-h-24 w-full" />
+        </a>
       </div>
       <div class="w-full">
-        <img class="object-contain" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">
+        <a	target="_blank" href="https://bau.bremen.de/">
+          <img class="object-contain" src={fbh_bms} alt="Die Senatorin für Bau, Mobilitäat und Stadtentwicklung">
+        </a>
+        </div>
+      <div class="w-full">
+        <a	target="_blank" href="https://www.aaa-bremen.de/aktuelles/">
+          <AAA  c class="max-h-24 w-full fill-[#F3971C] "/>
+        </a>
       </div>
     </div>
   </div>
