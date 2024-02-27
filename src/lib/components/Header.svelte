@@ -25,7 +25,7 @@
 	}
 	
 	let routes = [
-		{ pathname: '/suche', name: 'Suche', color: 'bg-oliv-lt'},
+		{ pathname: '/suche', name: 'Suche', color:  defaultColor},
 		{ pathname: '/', name: 'News', color: defaultColor },
 		{ pathname: '/netzwerk', name: 'Netzwerk', color: 'bg-grun-dk' },
 		{ pathname: '/best-practice', name: 'Best Practice', color: 'bg-grun-lt' },
@@ -121,11 +121,10 @@
 				</ul>
 		</nav>
 
-		<div class="hidden sm:block border-t border-b  border-gray-900 px-2 h-12 sm:h-16 flex items-center ">
-			<div class="flex gap-2 text-base font-nznBold items-center border border-black w-full rounded-full p-2">
-				<Search class="h-8 w-8 cursor-pointer" on:click={() => searchPage()}/>
-				<input bind:value={searchQuery} on:keydown={(e) => { if (e.keyCode === 13 || e.which === 13) {searchPage()}}} class={`grow bg-transparent placeholder:text-black focus:outline-none`} placeholder="Suchebegriff"/>
-				
+		<div class="hidden border-t border-b  border-gray-900 px-2 h-12 sm:h-16 sm:flex items-center ">
+			<div class="flex gap-2 text-base font-nznBold items-center border border-black w-full rounded-full p-2 py-1 ">
+				<Search class="shrink-0 w-8 h-8 cursor-pointer block" on:click={() => searchPage()}/>
+				<input bind:value={searchQuery} on:keydown={(e) => { if (e.keyCode === 13 || e.which === 13) {searchPage()}}} class={`bg-transparent placeholder:text-black focus:outline-none`} placeholder="Suchebegriff"/>
 			</div>
 		</div>
 

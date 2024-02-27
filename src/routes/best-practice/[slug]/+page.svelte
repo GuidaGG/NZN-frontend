@@ -22,7 +22,6 @@
 <Page scrollTop>
 	<div class="w-full relative">
 		
-		<!-- CAN BE JUST ABSOLUTE (fixed / sticky problems) -->
 		<div class="absolute right-0 bg-oliv-lt">
 				<a href="/best-practice?page={getURLParams($page, 'page')}">
 				<X class="h-12 w-12 sm:h-16 sm:w-16 stroke-[0.5] focus:outline-none"/>

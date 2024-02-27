@@ -66,6 +66,7 @@
 		padding: 0;
 		margin: 0;
 		overflow: hidden;
+		hyphens: auto;
 		@apply font-nznMedium bg-oliv-lt tracking-wide
 	}
 	* {

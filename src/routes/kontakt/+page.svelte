@@ -136,7 +136,7 @@
 
 <Maintray>
 	<Page class="{page.slug}" >
-		<div class="bg-fixed"  style="background-image: url('{background}')">
+		<div class=" bg-repeat sm:bg-fixed"  style="background-image: url('{background}')">
 			<div class=" md:w-2/3 mx-5 md:m-auto py-10 pb-10 ">
 				<div class="rounded-xl border-black border-2 p-5 bg-oliv-lt ">
 					<h2 class="text-base font-nznBold pb-10">Anmeldung Mailverteiler</h2>
