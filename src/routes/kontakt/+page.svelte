@@ -126,9 +126,10 @@
 </script>
 
 <svelte:head>
-	<title>{page?.title}</title>
-	<meta name="NZN" content="website for netzwerkzwischennutzung" />
+	<title>{page?.title} - Netzwerk Zwischennutzung</title>
+	<meta name="description" content="Zwischennutzungen als Lösung für Leerstand und Langeweile – sie ermöglichen den Raum und Platz für neue Ideen und beleben Innenstädte und Quartiere der Post-Corona-Städte. Während Zwischennutzungen eine immer öfter genutzte Lösung für die Herausforderungen des räumlichen Wandels darstellen, sind die dahinterliegenden Strukturen in den meisten Städten und Regionen nicht ausgebaut." />
 </svelte:head>
+
 
 <div class={`h-full w-full absolute top-0 bg-grun-lt opacity-60 z-10 items-center justify-center ${loading ? 'flex' : 'hidden'}`}>
 	<Loader class="animate-spin duration-1000 text-black h-10 w-10 "  />

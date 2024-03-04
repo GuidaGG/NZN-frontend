@@ -17,6 +17,7 @@
 
 <svelte:head>
 	<title> {practice?.title} </title>
+	<meta name="description" content={practice?.description} />
 </svelte:head>
 
 <Page scrollTop>

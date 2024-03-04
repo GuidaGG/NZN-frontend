@@ -23,6 +23,7 @@
 
 <svelte:head>
 	<title>{slug}</title>
+	<meta name="description" content="Zwischennutzungen als Lösung für Leerstand und Langeweile – sie ermöglichen den Raum und Platz für neue Ideen und beleben Innenstädte und Quartiere der Post-Corona-Städte. Während Zwischennutzungen eine immer öfter genutzte Lösung für die Herausforderungen des räumlichen Wandels darstellen, sind die dahinterliegenden Strukturen in den meisten Städten und Regionen nicht ausgebaut." />
 </svelte:head>
 
 <Maintray>
