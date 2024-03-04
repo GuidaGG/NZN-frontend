@@ -86,7 +86,9 @@
 
 <svelte:head>
 	<title> {material?.title} </title>
+	<meta name="description" content={material.description} />
 </svelte:head>
+
 
 <Page >
 	<div class="relative">

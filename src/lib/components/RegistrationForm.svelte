@@ -48,7 +48,7 @@
     <div class="rounded-xl border-black border-2 p-5 bg-oliv-lt">
         <h2 class="text-base font-nznBold pb-10">Anmeldung Netzwerk</h2>
 
-        <Input name="title" label="Name des Akteurs/Organisation/Verein/Initiative:" required bind:value={formData.title}/>
+        <Input name="title" label="Name des Akteurs/ Organisation/ Verein/ Initiative:" required bind:value={formData.title}/>
         {#if errors.title}
             <span class="p-1 px-2 border rounded-md border-red-500 text-red-500">{errors.title}</span>
         {/if}

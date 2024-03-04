@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title> Search </title>
+	<title> Suche </title>
 </svelte:head>
 
 

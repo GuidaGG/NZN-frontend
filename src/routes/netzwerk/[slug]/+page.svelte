@@ -35,6 +35,7 @@
 
 <svelte:head>
 	<title> {member?.title}</title>
+	<meta name="description" content={member?.description ? member.description : "Zwischennutzungen als Lösung für Leerstand und Langeweile – sie ermöglichen den Raum und Platz für neue Ideen und beleben Innenstädte und Quartiere der Post-Corona-Städte. Während Zwischennutzungen eine immer öfter genutzte Lösung für die Herausforderungen des räumlichen Wandels darstellen, sind die dahinterliegenden Strukturen in den meisten Städten und Regionen nicht ausgebaut." } />
 </svelte:head>
 
 <Page scrollTop>
@@ -56,9 +57,11 @@
 				<X class="h-12 w-12 sm:h-16 sm:w-16 stroke-[0.5] focus:outline-none"/>
 			</a>
 		</div>
-		<div class="flex flex-col xl:flex-row gap-5 w-full p-5">
+		<h1 class=" p-5 hyphens-auto">{member.title}</h1>
+		<div class="flex flex-col xl:flex-row gap-5 w-full p-5 pt-0">
+		
 			<div class="xl:w-7/12 text-base shrink-0">
-				<h1>{member.title}</h1>
+			
 				<div>{member.description}</div>
 			</div>
 			<div class="xl:w-5/12 font-nznBold text-xs overflow-hidden">

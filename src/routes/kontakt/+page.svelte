@@ -126,9 +126,10 @@
 </script>
 
 <svelte:head>
-	<title>{page?.title}</title>
-	<meta name="NZN" content="website for netzwerkzwischennutzung" />
+	<title>{page?.title} - Netzwerk Zwischennutzung</title>
+	<meta name="description" content="Zwischennutzungen als Lösung für Leerstand und Langeweile – sie ermöglichen den Raum und Platz für neue Ideen und beleben Innenstädte und Quartiere der Post-Corona-Städte. Während Zwischennutzungen eine immer öfter genutzte Lösung für die Herausforderungen des räumlichen Wandels darstellen, sind die dahinterliegenden Strukturen in den meisten Städten und Regionen nicht ausgebaut." />
 </svelte:head>
+
 
 <div class={`h-full w-full absolute top-0 bg-grun-lt opacity-60 z-10 items-center justify-center ${loading ? 'flex' : 'hidden'}`}>
 	<Loader class="animate-spin duration-1000 text-black h-10 w-10 "  />
@@ -136,7 +137,7 @@
 
 <Maintray>
 	<Page class="{page.slug}" >
-		<div class="bg-fixed"  style="background-image: url('{background}')">
+		<div class=" bg-repeat sm:bg-fixed"  style="background-image: url('{background}')">
 			<div class=" md:w-2/3 mx-5 md:m-auto py-10 pb-10 ">
 				<div class="rounded-xl border-black border-2 p-5 bg-oliv-lt ">
 					<h2 class="text-base font-nznBold pb-10">Anmeldung Mailverteiler</h2>

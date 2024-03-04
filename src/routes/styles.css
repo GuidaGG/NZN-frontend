@@ -116,8 +116,8 @@
 
 	@media (max-width: 639px) {
 		#main, #sidetray {
-			height: calc(100vh - 9rem);
-			height: calc(100dvh - 9rem);
+			height: calc(100vh - 8rem);
+			height: calc(100dvh - 8rem);
 		}
 	}
 
